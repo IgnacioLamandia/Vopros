@@ -1,4 +1,4 @@
-package ToolsStudios.Vopros.Service
+package ToolsStudios.Vopros.Service.Controller
 
 import ToolsStudios.Vopros.Domain.VoprosAppModel
 import org.uqbar.xtrest.api.annotation.Controller

@@ -1,7 +1,8 @@
-package ToolsStudios.Vopros.Service
+package ToolsStudios.Vopros.Service.App
 
 import ToolsStudios.Vopros.Domain.VoprosAppModel
 import org.uqbar.xtrest.api.XTRest
+import ToolsStudios.Vopros.Service.Controller.VoprosController
 
 class VoprosApp {
 	
