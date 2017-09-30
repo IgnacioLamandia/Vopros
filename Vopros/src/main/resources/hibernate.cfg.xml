@@ -22,6 +22,7 @@
 		<property name="hibernate.hbm2ddl.auto">create-drop</property>
 
 
+		<mapping class="tk.vopros.backend.model.Issue" />
 		
 		
 	</session-factory>
