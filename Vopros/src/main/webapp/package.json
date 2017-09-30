@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "description": "Where on Earth is Ricky Fort",
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "angular": "^1.4.4",
+    "bootstrap": "^3.3.5",
+    "angular-resource": "^1.4.4",
+    "angular-ui-router": "^0.2.15"
+  }
+}
