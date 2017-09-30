@@ -3,3 +3,4 @@
 .project
 .classpath
 src/main/generated-sources
+src/main/xtend-gen
