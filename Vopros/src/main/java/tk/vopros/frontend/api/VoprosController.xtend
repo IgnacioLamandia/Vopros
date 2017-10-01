@@ -33,7 +33,12 @@ public class VoprosController {
 	    	ok()
         } catch (UnrecognizedPropertyException exception) {
         	badRequest('{ "error": "El body debe ser un Issue" }')        	
-        }
-        
+        } 
+    }
+    
+    @Get("/issues")
+    def getIssues() {
+        response.contentType = "application/json"
+       	ok(this.appModel.getAllIssues().toJson)
     }
 }
