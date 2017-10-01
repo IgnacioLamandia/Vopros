@@ -17,12 +17,6 @@ public class VoprosController {
 	new (VoprosAppModel appModel) {
 		this.appModel = appModel;
 	}
-	
-    @Get("/saludo")
-    def saludar() {
-        response.contentType = "application/json"
-       	ok(this.appModel.helloWorld().toJson)
-    }
     
     @Post("/issue")
     def createIssue(@Body String body) {
