@@ -8,13 +8,18 @@ import tk.vopros.backend.dao.HibernateIssueDAO
 @Accessors
 class VoprosAppModel {
 
-	var IssueDAO issues = new HibernateIssueDAO
+	var IssueDAO issueDAO = new HibernateIssueDAO
 
 	def setIssue(Issue issue) {
-		issues.saveIssue(issue)
+		issueDAO.saveIssue(issue)
 	}
 
 	def helloWorld() {
 		return "Hello World!";
 	}
+	
+	def getAllIssues() {
+		issueDAO.getAllIssue
+	}
+	
 }
