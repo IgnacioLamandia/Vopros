@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "description": "Where on Earth is Ricky Fort",
-  "author": "",
+  "description": "Vopros",
+  "author": "Cavallin,Matias - Gioya, Ignacio - Lamandia, Ignacio - Veliez,Gaston",
   "license": "",
   "dependencies": {
     "angular": "^1.4.4",

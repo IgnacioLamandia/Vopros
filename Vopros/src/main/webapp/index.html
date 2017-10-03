@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html ng-app='voprosApp'>
 <head>
   <meta charset="utf-8">
   <title>Vopros</title>
@@ -9,6 +9,12 @@
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
 
+<!-- ANGULAR  -->
+  <script src="node_modules/angular/angular.min.js"></script>
+  <script src="node_modules/angular-resource/angular-resource.min.js"></script>
+  <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>  
+
+
   
       <!-- STYLESHEET -->
       
@@ -16,7 +22,7 @@
   
 <style>
 body {
-    background-color: #FAAC58;
+    background-color: #E0F8F7;
 }
 .navbar-default-1 {
 	background-color: #848484;
@@ -26,9 +32,9 @@ body {
 
   
 </head>
-<body>
+<body ng-controller="AppCtrl as ctrl">
 
-
+<div >
 <div class="navbar-default-1">
   <div class="navbar-inner">
     <div class="container">
@@ -40,15 +46,22 @@ body {
       </a>
 
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"><strong>Home</strong></span>
+        <button type="button" class="btn btn-default btn-md">
+          <span class="glyphicon glyphicon-home"></span> Home
+        </button>
   
       </a>
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"><strong>Tasks</strong></span>
+	<button type="button" class="btn btn-default btn-md">
+          <span class="glyphicon glyphicon-file"></span> Tasks
+        </button>
+       
   
       </a>
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"><strong>Issues</strong></span>
+      <a ng-click= "ctrl.verIssues" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+       <button ng-click= "ctrl.verIssues" type="button" class="btn btn-default btn-md">
+          <span class="glyphicon glyphicon-warning-sign"></span> Issues
+        </button>
   
       </a>
  
@@ -65,12 +78,16 @@ body {
 </div>
 
 <br/>
-<h1> En proceso xdxdxdxdxdxdxdxdxdxdxdxdxdx </h1>
+<div ui-view></div>
 
 <img src="https://vignette.wikia.nocookie.net/terraria/images/6/63/Jesus-bailarin.gif/revision/latest?cb=20131228164245&path-prefix=es" alt = "yisus">
 
+</div>
 
 <br/>
+<script src="js/controller.js"></script>
+<script src="js/routes.js"></script>
+<script src="js/services.js"></script>
 
 </body>
 </html>
