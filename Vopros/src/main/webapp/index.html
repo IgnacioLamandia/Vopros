@@ -45,7 +45,7 @@ body {
   
       </a>
 
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+      <a ng-click= "ctrl.inicio()" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
         <button type="button" class="btn btn-default btn-md">
           <span class="glyphicon glyphicon-home"></span> Home
         </button>
@@ -58,8 +58,8 @@ body {
        
   
       </a>
-      <a ng-click= "ctrl.verIssues" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-       <button ng-click= "ctrl.verIssues" type="button" class="btn btn-default btn-md">
+      <a ng-click= "ctrl.verIssues()" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+       <button ng-click= "ctrl.verIssues()" type="button" class="btn btn-default btn-md">
           <span class="glyphicon glyphicon-warning-sign"></span> Issues
         </button>
   

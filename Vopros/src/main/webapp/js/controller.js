@@ -17,14 +17,20 @@ self.issues = [];
     	$state.go('issues');
     };
 
-this.getIssues= function(){
+	this.inicio = function(){
+		$state.go('main');	
+	}
+
+	this.getIssues= function(){
+	console.log("tiro query");
     Issues.query(function(data) {
         self.issues = data;
     },errorHandler);
-};
+	};
+	
 this.getIssues();
 
-console.log(self.issues);
+console.log(self.issues[0]);
 
     this.msgs = [];
     this.notificarMensaje = function(mensaje) {
