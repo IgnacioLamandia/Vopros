@@ -7,15 +7,16 @@
 * Lamandia, Ignacio
 * Veliez, Gaston
 
-
-#Que es Vopros?
+# Que es Vopros?
 Vopros es un sistema de gestion de proyectos , tanto profesionales como no profesionales.
 
 Es tan simple como registrarse, crear un proyecto y empezar a crear tareas y problemas.
 
 Es tan complejo como asignar tareas a usuarios con fecha limite y prioridad. O como crear articulos en la wiki del proyecto.
 
-##Funcionalidades
+
+
+## Funcionalidades
 * Creacion de proyectos.
 * Creacion y aginacion de tareas. (Tiempo limite, dificultad)
 * Creacion y aignacion de problemas. (Tiempo limite, prioridad)
@@ -24,4 +25,4 @@ Es tan complejo como asignar tareas a usuarios con fecha limite y prioridad. O c
 * Creacion y utilizacion de canales de chat entre los miembros del proyecto.(*)
 * Whiteboard para que los integrantes puedan dibujar graficos y/o explicar ideas de una manera flexible.(*)
 
-#####*No incluido en alcance inicial
+##### *No incluido en alcance inicial
