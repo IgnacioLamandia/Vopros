@@ -8,14 +8,20 @@ import org.uqbar.xtrest.api.annotation.Body
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException
 import tk.vopros.backend.model.Issue
 import tk.vopros.backend.appmodel.VoprosAppModel
+import org.uqbar.xtrest.api.XTRest
+import tk.vopros.backend.service.HibernateDataService
 
 @Controller
 public class VoprosController {
     extension JSONUtils = new JSONUtils
 	VoprosAppModel appModel;
 	
-	new (VoprosAppModel appModel) {
-		this.appModel = appModel;
+	
+	
+	new () {
+		this.appModel = new VoprosAppModel();
+		var dataService = new HibernateDataService();
+		dataService.createDatosIniciales();
 	}
     
     @Post("/issue")
@@ -35,4 +41,8 @@ public class VoprosController {
         response.contentType = "application/json"
        	ok(this.appModel.getAllIssues().toJson)
     }
+    
+   	def static void main(String[] args) {
+		XTRest.start(9000,VoprosController);
+	}
 }
