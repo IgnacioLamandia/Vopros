@@ -1,4 +1,4 @@
-![alt text](/logo3.png)
+![alt text](/doc/inicial/logo3.png)
  
 
 ## Integrantes:
