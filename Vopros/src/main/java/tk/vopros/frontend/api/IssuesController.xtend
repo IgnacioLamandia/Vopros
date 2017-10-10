@@ -12,7 +12,7 @@ import org.uqbar.xtrest.api.XTRest
 import tk.vopros.backend.service.HibernateDataService
 
 @Controller
-public class VoprosController {
+public class IssuesController {
     extension JSONUtils = new JSONUtils
 	VoprosAppModel appModel;
 	
@@ -43,6 +43,6 @@ public class VoprosController {
     }
     
    	def static void main(String[] args) {
-		XTRest.start(9000,VoprosController);
+		XTRest.start(9000,IssuesController);
 	}
 }
