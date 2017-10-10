@@ -13,7 +13,7 @@ import tk.vopros.backend.service.HibernateDataService
 import tk.vopros.backend.service.UserService
 
 @Controller
-public class VoprosController {
+public class IssuesController {
     extension JSONUtils = new JSONUtils
 	VoprosAppModel appModel;
 	UserService userService = new UserService();
@@ -49,6 +49,6 @@ public class VoprosController {
     }
     
    	def static void main(String[] args) {
-		XTRest.start(9000,VoprosController);
+		XTRest.start(9000,IssuesController);
 	}
 }
