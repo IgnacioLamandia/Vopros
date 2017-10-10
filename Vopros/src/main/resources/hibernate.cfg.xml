@@ -23,6 +23,7 @@
 
 
 		<mapping class="tk.vopros.backend.model.Issue" />
+		<mapping class="tk.vopros.backend.model.User" />
 		
 		
 	</session-factory>

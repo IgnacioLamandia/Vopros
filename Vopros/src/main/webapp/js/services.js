@@ -5,3 +5,10 @@ app.factory('Issues', function($resource) {
         
     });
 });
+
+app.factory('Users', function($resource) {
+    return $resource('/users' , {
+    	'query': { method: 'GET', isArray: true}
+        
+    });
+});

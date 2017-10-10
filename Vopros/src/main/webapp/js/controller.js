@@ -1,20 +1,26 @@
-var app = angular.module('voprosApp',['ngResource','ui.router']).controller('AppCtrl', function($resource,$state,$stateParams,Issues) {
+var app = angular.module('voprosApp',['ngResource','ui.router']);
+app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users) {
 	'use strict';
 
     var self = this;
 
-self.issues = [];
+    self.issues = [];
+    self.users = [];
 
 
 
 
 
-   function errorHandler(error) {
+    function errorHandler(error) {
         self.notificarError(error.data);
     }
+    
     this.verIssues = function(){
-	console.log("funcoTransicion");
     	$state.go('issues');
+    };
+
+    this.verUsers = function(){
+        $state.go('users');
     };
 
 	this.inicio = function(){
@@ -22,15 +28,22 @@ self.issues = [];
 	}
 
 	this.getIssues= function(){
-	console.log("tiro query");
-    Issues.query(function(data) {
-        self.issues = data;
-    },errorHandler);
+        Issues.query(function(data) {
+            self.issues = data;
+        },errorHandler);
 	};
-	
-this.getIssues();
 
-console.log(self.issues[0]);
+    this.getUsers = function(){
+        Users.query(function(data) {
+            self.users = data;
+        },errorHandler);
+    };
+	
+    this.getIssues();
+    this.getUsers();
+
+    console.log("users",self.users)
+    console.log("issues",self.issues)
 
     this.msgs = [];
     this.notificarMensaje = function(mensaje) {

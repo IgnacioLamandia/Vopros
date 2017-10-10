@@ -10,13 +10,13 @@ import tk.vopros.backend.model.Issue
 import tk.vopros.backend.appmodel.VoprosAppModel
 import org.uqbar.xtrest.api.XTRest
 import tk.vopros.backend.service.HibernateDataService
+import tk.vopros.backend.service.UserService
 
 @Controller
 public class VoprosController {
     extension JSONUtils = new JSONUtils
 	VoprosAppModel appModel;
-	
-	
+	UserService userService = new UserService();
 	
 	new () {
 		this.appModel = new VoprosAppModel();
@@ -40,6 +40,12 @@ public class VoprosController {
     def getIssues() {
         response.contentType = "application/json"
        	ok(this.appModel.getAllIssues().toJson)
+    }
+    
+    @Get("/users")
+    def getUsers() {
+        response.contentType = "application/json"
+       	ok(this.userService.getAll().toJson)
     }
     
    	def static void main(String[] args) {
