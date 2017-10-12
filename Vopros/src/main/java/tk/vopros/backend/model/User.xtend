@@ -20,4 +20,10 @@ class User {
 		apellido = unApellido
 		email = unEmail
 	}
+	
+	
+	//Lo pense asi para que solo un usuario pueda crear un proyecto pero ni idea salu2
+	def nuevoProyecto(String nombreProyecto){
+		return new Proyecto(nombreProyecto, this);
+	}
 }

@@ -25,5 +25,11 @@ console.log("funco");
       controller: "AppCtrl as ctrl"
     })
 
+    .state('proyectos', {
+      url: "/proyectos",
+      templateUrl: "partials/proyectos.html",
+      controller: "AppCtrl as ctrl"
+    })
+
 
 });

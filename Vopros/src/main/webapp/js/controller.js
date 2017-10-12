@@ -1,11 +1,12 @@
 var app = angular.module('voprosApp',['ngResource','ui.router']);
-app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users) {
+app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Proyectos) {
 	'use strict';
 
     var self = this;
 
     self.issues = [];
     self.users = [];
+    self.proyectos = [];
 
 
 
@@ -23,6 +24,10 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users) {
         $state.go('users');
     };
 
+    this.verProyectos = function(){
+        $state.go('proyectos');
+    };
+
 	this.inicio = function(){
 		$state.go('main');	
 	}
@@ -38,9 +43,17 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users) {
             self.users = data;
         },errorHandler);
     };
+
+
+    this.getProyectos = function(){
+        Proyectos.query(function(data){
+            self.proyectos = data;
+        },errorHandler);
+    };
 	
     this.getIssues();
     this.getUsers();
+    this.getProyectos();
 
     console.log("users",self.users)
     console.log("issues",self.issues)

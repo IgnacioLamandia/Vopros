@@ -9,7 +9,7 @@ import org.uqbar.xtrest.api.annotation.Get
 import tk.vopros.backend.service.UserService
 
 @Controller
-class UsersController extends VoprosController{
+class UsersController {
 	extension JSONUtils = new JSONUtils;
 	UserService userService = new UserService();
 	

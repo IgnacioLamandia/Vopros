@@ -12,3 +12,10 @@ app.factory('Users', function($resource) {
         
     });
 });
+
+app.factory('Proyectos', function($resource) {
+    return $resource('/proyectos' , {
+    	'query': { method: 'GET', isArray: true}
+        
+    });
+});

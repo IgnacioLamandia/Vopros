@@ -16,7 +16,6 @@ import tk.vopros.backend.service.UserService
 public class VoprosController {
     extension JSONUtils = new JSONUtils
 	VoprosAppModel appModel;
-	UserService userService = new UserService();
 	
 	new () {
 		this.appModel = new VoprosAppModel();
@@ -42,13 +41,9 @@ public class VoprosController {
        	ok(this.appModel.getAllIssues().toJson)
     }
     
-    @Get("/users")
-    def getUsers() {
-        response.contentType = "application/json"
-       	ok(this.userService.getAll().toJson)
-    }
+
     
    	def static void main(String[] args) {
-		XTRest.start(9000,VoprosController);
+		XTRest.start(9000,VoprosController , UsersController,ProyectsController);
 	}
 }
