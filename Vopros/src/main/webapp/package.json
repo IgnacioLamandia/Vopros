@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "description": "Vopros",
+  "author": "Cavallin,Matias - Gioya, Ignacio - Lamandia, Ignacio - Veliez,Gaston",
+  "license": "",
+  "dependencies": {
+    "angular": "^1.4.4",
+    "bootstrap": "^4.0.0-beta",
+    "angular-resource": "^1.4.4",
+    "angular-ui-router": "^0.2.15"
+  }
+}

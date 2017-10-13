@@ -1,0 +1,18 @@
+<div class="col-md-6">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Email</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="user in ctrl.users">
+				<td ng-bind="user.nombre"></td>
+				<td ng-bind="user.apellido"></td>
+				<td ng-bind="user.email"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

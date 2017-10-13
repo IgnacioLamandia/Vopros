@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html ng-app='voprosApp'>
+<head>
+  <meta charset="utf-8">
+  <title>Vopros</title>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    
+  <!-- BOOTSTRAP -->
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+
+<!-- ANGULAR  -->
+  <script src="node_modules/angular/angular.min.js"></script>
+  <script src="node_modules/angular-resource/angular-resource.min.js"></script>
+  <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>  
+
+<link rel="stylesheet" href="css/style.css" type="text/css">
+  
+      <!-- STYLESHEET -->
+      
+    <link rel="icon" type="PNG" href="https://www.shareicon.net/download/2016/07/06/94513_closed_512x512.png" />
+  
+
+
+  
+</head>
+<body ng-controller="AppCtrl as ctrl">
+
+
+
+<div class="col-md-2">
+
+<nav class="navbar navbar-default sidebar" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>      
+    </div>
+    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+
+      <ul class="nav navbar-nav">
+	<li class="active">       <a href="#"><img src="https://image.ibb.co/grOLDw/logo3.png" width=150 heigh=150 alt="logo3" border="0"></a> </li>
+        <li class="active"><a href="#" ng-click="ctrl.inicio()">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+
+        <li class="dropdown">
+          <a  ng-click= "ctrl.verIssues()" class="dropdown-toggle" data-toggle="dropdown">Issues<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-warning-sign"></span></a>
+	<ul class="dropdown-menu">
+            <li><a href="#">Crear</a></li>
+            <li><a href="#">Modificar</a></li>
+
+          </ul>
+          <a  ng-click= "ctrl.verUsers()" class="dropdown-toggle" data-toggle="dropdown">Users<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Crear</a></li>
+            <li><a href="#">Modificar</a></li>
+
+          </ul>
+        </li>          
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tasks<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-file"></span></a>
+          <ul class="dropdown-menu forAnimate" role="menu">
+            <li><a href="#">Crear</a></li>
+            <li><a href="#">Modificar</a></li>
+          </ul>
+        </li>  
+	<li class="dropdown">
+          <a ng-click="ctrl.verProyectos()" class="dropdown-toggle" data-toggle="dropdown">Proyectos<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-file"></span></a>
+          <ul class="dropdown-menu forAnimate" role="menu">
+            <li><a href="#">Crear</a></li>
+            <li><a href="#">Modificar</a></li>
+          </ul>
+        </li>   
+        <li ><a href="#">Sign in<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+</div>
+
+
+
+
+
+<br/>
+<div class="col-md-10">
+<div  ui-view></div>
+
+<img src="https://i0.wp.com/elrincondewally.com/onewebmedia/dancingjesus.gif" width= 100 heigh= 100 alt = "yisus">
+
+</div>
+
+<br/>
+
+<script src="js/controller.js"></script>
+<script src="js/routes.js"></script>
+<script src="js/services.js"></script>
+
+
+</body>
+</html>
