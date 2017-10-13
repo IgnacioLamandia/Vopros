@@ -27,7 +27,7 @@ class GenericDAO<T> {
 		}
 	}
 
-	def getAllIssue() {
+	def getAll() {
 		val session = sessionFactory.openSession
 		try {
 			session.beginTransaction
