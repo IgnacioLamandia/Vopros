@@ -1,10 +1,10 @@
 package tk.vopros.backend.service
 
-import tk.vopros.backend.model.Issue
 import tk.vopros.backend.dao.HibernateIssueDAO
-import tk.vopros.backend.model.User
-import tk.vopros.backend.dao.HibernateUserDAO
 import tk.vopros.backend.dao.HibernateProyectoDAO
+import tk.vopros.backend.dao.HibernateUserDAO
+import tk.vopros.backend.model.Issue
+import tk.vopros.backend.model.User
 
 class HibernateDataService {
 	
@@ -14,13 +14,13 @@ class HibernateDataService {
 	
 	def createDatosIniciales() {
 
-		issueDAO.saveIssue(new Issue("Issue 1"))
-		issueDAO.saveIssue(new Issue("Issue 2"))
-		issueDAO.saveIssue(new Issue("Issue 3"))
-		issueDAO.saveIssue(new Issue("Issue 4"))
-		issueDAO.saveIssue(new Issue("Issue 5"))
-		issueDAO.saveIssue(new Issue("Issue 6"))
-		issueDAO.saveIssue(new Issue("Issue 7"))
+		issueDAO.save(new Issue("Issue 1"))
+		issueDAO.save(new Issue("Issue 2"))
+		issueDAO.save(new Issue("Issue 3"))
+		issueDAO.save(new Issue("Issue 4"))
+		issueDAO.save(new Issue("Issue 5"))
+		issueDAO.save(new Issue("Issue 6"))
+		issueDAO.save(new Issue("Issue 7"))
 		
 		var nachoL = new User("Nacho", "Lamandia", "nacho.lamandia@gmail.com")
 		var gaston = new User("Gaston", "Veliez", "gaston.veliez@gmail.com")
@@ -32,6 +32,7 @@ class HibernateDataService {
 		var proyecto = nachoL.nuevoProyecto("Vopros")
 		proyecto.miembros.add(gaston)
 		proyectDAO.saveProyecto(proyecto)
+	
 	}
 	
 }
