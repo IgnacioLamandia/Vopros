@@ -1,5 +1,7 @@
 ![alt text](/doc/inicial/logo3.png)
  
+<p>Backlog del proyecto y de los sprints:</p>
+https://tree.taiga.io/project/driller99-vopros/backlog
 
 ## Integrantes:
 * Cavallin, Matias
