@@ -23,7 +23,7 @@ class UsersController {
 		ok(this.userService.getAll().toJson)
 	}
 
-	@Post("/user")
+	@Post("/users")
 	def createUser(@Body String body) {
 		response.contentType = "application/json"
 		try {

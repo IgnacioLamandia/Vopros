@@ -1,0 +1,17 @@
+<div>
+	<h2>Nuevo usuario</h2>
+	<br>
+    <h4 class="lead"> <strong> Nombre: </strong>  <span id="nombre" ng-bind="ctrl.user.nombre"></span> </h4>	
+	<input ng-model="ctrl.user.nombre">
+	<br>
+	<h4 class="lead"> <strong> Apellido: </strong>  <span id="nombre" ng-bind="ctrl.user.apellido"></span> </h4>	
+	<input ng-model="ctrl.user.apellido">
+	<br>
+    <h4 class="lead"> <strong> Email: </strong>  <span id="nombre" ng-bind="ctrl.user.email"></span> </h4>	
+	<input ng-model="ctrl.user.email">
+	<br>
+	<br>
+	<a ng-click="ctrl.guardarUser()" class="btn btn-primary">Guardar cambios</a>
+	<br>
+    <a ng-click="ctrl.cancel()" class="btn btn-primary">Cancelar</a>
+</div>

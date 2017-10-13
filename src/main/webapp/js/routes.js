@@ -31,5 +31,11 @@ console.log("funco");
       controller: "AppCtrl as ctrl"
     })
 
+    .state('nuevoUser',{
+        url:"/users/nuevo",
+        templateUrl:"partials/nuevoUser.html",
+        controller: "NuevoUserCtrl as ctrl"
+    })
+
 
 });

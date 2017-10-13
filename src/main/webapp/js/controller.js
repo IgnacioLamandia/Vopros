@@ -24,6 +24,10 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
         $state.go('users');
     };
 
+    this.nuevoUser = function(){
+        $state.go('nuevoUser');
+    }
+
     this.verProyectos = function(){
         $state.go('proyectos');
     };
