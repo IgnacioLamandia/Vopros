@@ -7,11 +7,23 @@ class VoprosAppModel {
 
 	var HibernateIssueDAO issueDAO = new HibernateIssueDAO
 
-	def setIssue(Issue issue) {
+	def save(Issue issue) {
 		issueDAO.save(issue)
 	}
+	
+	def update(Issue issue) {
+		issueDAO.update(issue)
+	}
+	
+	def delete(Issue issue) {
+		issueDAO.delete(issue)
+	}
 
-	def getAllIssues() {
+	def getById(Long id) {
+		issueDAO.getById(id)
+	}
+
+	def getAll() {
 		issueDAO.getAll
 	}
 

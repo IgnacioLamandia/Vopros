@@ -28,7 +28,7 @@ public class VoprosController {
         response.contentType = "application/json"
         try {
 	        var Issue issue = body.fromJson(typeof(Issue))	
-	        this.appModel.setIssue(issue)
+	        this.appModel.save(issue)
 	    	ok()
         } catch (UnrecognizedPropertyException exception) {
         	badRequest('{ "error": "El body debe ser un Issue" }')        	
@@ -38,7 +38,7 @@ public class VoprosController {
     @Get("/issues")
     def getIssues() {
         response.contentType = "application/json"
-       	ok(this.appModel.getAllIssues().toJson)
+       	ok(this.appModel.getAll().toJson)
     }
     
 
