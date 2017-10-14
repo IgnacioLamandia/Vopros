@@ -27,6 +27,51 @@ class GenericDAO<T> {
 		}
 	}
 
+	def update(T object) {
+		val session = sessionFactory.openSession
+		try {
+			session.beginTransaction
+			session.update(object)
+			session.getTransaction.commit
+		} catch (HibernateException e) {
+			session.getTransaction.rollback
+			throw new RuntimeException(e)
+		} finally {
+			session.close
+		}
+	}
+	
+	def delete(T object) {
+		val session = sessionFactory.openSession
+		try {
+			session.beginTransaction
+			session.delete(object)
+			session.getTransaction.commit
+		} catch (HibernateException e) {
+			session.getTransaction.rollback
+			throw new RuntimeException(e)
+		} finally {
+			session.close
+		}
+	}
+
+	def getById(Long id) {
+		val session = sessionFactory.openSession
+		try {
+			session.beginTransaction
+			val hql = "from " + entityType.getSimpleName() + 
+						" x " + "where x.id = :unId";
+			val query = session.createQuery(hql, entityType);
+			query.setParameter("unId", id);
+			return query.getSingleResult();
+		} catch (HibernateException e) {
+			session.getTransaction.rollback
+			throw new RuntimeException(e)
+		} finally {
+			session.close
+		}
+	}
+
 	def getAll() {
 		val session = sessionFactory.openSession
 		try {
