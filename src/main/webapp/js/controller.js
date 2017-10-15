@@ -7,7 +7,7 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
     self.issues = [];
     self.users = [];
     self.proyectos = [];
-
+    self.overlay = $(".overlay");
 
 
 
@@ -15,25 +15,39 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
     function errorHandler(error) {
         self.notificarError(error.data);
     }
+
+        this.closeSideBar = function(){
+        this.overlay.hide();
+        
+    }
     
     this.verIssues = function(){
     	$state.go('issues');
+        this.closeSideBar();
     };
 
     this.verUsers = function(){
         $state.go('users');
+        this.closeSideBar();
+
     };
 
     this.nuevoUser = function(){
         $state.go('nuevoUser');
+        this.closeSideBar();
+
     }
 
     this.verProyectos = function(){
         $state.go('proyectos');
+        this.closeSideBar();
+
     };
 
 	this.inicio = function(){
 		$state.go('main');	
+        this.closeSideBar();
+
 	}
 
 	this.getIssues= function(){
