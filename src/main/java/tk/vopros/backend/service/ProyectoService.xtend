@@ -10,10 +10,10 @@ class ProyectoService {
 	}
 	
 	def getAll(){
-		return proyectoDAO.allProyectos
+		return proyectoDAO.getAll
 	}
 	
 	def setProyecto(Proyecto proyectoNuevo){
-		proyectoDAO.saveProyecto(proyectoNuevo)
+		proyectoDAO.save(proyectoNuevo)
 	}
 }

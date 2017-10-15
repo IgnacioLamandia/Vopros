@@ -11,10 +11,10 @@ class UserService {
 	}
 	
 	def getAll(){
-		return userDAO.allUser
+		return userDAO.getAll
 	}
 	
 	def setUser(User user) {
-		userDAO.saveUser(user)
+		userDAO.save(user)
 	}
 }

@@ -24,14 +24,14 @@ class HibernateDataService {
 		
 		var nachoL = new User("Nacho", "Lamandia", "nacho.lamandia@gmail.com")
 		var gaston = new User("Gaston", "Veliez", "gaston.veliez@gmail.com")
-		userDAO.saveUser(nachoL)
-		userDAO.saveUser(gaston)		
-		userDAO.saveUser(new User("Matias", "Cavallin", "matias.cavallin@gmail.com"))
-		userDAO.saveUser(new User("Ignacio", "Gioya", "ignacio.gioya@gmail.com"))
+		userDAO.save(nachoL)
+		userDAO.save(gaston)		
+		userDAO.save(new User("Matias", "Cavallin", "matias.cavallin@gmail.com"))
+		userDAO.save(new User("Ignacio", "Gioya", "ignacio.gioya@gmail.com"))
 		
 		var proyecto = nachoL.nuevoProyecto("Vopros")
 		proyecto.miembros.add(gaston)
-		proyectDAO.saveProyecto(proyecto)
+		proyectDAO.save(proyecto)
 	
 	}
 	
