@@ -37,5 +37,12 @@ console.log("funco");
         controller: "NuevoUserCtrl as ctrl"
     })
 
+    .state('nuevoTask',{
+        url:"/task/nuevo",
+        templateUrl:"partials/nuevaTarea.html",
+        controller: "NuevoTaskCtrl as ctrl"
+    })
+
+
 
 });
