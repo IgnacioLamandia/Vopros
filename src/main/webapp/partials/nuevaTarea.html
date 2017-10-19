@@ -1,0 +1,12 @@
+<div>
+	<h2>Nueva Tarea</h2>
+	<br>
+    <h4 class="lead"> <strong> Nombre: </strong><input ng-model="ctrl.task.nombre"> </h4>	
+	<br>
+	<h4 class="lead"> <strong> Descripcion: </strong> <textarea ng-model="ctrl.task.descripcion"></textarea> </h4>	
+	<br>
+	<br>
+	<a ng-click="ctrl.guardarTask()" class="btn btn-primary">Guardar cambios</a>
+	<br>
+    <a ng-click="ctrl.cancel()" class="btn btn-primary">Cancelar</a>
+</div>

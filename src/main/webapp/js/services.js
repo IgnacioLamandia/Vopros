@@ -21,3 +21,18 @@ app.factory('Proyectos', function($resource) {
         
     });
 });
+
+app.factory('Tasks', function($resource) {
+    return $resource('/tasks' , {
+        'query': { method: 'GET', isArray: true}
+        
+    });
+});
+
+
+app.factory('Task', function($resource) {
+    return $resource('/task' , {
+        'save': {method: 'POST'}
+        
+    });
+});

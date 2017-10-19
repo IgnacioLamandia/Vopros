@@ -16,7 +16,7 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
         self.notificarError(error.data);
     }
 
-        this.closeSideBar = function(){
+    this.closeSideBar = function(){
         this.overlay.hide();
         
     }
@@ -36,6 +36,11 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
         $state.go('nuevoUser');
         this.closeSideBar();
 
+    }
+
+    this.nuevoTask = function(){
+        $state.go('nuevoTask');
+        this.closeSideBar();
     }
 
     this.verProyectos = function(){
