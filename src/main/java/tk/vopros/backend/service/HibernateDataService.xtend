@@ -3,8 +3,11 @@ package tk.vopros.backend.service
 import tk.vopros.backend.dao.HibernateIssueDAO
 import tk.vopros.backend.dao.HibernateProyectoDAO
 import tk.vopros.backend.dao.HibernateUserDAO
-import tk.vopros.backend.model.Issue
+import tk.vopros.backend.model.issue.Issue
 import tk.vopros.backend.model.User
+import tk.vopros.backend.model.issue.TipoIssue
+import tk.vopros.backend.model.issue.TipoGravedad
+import tk.vopros.backend.model.issue.TipoPrioridad
 
 class HibernateDataService {
 	
@@ -14,13 +17,13 @@ class HibernateDataService {
 	
 	def createDatosIniciales() {
 
-		issueDAO.save(new Issue("Issue 1"))
-		issueDAO.save(new Issue("Issue 2"))
-		issueDAO.save(new Issue("Issue 3"))
-		issueDAO.save(new Issue("Issue 4"))
-		issueDAO.save(new Issue("Issue 5"))
-		issueDAO.save(new Issue("Issue 6"))
-		issueDAO.save(new Issue("Issue 7"))
+		issueDAO.save(new Issue("Issue 1", TipoIssue.BUG, TipoGravedad.CRITICO, TipoPrioridad.ALTA))
+		issueDAO.save(new Issue("Issue 2", TipoIssue.BUG, TipoGravedad.GRAVE, TipoPrioridad.ALTA))
+		issueDAO.save(new Issue("Issue 3", TipoIssue.MEJORA, TipoGravedad.GRAVE, TipoPrioridad.ALTA))
+		issueDAO.save(new Issue("Issue 4", TipoIssue.MEJORA, TipoGravedad.MENOR, TipoPrioridad.MEDIA))
+		issueDAO.save(new Issue("Issue 5", TipoIssue.BUG, TipoGravedad.REGULAR, TipoPrioridad.MEDIA))
+		issueDAO.save(new Issue("Issue 6", TipoIssue.BUG, TipoGravedad.MENOR, TipoPrioridad.BAJA))
+		issueDAO.save(new Issue("Issue 7", TipoIssue.PREGUNTA, TipoGravedad.CRITICO, TipoPrioridad.ALTA))
 		
 		var nachoL = new User("Nacho", "Lamandia", "nacho.lamandia@gmail.com")
 		var gaston = new User("Gaston", "Veliez", "gaston.veliez@gmail.com")

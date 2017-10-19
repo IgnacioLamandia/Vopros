@@ -1,7 +1,7 @@
 package tk.vopros.backend.service
 
 import tk.vopros.backend.dao.HibernateIssueDAO
-import tk.vopros.backend.model.Issue
+import tk.vopros.backend.model.issue.Issue
 
 class IssueService {
 
