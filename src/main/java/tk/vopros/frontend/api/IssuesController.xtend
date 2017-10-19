@@ -6,7 +6,7 @@ import org.uqbar.xtrest.api.annotation.Controller
 import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.api.annotation.Post
 import org.uqbar.xtrest.json.JSONUtils
-import tk.vopros.backend.model.Issue
+import tk.vopros.backend.model.issue.Issue
 import tk.vopros.backend.service.IssueService
 
 @Controller
