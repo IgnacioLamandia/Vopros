@@ -11,6 +11,8 @@ import javax.persistence.OneToMany
 import java.util.ArrayList
 import javax.persistence.FetchType
 import tk.vopros.backend.model.issue.Issue
+import java.util.Set
+import java.util.HashSet
 
 @Entity
 @Accessors
@@ -25,7 +27,7 @@ class Proyecto {
 	List<User> miembros = new ArrayList<User>();
 	
 	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-	List<Issue> issues = new ArrayList<Issue>();
+	Set<Issue> issues = new HashSet<Issue>();
 	
 	new (){
 		
