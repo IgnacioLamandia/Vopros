@@ -33,9 +33,9 @@ El sistema permitirá soluciones para la creación y organización de proyectos 
 ##### Alcance
 <p>
 El sistema a desarrollar abarcará las siguientes áreas:
-* Desarrollo de software
-* Proyectos estudiantiles
-* Proyectos independientes
+* Creacion de proyectos
+* Manejo y asignación de problemas
+* Manejo y asignación de Tareas
 
 El sistema a desarrollar no incluirá:
 * Wiki
