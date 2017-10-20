@@ -63,4 +63,4 @@ app.factory('Auth', function($http) {
             });
         }
     }
-});
+}); 
