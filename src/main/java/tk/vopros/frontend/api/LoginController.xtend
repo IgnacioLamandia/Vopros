@@ -39,7 +39,7 @@ class LoginController {
 								   .compact
 				ok('{ "JWT": "'+ jwtTOKEN +'" }')					   
 			} else {
-				notFound('{error: usuario o contraseña invalida}')//Deberia tirar 401(Unauthorized) pero se ve que xtrest no lo tiene
+				notFound('{"error": "usuario o contraseña invalida"}')
 			}
 			
 		} catch(UnrecognizedPropertyException exception){
