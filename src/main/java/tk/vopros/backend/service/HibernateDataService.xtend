@@ -25,12 +25,12 @@ class HibernateDataService {
 		issueDAO.save(new Issue("Issue 6", TipoIssue.BUG, TipoGravedad.MENOR, TipoPrioridad.BAJA))
 		issueDAO.save(new Issue("Issue 7", TipoIssue.PREGUNTA, TipoGravedad.CRITICO, TipoPrioridad.ALTA))
 		
-		var nachoL = new User("Nacho", "Lamandia", "nacho.lamandia@gmail.com")
-		var gaston = new User("Gaston", "Veliez", "gaston.veliez@gmail.com")
+		var nachoL = new User("Nacho", "Lamandia", "nacho.lamandia@gmail.com","123")
+		var gaston = new User("Gaston", "Veliez", "gaston.veliez@gmail.com","123")
 		userDAO.save(nachoL)
 		userDAO.save(gaston)		
-		userDAO.save(new User("Matias", "Cavallin", "matias.cavallin@gmail.com"))
-		userDAO.save(new User("Ignacio", "Gioya", "ignacio.gioya@gmail.com"))
+		userDAO.save(new User("Matias", "Cavallin", "matias.cavallin@gmail.com","123"))
+		userDAO.save(new User("Ignacio", "Gioya", "ignacio.gioya@gmail.com","123"))
 		
 		var proyecto = nachoL.nuevoProyecto("Vopros")
 		proyecto.miembros.add(gaston)

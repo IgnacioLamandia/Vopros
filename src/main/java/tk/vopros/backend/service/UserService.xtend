@@ -17,4 +17,8 @@ class UserService {
 	def setUser(User user) {
 		userDAO.save(user)
 	}
+	
+	def validate(User user){
+		userDAO.validate(user)
+	}
 }

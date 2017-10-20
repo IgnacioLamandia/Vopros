@@ -13,6 +13,6 @@ public class VoprosController {
 	}
 
 	def static void main(String[] args) {
-		XTRest.start(9000, VoprosController, UsersController, ProyectsController, IssuesController,TasksController);
+		XTRest.start(9000, VoprosController, UsersController, ProyectsController, IssuesController, TasksController, LoginController);
 	}
 }
