@@ -1,0 +1,16 @@
+<div class="col-md-6">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Descripcion</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="task in tasks">
+				<td ng-bind="task.nombre"></td>
+				<td ng-bind="task.descripcion"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
