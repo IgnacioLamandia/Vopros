@@ -18,8 +18,8 @@ var HibernateTaskDAO taskDAO
 		taskDAO.update(task)
 	}
 
-	def delete(Task task) {
-		taskDAO.delete(task)
+	def delete(Long id) {
+		taskDAO.delete(getById(id))
 	}
 
 	def getById(Long id) {
