@@ -19,8 +19,8 @@ class IssueService {
 		issueDAO.update(issue)
 	}
 
-	def delete(Issue issue) {
-		issueDAO.delete(issue)
+	def delete(Long id) {
+		issueDAO.delete(getById(id))
 	}
 
 	def getById(Long id) {
