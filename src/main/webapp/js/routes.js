@@ -13,6 +13,12 @@ console.log("funco");
       controller: "AppCtrl as ctrl"
     })
 
+    .state('login', {
+      url: "/login",
+      templateUrl: "partials/login.html",
+      controller: "LoginCtrl as ctrl"
+    })
+
     .state('issues', {
       url: "/issues",
       templateUrl: "partials/issues.html",

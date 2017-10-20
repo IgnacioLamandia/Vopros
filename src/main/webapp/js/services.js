@@ -48,3 +48,19 @@ app.factory('Task', function($resource) {
         
     });
 });
+
+app.factory('Auth', function($http) {
+    return {
+        login: function(credentials){
+            return $http({
+              method: 'POST',
+              url: '/login',
+              data: credentials
+            }).then(function(response) {
+                //Logueado
+            }, function (response) {
+                //Logueado
+            });
+        }
+    }
+});
