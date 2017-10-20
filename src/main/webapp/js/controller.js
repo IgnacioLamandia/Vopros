@@ -31,6 +31,11 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
         this.closeSideBar();
 
     };
+    
+    this.verTasks = function(){
+    	$state.go('tasks');
+        this.closeSideBar();
+    };
 
     this.nuevoUser = function(){
         $state.go('nuevoUser');
@@ -40,6 +45,11 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
 
     this.nuevoTask = function(){
         $state.go('nuevoTask');
+        this.closeSideBar();
+    }
+    
+    this.nuevoIssue = function(){
+        $state.go('nuevoIssue');
         this.closeSideBar();
     }
 
@@ -60,6 +70,12 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
             self.issues = data;
         },errorHandler);
 	};
+	
+	this.getTasks= function(){
+        Tasks.query(function(data) {
+            self.tasks = data;
+        },errorHandler);
+	};
 
     this.getUsers = function(){
         Users.query(function(data) {
@@ -75,6 +91,7 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
     };
 	
     this.getIssues();
+    this.getTasks();
     this.getUsers();
     this.getProyectos();
 
