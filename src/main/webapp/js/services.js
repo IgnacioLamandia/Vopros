@@ -59,7 +59,7 @@ app.factory('Auth', function($http) {
             }).then(function(response) {
                 //Logueado
             }, function (response) {
-                //Logueado
+                //No logueado
             });
         }
     }
