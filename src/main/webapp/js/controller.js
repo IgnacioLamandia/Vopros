@@ -71,11 +71,7 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
         },errorHandler);
 	};
 	
-	this.getTasks= function(){
-        Tasks.query(function(data) {
-            self.tasks = data;
-        },errorHandler);
-	};
+
 
     this.getUsers = function(){
         Users.query(function(data) {
@@ -91,7 +87,6 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
     };
 	
     this.getIssues();
-    this.getTasks();
     this.getUsers();
     this.getProyectos();
 

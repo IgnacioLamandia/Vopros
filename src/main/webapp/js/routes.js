@@ -28,7 +28,7 @@ console.log("funco");
     .state('tasks', {
       url: "/tasks",
       templateUrl: "partials/tasks.html",
-      controller: "AppCtrl as ctrl"
+      controller: "TasksCtrl as ctrl"
     })
 
     .state('proyectos', {

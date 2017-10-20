@@ -1,3 +1,21 @@
-<div class="list-group">
-   <a href=""  ng-repeat="issue in ctrl.issues"  class="list-group-item">{{issue.titulo}}</a>
+<div class="col-md-6">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Titulo</th>
+				<th>Tipo</th>
+				<th>Gravedad</th>
+				<th>Prioridad</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="issue in ctrl.issues">
+				<td ng-bind="issue.titulo"></td>
+				<td ng-bind="issue.tipo"></td>
+				<td ng-bind="issue.gravedad"></td>
+				<td ng-bind="issue.prioridad"></td>
+
+			</tr>
+		</tbody>
+	</table>
 </div>

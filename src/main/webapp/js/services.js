@@ -6,6 +6,15 @@ app.factory('Issues', function($resource) {
     });
 });
 
+app.factory('Issue', function($resource){
+    return $resource('/issue:id', {'id': '@id'}, {
+        'query': {method: 'GET'},
+        'save': {method: 'POST'},
+        'update': {method: 'PUT'},
+        'delete': {method: 'DELETE'}
+    });
+});
+
 app.factory('Users', function($resource) {
     return $resource('/users' , {
     	'query': { method: 'GET', isArray: true},
@@ -31,8 +40,11 @@ app.factory('Tasks', function($resource) {
 
 
 app.factory('Task', function($resource) {
-    return $resource('/task' , {
-        'save': {method: 'POST'}
+    return $resource('/task:id', {'id': '@id'}, {
+        'save': {method: 'POST'},
+        'query': {method: 'GET'},
+        'update': {method: 'PUT'},
+        'delete': {method: 'DELETE'}
         
     });
 });

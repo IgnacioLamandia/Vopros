@@ -3,9 +3,20 @@ app.controller('NuevoIssueCtrl', function($resource,$state,$stateParams,Issue) {
 
     var self = this;
 
-    self.issue= {"titulo":""};
+    self.issue= {"titulo":"","tipo":"","gravedad":"","prioridad":""};
 
+    self.tipo=[ 'BUG',
+    'PREGUNTA',
+    'MEJORA'];
 
+    self.gravedad=[ 'MENOR',
+    'REGULAR',
+    'GRAVE',
+    'CRITICO'];
+
+    self.prioridad = ['BAJA',
+    'MEDIA',
+    'ALTA'];
 
 
 
@@ -15,10 +26,10 @@ app.controller('NuevoIssueCtrl', function($resource,$state,$stateParams,Issue) {
     
 
     this.guardarIssue = function(){
-        Issue.save(this.task, function() {
+        Issue.save(this.issue, function() {
             self.notificarMensaje('Issue creado!');
         }, errorHandler);
-        this.task= {"titulo":""};
+        this.issue= {"titulo":"","tipo":"","gravedad":"","prioridad":""};
     };
 
     this.cancel= function(){
