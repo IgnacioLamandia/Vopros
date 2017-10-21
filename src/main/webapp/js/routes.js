@@ -5,42 +5,66 @@ console.log("funco");
   $urlRouterProvider.otherwise("/");
 
   $stateProvider
-  
-  
-  .state('main', {
+
+    .state('login', {
       url: "/",
+      templateUrl: "partials/paginaLogeo.html",
+      controller: "LoginCtrl as ctrl"
+    })
+  
+    .state('main', {
+      url: "/main",
+      templateUrl: "partials/main.html",
+      controller: "AppCtrl as ctrl"
+    })
+  
+  .state('main.home', {
+      url: "/home",
       templateUrl: "partials/paginaPrincipal.html",
       controller: "AppCtrl as ctrl"
     })
 
-    .state('issues', {
+
+    .state('main.issues', {
       url: "/issues",
       templateUrl: "partials/issues.html",
   	  controller: "AppCtrl as ctrl"
     })
 
-    .state('users', {
+    .state('main.users', {
       url: "/users",
       templateUrl: "partials/users.html",
       controller: "AppCtrl as ctrl"
     })
+    
+    .state('main.tasks', {
+      url: "/tasks",
+      templateUrl: "partials/tasks.html",
+      controller: "TasksCtrl as ctrl"
+    })
 
-    .state('proyectos', {
+    .state('main.proyectos', {
       url: "/proyectos",
       templateUrl: "partials/proyectos.html",
       controller: "AppCtrl as ctrl"
     })
 
-    .state('nuevoUser',{
+    .state('main.nuevoUser',{
         url:"/users/nuevo",
         templateUrl:"partials/nuevoUser.html",
         controller: "NuevoUserCtrl as ctrl"
     })
 
-    .state('nuevoTask',{
+    .state('main.nuevoTask',{
         url:"/task/nuevo",
         templateUrl:"partials/nuevaTarea.html",
         controller: "NuevoTaskCtrl as ctrl"
+    })
+    
+    .state('main.nuevoIssue',{
+        url:"/issue/nuevo",
+        templateUrl:"partials/nuevoIssue.html",
+        controller: "NuevoIssueCtrl as ctrl"
     })
 
 

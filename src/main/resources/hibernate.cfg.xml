@@ -21,10 +21,14 @@
 		
 		<property name="hibernate.hbm2ddl.auto">create-drop</property>
 
-
-		<mapping class="tk.vopros.backend.model.Issue" />
-		<mapping class="tk.vopros.backend.model.Task" />
 		<mapping class="tk.vopros.backend.model.User" />
+		
+		<mapping class="tk.vopros.backend.model.issue.Issue" />
+		<mapping class="tk.vopros.backend.model.issue.TipoIssue" />
+		<mapping class="tk.vopros.backend.model.issue.TipoGravedad" />
+		<mapping class="tk.vopros.backend.model.issue.TipoPrioridad" />
+
+		<mapping class="tk.vopros.backend.model.Task" />
 		<mapping class="tk.vopros.backend.model.Proyecto" />
 		
 		

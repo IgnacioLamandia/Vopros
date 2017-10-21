@@ -7,7 +7,7 @@ import org.hibernate.cfg.Configuration
 class GenericDAO<T> {
 
 	private Class<T> entityType;
-	private static final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory()
+	protected static final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory()
 
 	new(Class<T> entityType) {
 		this.entityType = entityType;

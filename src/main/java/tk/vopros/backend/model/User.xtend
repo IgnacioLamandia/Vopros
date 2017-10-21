@@ -12,13 +12,15 @@ class User {
 	String nombre
 	String apellido
 	String email
+	String contrasenha
 	
 	new() {}
 	
-	new(String unNombre, String unApellido, String unEmail){
+	new(String unNombre, String unApellido, String unEmail, String unaContrasenha){
 		nombre = unNombre
 		apellido = unApellido
 		email = unEmail
+		contrasenha = unaContrasenha
 	}
 	
 	

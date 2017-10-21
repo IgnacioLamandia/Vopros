@@ -8,4 +8,6 @@ interface TaskDAO {
 	def void saveTask(Task task);
 	
 	def List<Task> getAllTask();
+	
+	def void delete(Long id);
 }

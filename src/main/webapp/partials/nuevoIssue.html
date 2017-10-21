@@ -1,0 +1,15 @@
+<div>
+	<h2>Nuevo Issue</h2>
+	<br>
+    <h4 class="lead"> <strong> Titulo: </strong><input ng-model="ctrl.issue.titulo"> </h4>	
+	<br>
+	<h4 class="lead"> <strong> Tipo: </strong><select ng-model="ctrl.issue.tipo" ng-options="t for t in ctrl.tipo"></select></h4>
+	<br>
+	<h4 class="lead"> <strong> Gravedad: </strong><select ng-model="ctrl.issue.gravedad" ng-options="t for t in ctrl.gravedad"></select></h4>
+<br>
+	<h4 class="lead"> <strong> Prioridad: </strong><select ng-model="ctrl.issue.prioridad" ng-options="t for t in ctrl.prioridad"></select></h4>
+<br>
+	<a ng-click="ctrl.guardarIssue()" class="btn btn-primary">Guardar cambios</a>
+	<br>
+    <a ng-click="ctrl.cancel()" class="btn btn-primary">Cancelar</a>
+</div>

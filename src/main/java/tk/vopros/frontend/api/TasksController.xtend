@@ -8,6 +8,7 @@ import org.uqbar.xtrest.api.annotation.Post
 import org.uqbar.xtrest.api.annotation.Get
 import tk.vopros.backend.model.Task
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException
+import org.uqbar.xtrest.api.annotation.Delete
 
 @Controller
 class TasksController {
@@ -33,5 +34,33 @@ class TasksController {
 		response.contentType = "application/json"
 		ok(this.taskService.getAll().toJson)
 	}
+	
+		@Get("/issue/:id")
+    def getIssueById() {
+        response.contentType = "application/json"
+        try {        	
+            var task = this.taskService.getById(Long.valueOf(id))
+            if (task == null) {
+            	notFound('{ "error": "No existe task con ese id" }')
+            } else {
+            	ok(task.toJson)
+            }
+        }
+        catch (NumberFormatException ex) {
+        	badRequest('{ "error": "El id debe ser un numero" }')
+        }
+    }
+
+    @Delete('/issue/:id')
+    def deleteIssueById() {
+        response.contentType = "application/json"
+        try {
+            this.taskService.delete(Long.valueOf(id))
+            ok()
+        }
+        catch (NumberFormatException ex) {
+        	badRequest('{ "error": "El id debe ser un numero" }')
+        }
+    }
 	
 }
