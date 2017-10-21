@@ -1,4 +1,4 @@
-app.controller('LoginCtrl', function($scope,$location, Auth) {
+app.controller('LoginCtrl', function($scope,$location,$state, Auth) {
 	'use strict';
 
     $scope.credentials = {nombre:'', contrasenha:''};
@@ -6,7 +6,7 @@ app.controller('LoginCtrl', function($scope,$location, Auth) {
     $scope.login = function(){
         var token = Auth.login($scope.credentials);
         if(token){
-            //Ingresar a la aplicacion
+            $state.go('main.home');
         }
     }
 

@@ -22,45 +22,45 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
     }
     
     this.verIssues = function(){
-    	$state.go('issues');
+    	$state.go('main.issues');
         this.closeSideBar();
     };
 
     this.verUsers = function(){
-        $state.go('users');
+        $state.go('main.users');
         this.closeSideBar();
 
     };
     
     this.verTasks = function(){
-    	$state.go('tasks');
+    	$state.go('main.tasks');
         this.closeSideBar();
     };
 
     this.nuevoUser = function(){
-        $state.go('nuevoUser');
+        $state.go('main.nuevoUser');
         this.closeSideBar();
 
     }
 
     this.nuevoTask = function(){
-        $state.go('nuevoTask');
+        $state.go('main.nuevoTask');
         this.closeSideBar();
     }
     
     this.nuevoIssue = function(){
-        $state.go('nuevoIssue');
+        $state.go('main.nuevoIssue');
         this.closeSideBar();
     }
 
     this.verProyectos = function(){
-        $state.go('proyectos');
+        $state.go('main.proyectos');
         this.closeSideBar();
 
     };
 
 	this.inicio = function(){
-		$state.go('main');	
+		$state.go('main.home');	
         this.closeSideBar();
 
 	}
