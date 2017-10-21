@@ -10,23 +10,26 @@
               <div class="form-group">
                 <label for="usuario" class="col-md-3 control-label">Usuario</label>
                 <div class="col-md-9">
-                  <input type="text" class="form-control" ng-model="credentials.nombre" placeholder="Nombre">
+                  <input type="text" class="form-control" ng-model="ctrl.credentials.nombre" placeholder="Nombre">
                 </div>
               </div>
               <div class="form-group">
                 <label for="contraseña" class="col-md-3 control-label">Contraseña</label>
                 <div class="col-md-9">
-                  <input type="password" class="form-control" ng-model="credentials.contrasenha"  placeholder="Contraseña">
+                  <input type="password" class="form-control" ng-model="ctrl.credentials.contrasenha"  placeholder="Contraseña">
                 </div>
               </div>
               <div style="margin-top:10px" class="form-group">
                <!-- Button -->
                <div class="col-md-offset-3 col-md-9">
-                 <button id="btn-signup" type="button" ng-click="login()" class="btn btn-primary"><i class="icon-hand-right"></i>Iniciar sesion</button>
+                 <button id="btn-signup" type="button" ng-click="ctrl.login()" class="btn btn-primary"><i class="icon-hand-right"></i>Iniciar sesion</button>
+                 <br>
+                 <div class="error"></div>
                </div>
               </div>
             </form> 
           </div> 
         </div>  
       </div>
+
     </div>

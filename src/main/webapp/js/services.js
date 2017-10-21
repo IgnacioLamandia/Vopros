@@ -49,6 +49,15 @@ app.factory('Task', function($resource) {
     });
 });
 
+
+app.factory('Auth', function($resource) {
+    return $resource('/login',{
+        'save': {method: 'POST'}
+    });
+}); 
+
+
+/*
 app.factory('Auth', function($http) {
     return {
         login: function(credentials){
@@ -64,3 +73,4 @@ app.factory('Auth', function($http) {
         }
     }
 }); 
+*/

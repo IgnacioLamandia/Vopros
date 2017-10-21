@@ -1,4 +1,4 @@
-app.controller('NuevoIssueCtrl', function($resource,$state,$stateParams,Issue) {
+app.controller('NuevoIssueCtrl', function($resource,$state,$stateParams,Issue,$timeout) {
 	'use strict';
 
     var self = this;
@@ -27,6 +27,7 @@ app.controller('NuevoIssueCtrl', function($resource,$state,$stateParams,Issue) {
 
     this.guardarIssue = function(){
         Issue.save(this.issue, function() {
+            console.log('issuecreado');
             self.notificarMensaje('Issue creado!');
         }, errorHandler);
         this.issue= {"titulo":"","tipo":"","gravedad":"","prioridad":""};

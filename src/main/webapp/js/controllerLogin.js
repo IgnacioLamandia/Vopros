@@ -1,13 +1,43 @@
-app.controller('LoginCtrl', function($scope,$location,$state, Auth) {
+app.controller('LoginCtrl', function($resource,$timeout,$location,$state,Auth) {
 	'use strict';
+	var self = this;
 
-    $scope.credentials = {nombre:'', contrasenha:''};
+    self.credentials = {nombre:'', contrasenha:''};
 
-    $scope.login = function(){
-        var token = Auth.login($scope.credentials);
-        if(token){
-            $state.go('main.home');
-        }
+    this.login = function(){
+    	$('.error').html("");
+        Auth.save(this.credentials,function(data){
+        	console.log(data);
+        	self.ingresar();
+        },errorHandler);
+
+    }
+
+    this.ingresar = function(){
+    	$state.go('main.home');
+    }
+
+        function errorHandler(error) {
+        $('.error').append('<h4>Usuario o contraseña invalido/a</h4>');
+        self.notificarError(error.data);
+    }
+
+        this.msgs = [];
+    this.notificarMensaje = function(mensaje) {
+        this.msgs.push(mensaje);
+        this.notificar(this.msgs);
+    };
+
+    this.errors = [];
+    this.notificarError = function(mensaje) {
+        this.errors.push(mensaje);
+        this.notificar(this.errors);
+    };
+
+    this.notificar = function(mensajes) {
+        $timeout(function() {
+            while (mensajes.length > 0) mensajes.pop();
+        }, 3000);
     }
 
     
