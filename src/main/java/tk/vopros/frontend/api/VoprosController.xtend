@@ -1,10 +1,9 @@
 package tk.vopros.frontend.api
+/*
+import org.springframework.context.annotation.Import
 
-import org.uqbar.xtrest.api.XTRest
-import org.uqbar.xtrest.api.annotation.Controller
-import tk.vopros.backend.service.HibernateDataService
-
-@Controller
+@Import(JpaConfiguration.class)
+@SpringBootApplication(scanBasePackages={""})
 public class VoprosController {
 
 	new() {
@@ -19,5 +18,6 @@ public class VoprosController {
 							IssuesController, 
 							TasksController, 
 							LoginController);
-	}
+    
 }
+*/

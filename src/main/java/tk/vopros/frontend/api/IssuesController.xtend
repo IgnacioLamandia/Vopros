@@ -1,23 +1,25 @@
 package tk.vopros.frontend.api
-
-import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException
-import org.uqbar.xtrest.api.annotation.Body
-import org.uqbar.xtrest.api.annotation.Controller
-import org.uqbar.xtrest.api.annotation.Get
-import org.uqbar.xtrest.api.annotation.Post
-import org.uqbar.xtrest.json.JSONUtils
+/*
+import org.hibernate.sql.Delete
+import org.springframework.http.StreamingHttpOutputMessage.Body
 import tk.vopros.backend.model.issue.Issue
 import tk.vopros.backend.service.IssueService
-import org.uqbar.xtrest.api.annotation.Delete
+import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.http.MediaType
+import org.springframework.web.bind.annotation.RequestMethod
+import org.springframework.beans.factory.annotation.Autowired
 
-@Controller
+@RestController
 class IssuesController {
 
-	extension JSONUtils = new JSONUtils;
+	@Autowired
 	IssueService issueService = new IssueService;
 	
 	new(){}
-
+/*
 	@Post("/issue")
 	def createIssue(@Body String body) {
 		response.contentType = "application/json"
@@ -36,22 +38,18 @@ class IssuesController {
 		ok(this.issueService.getAll().toJson)
 	}
 	
-	@Get("/issue/:id")
-    def getIssueById() {
-        response.contentType = "application/json"
-        try {        	
-            var issue = this.issueService.getById(Long.valueOf(id))
-            if (issue == null) {
-            	notFound('{ "error": "No existe issue con ese id" }')
-            } else {
-            	ok(issue.toJson)
-            }
-        }
-        catch (NumberFormatException ex) {
-        	badRequest('{ "error": "El id debe ser un numero" }')
-        }
-    }
 
+    @RequestMapping(value = "/issue/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Issue> getUser(@PathVariable("id") Long id) {
+        System.out.println("Fetching User with id " + id);
+         var issue = this.issueService.getById(id)
+        if (issue == null) {
+            System.out.println("User with id " + id + " not found");
+            return new ResponseEntity<Issue>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<Issue>(issue, HttpStatus.OK);
+    }
+ 
     @Delete('/issue/:id')
     def deleteIssueById() {
         response.contentType = "application/json"
@@ -65,3 +63,4 @@ class IssuesController {
     }
 
 }
+*/

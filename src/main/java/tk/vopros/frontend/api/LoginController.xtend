@@ -1,5 +1,5 @@
 package tk.vopros.frontend.api
-
+/*
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
@@ -46,4 +46,4 @@ class LoginController {
 		}	
 		
 	}
-}
+}*/

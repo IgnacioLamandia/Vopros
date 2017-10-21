@@ -1,5 +1,5 @@
 package tk.vopros.frontend.api
-
+/*
 import org.uqbar.xtrest.api.annotation.Controller
 import org.uqbar.xtrest.json.JSONUtils
 import tk.vopros.backend.service.ProyectoService
@@ -36,3 +36,4 @@ class ProyectsController{
 		return badRequest('{"error":"No implementado"')
 	}
 }
+*/

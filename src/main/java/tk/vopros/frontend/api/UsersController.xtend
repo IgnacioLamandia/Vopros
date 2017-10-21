@@ -1,5 +1,5 @@
 package tk.vopros.frontend.api
-
+/*
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException
 import org.uqbar.xtrest.api.annotation.Body
 import org.uqbar.xtrest.api.annotation.Controller
@@ -36,3 +36,4 @@ class UsersController {
 	}
 
 }
+*/

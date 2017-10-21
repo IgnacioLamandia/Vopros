@@ -1,5 +1,5 @@
 package tk.vopros.frontend.api
-
+/*
 import org.uqbar.xtrest.api.annotation.Controller
 import tk.vopros.backend.service.TaskService
 import org.uqbar.xtrest.json.JSONUtils
@@ -63,3 +63,4 @@ class TasksController {
 	}
 
 }
+*/
