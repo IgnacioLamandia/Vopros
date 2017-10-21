@@ -1,16 +1,15 @@
 package tk.vopros.frontend.api
 
-import org.uqbar.xtrest.api.annotation.Controller
-import tk.vopros.backend.service.UserService
-import org.uqbar.xtrest.json.JSONUtils
-import org.uqbar.xtrest.api.annotation.Get
-import org.uqbar.xtrest.api.annotation.Body
-import tk.vopros.backend.model.User
+import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import java.util.Date
-import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException
+import org.uqbar.xtrest.api.annotation.Body
+import org.uqbar.xtrest.api.annotation.Controller
 import org.uqbar.xtrest.api.annotation.Post
+import org.uqbar.xtrest.json.JSONUtils
+import tk.vopros.backend.model.User
+import tk.vopros.backend.service.UserService
 
 @Controller
 class LoginController {

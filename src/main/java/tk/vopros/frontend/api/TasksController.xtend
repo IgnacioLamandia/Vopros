@@ -14,8 +14,9 @@ import org.uqbar.xtrest.api.annotation.Delete
 class TasksController {
 	extension JSONUtils = new JSONUtils;
 	TaskService taskService = new TaskService;
-	
-	new(){}
+
+	new() {
+	}
 
 	@Post("/task")
 	def createIssue(@Body String body) {
@@ -34,33 +35,31 @@ class TasksController {
 		response.contentType = "application/json"
 		ok(this.taskService.getAll().toJson)
 	}
-	
-		@Get("/issue/:id")
-    def getIssueById() {
-        response.contentType = "application/json"
-        try {        	
-            var task = this.taskService.getById(Long.valueOf(id))
-            if (task == null) {
-            	notFound('{ "error": "No existe task con ese id" }')
-            } else {
-            	ok(task.toJson)
-            }
-        }
-        catch (NumberFormatException ex) {
-        	badRequest('{ "error": "El id debe ser un numero" }')
-        }
-    }
 
-    @Delete('/issue/:id')
-    def deleteIssueById() {
-        response.contentType = "application/json"
-        try {
-            this.taskService.delete(Long.valueOf(id))
-            ok()
-        }
-        catch (NumberFormatException ex) {
-        	badRequest('{ "error": "El id debe ser un numero" }')
-        }
-    }
-	
+	@Get("/task/:id")
+	def getIssueById() {
+		response.contentType = "application/json"
+		try {
+			var task = this.taskService.getById(Long.valueOf(id))
+			if (task == null) {
+				notFound('{ "error": "No existe task con ese id" }')
+			} else {
+				ok(task.toJson)
+			}
+		} catch (NumberFormatException ex) {
+			badRequest('{ "error": "El id debe ser un numero" }')
+		}
+	}
+
+	@Delete('/task/:id')
+	def deleteIssueById() {
+		response.contentType = "application/json"
+		try {
+			this.taskService.delete(Long.valueOf(id))
+			ok()
+		} catch (NumberFormatException ex) {
+			badRequest('{ "error": "El id debe ser un numero" }')
+		}
+	}
+
 }
