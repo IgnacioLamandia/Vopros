@@ -36,5 +36,39 @@ public class Proyecto {
 		this.creador = creadorU;
 		this.miembros.add(creadorU);
 	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public User getCreador() {
+		return creador;
+	}
+
+	public void setCreador(User creador) {
+		this.creador = creador;
+	}
+
+	public List<User> getMiembros() {
+		return miembros;
+	}
+
+	public void setMiembros(List<User> miembros) {
+		this.miembros = miembros;
+	}
+
+	public Set<Issue> getIssues() {
+		return issues;
+	}
+
+	public void setIssues(Set<Issue> issues) {
+		this.issues = issues;
+	}
+	
+	
 	
 }
