@@ -22,6 +22,10 @@ public class UserService {
 		userDAO.save(user);
 	}
 	
+	public User getById(Long id) {
+		return userDAO.getById(id);
+	}
+	
 	public Boolean validate(User user){
 		return userDAO.validate(user);
 	}

@@ -18,4 +18,6 @@ public class ProyectoService {
 	public void setProyecto(Proyecto proyectoNuevo){
 		proyectoDAO.save(proyectoNuevo);
 	}
+
+
 }
