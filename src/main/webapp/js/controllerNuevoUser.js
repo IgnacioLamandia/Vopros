@@ -1,4 +1,4 @@
-app.controller('NuevoUserCtrl', function($resource,$state,$stateParams,Users) {
+app.controller('NuevoUserCtrl', function($resource,$state,$stateParams,User) {
 	'use strict';
 
     var self = this;
@@ -15,7 +15,7 @@ app.controller('NuevoUserCtrl', function($resource,$state,$stateParams,Users) {
     
 
     this.guardarUser = function(){
-        Users.save(this.user, function() {
+        User.save(this.user, function() {
             self.notificarMensaje('Usuario creado!');
         }, errorHandler);
         this.user= {"nombre":"","apellido":"","email":""};

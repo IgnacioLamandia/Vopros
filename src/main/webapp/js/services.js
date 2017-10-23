@@ -18,6 +18,14 @@ app.factory('Issue', function($resource){
 app.factory('Users', function($resource) {
     return $resource('/users' , {
     	'query': { method: 'GET', isArray: true},
+
+
+        
+    });
+});
+
+app.factory('User', function($resource) {
+    return $resource('/user:id', {'id': '@id'}, {
     	'save': {method: 'POST'}
 
         

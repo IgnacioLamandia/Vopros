@@ -2,11 +2,13 @@ package tk.vopros.backend.dao;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 import org.hibernate.HibernateException;
 
 
 import tk.vopros.backend.model.User;
 
+@Repository
 public class HibernateUserDAO extends GenericDAO<User>{
 	
 	public HibernateUserDAO() {

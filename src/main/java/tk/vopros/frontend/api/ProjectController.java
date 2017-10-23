@@ -43,7 +43,8 @@ public class ProjectController {
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
 	}
 		else {
-			this.proyectService.setProyecto(user.nuevoProyecto(proyecto.nombre));
+			Proyecto proyect = user.nuevoProyecto(proyecto.nombre);
+			this.proyectService.setProyecto(proyect);
 			return new ResponseEntity<Void>(HttpStatus.OK);
 		}
 }
