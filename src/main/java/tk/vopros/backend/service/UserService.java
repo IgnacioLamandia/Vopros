@@ -2,11 +2,13 @@ package tk.vopros.backend.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import tk.vopros.backend.dao.HibernateUserDAO;
 import tk.vopros.backend.model.User;
 
-
-class UserService {
+@Service
+public class UserService {
 	private HibernateUserDAO userDAO;
 	public UserService(){
 		userDAO = new HibernateUserDAO();
@@ -20,7 +22,7 @@ class UserService {
 		userDAO.save(user);
 	}
 	
-//	public void validate(User user){
-//		userDAO.validate(user);
-//	}
+	public Boolean validate(User user){
+		return userDAO.validate(user);
+	}
 }
