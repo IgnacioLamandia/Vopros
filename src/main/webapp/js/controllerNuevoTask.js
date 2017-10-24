@@ -1,11 +1,18 @@
-app.controller('NuevoTaskCtrl', function($resource,$state,$stateParams,Task) {
+app.controller('NuevoTaskCtrl', function($resource,$state,$stateParams,Task,Users) {
 	'use strict';
 
     var self = this;
 
-    self.task= {"nombre":"","descripcion":""};
+    self.task= {"nombre":"","descripcion":"","asignado":""};
 
 
+    this.getUsers= function(){
+        Users.query(function(data) {
+            self.users = data;
+        },errorHandler);
+    };
+
+    this.getUsers();
 
 
 

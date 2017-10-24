@@ -5,6 +5,7 @@
 	<br>
 	<h4 class="lead"> <strong> Descripcion: </strong> <textarea ng-model="ctrl.task.descripcion"></textarea> </h4>	
 	<br>
+	<h4 class="lead"> <strong> Usuario asignado: </strong><select ng-model="ctrl.task.asignado" ng-options="t.nombre for t in ctrl.users"></select></h4>
 	<br>
 	<a ng-click="ctrl.guardarTask()" class="btn btn-primary">Guardar cambios</a>
 	<br>

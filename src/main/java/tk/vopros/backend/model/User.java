@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class User {
-	@Id @GeneratedValue private Long id;
+	@Id @GeneratedValue public Long id;
 	public String nombre;
 	public String apellido;
 	public String email;

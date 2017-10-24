@@ -46,7 +46,7 @@ public class TaskController {
 	 
 	 @RequestMapping(value = "/task", method = RequestMethod.POST, consumes = "application/json")
 	    public void postTask(@RequestBody Task input) {
-	         Task task = new Task(input.nombre,input.descripcion);
+	         Task task = new Task(input.nombre,input.descripcion,input.asignado);
 	         this.taskService.save(task);
 	    }
 	 
