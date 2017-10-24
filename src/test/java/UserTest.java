@@ -19,7 +19,8 @@ public class UserTest {
 	@Test
 	public void test() {
 		User user = new User();
-		Proyecto proyect = user.nuevoProyecto("Vopros");
+		Proyecto proyect = new Proyecto("Vopros");
+		user.nuevoProyecto(proyect);
 		assertEquals(proyect.getCreador(), user);
 	}
 }

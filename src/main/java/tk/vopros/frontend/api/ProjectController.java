@@ -40,11 +40,12 @@ public class ProjectController {
 	public ResponseEntity<Void> nuevoProyecto(@PathVariable("userId") long id,@RequestBody Proyecto proyecto){
 		User user = userService.getById(id);
 		if(user == null) {
-			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 	}
 		else {
-			Proyecto proyect = user.nuevoProyecto(proyecto.nombre);
-			this.proyectService.setProyecto(proyect);
+			proyecto.setCreador(user);
+			proyecto.miembros.add(user);
+			this.proyectService.setProyecto(proyecto);
 			return new ResponseEntity<Void>(HttpStatus.OK);
 		}
 }

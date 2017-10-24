@@ -33,7 +33,8 @@ public class HibernateDataService {
 		userDAO.save(new User("Matias", "Cavallin", "matias.cavallin@gmail.com","123"));
 		userDAO.save(new User("Ignacio", "Gioya", "ignacio.gioya@gmail.com","123"));
 		
-		Proyecto proyecto = nachoL.nuevoProyecto("Vopros");
+		Proyecto proyecto = new Proyecto("Vopros");
+		nachoL.nuevoProyecto(proyecto);
 		proyecto.miembros.add(gaston);
 		proyectDAO.save(proyecto);
 	

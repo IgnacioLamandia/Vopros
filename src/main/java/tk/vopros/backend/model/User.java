@@ -2,12 +2,14 @@ package tk.vopros.backend.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
 @Entity
 public class User {
-	@Id @GeneratedValue public Long id;
+	@Id @GeneratedValue(strategy=GenerationType.AUTO) 
+	public Long id;
 	public String nombre;
 	public String apellido;
 	public String email;
@@ -23,8 +25,8 @@ public class User {
 	}
 	
 	
-	//Lo pense asi para que solo un usuario pueda crear un proyecto pero ni idea salu2
-	public Proyecto nuevoProyecto(String nombreProyecto){
-		return new Proyecto(nombreProyecto, this);
+	public void nuevoProyecto(Proyecto proyect){
+		proyect.miembros.add(this);
+		proyect.setCreador(this);
 	}
 }

@@ -2,7 +2,10 @@ package tk.vopros.backend.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 import java.util.List;
 import javax.persistence.ManyToOne;
 import javax.persistence.CascadeType;
@@ -15,13 +18,14 @@ import java.util.HashSet;
 
 @Entity
 public class Proyecto {
-	@Id @GeneratedValue private Long id;
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	public String nombre;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private User creador;
 	
-	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	public List<User> miembros = new ArrayList<User>();
 	
 	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
@@ -29,6 +33,10 @@ public class Proyecto {
 	
 	public Proyecto(){
 		
+	}
+	
+	public Proyecto(String nombreProyecto) {
+		this.nombre=nombreProyecto;
 	}
 	
 	public Proyecto(String nombreProyecto , User creadorU){
