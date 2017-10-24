@@ -46,7 +46,7 @@ public class IssueController {
 	 
 	 @RequestMapping(value = "/issue", method = RequestMethod.POST, consumes = "application/json")
 	    public void postIssue(@RequestBody Issue input) {
-	         Issue issue = new Issue(input.titulo,input.tipo,input.gravedad,input.prioridad);
+	         Issue issue = new Issue(input.titulo,input.tipo,input.gravedad,input.prioridad,input.asignado);
 	         this.issueService.save(issue);
 	    }
 	 

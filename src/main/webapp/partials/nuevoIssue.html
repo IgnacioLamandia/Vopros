@@ -9,6 +9,8 @@
 <br>
 	<h4 class="lead"> <strong> Prioridad: </strong><select ng-model="ctrl.issue.prioridad" ng-options="t for t in ctrl.prioridad"></select></h4>
 <br>
+	<h4 class="lead"> <strong> Usuario asignado: </strong><select ng-model="ctrl.issue.asignado" ng-options="t.nombre for t in ctrl.users"></select></h4>
+<br>
 	<a ng-click="ctrl.guardarIssue()" class="btn btn-primary">Guardar cambios</a>
 	<br>
     <a ng-click="ctrl.cancel()" class="btn btn-primary">Cancelar</a>
