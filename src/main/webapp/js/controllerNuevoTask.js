@@ -3,7 +3,7 @@ app.controller('NuevoTaskCtrl', function($resource,$state,$stateParams,Task,User
 
     var self = this;
 
-    self.task= {"nombre":"","descripcion":"","asignado":""};
+    self.task= {"nombre":"","descripcion":"","prioridad":"","asignado":""};
 
 
     this.getUsers= function(){
