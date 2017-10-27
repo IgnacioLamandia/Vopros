@@ -67,6 +67,12 @@ console.log("funco");
         controller: "NuevoIssueCtrl as ctrl"
     })
 
+    .state('main.nuevoProyecto',{
+        url:"/proyecto/nuevo",
+        templateUrl:"partials/nuevoProyecto.html",
+        controller: "NuevoProyectoCtrl as ctrl"
+    })
+
 
 
 });

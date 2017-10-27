@@ -28,6 +28,17 @@ app.factory('User', function($resource) {
     return $resource('/user:id', {'id': '@id'}, {
     	'save': {method: 'POST'}
 
+
+        
+    });
+});
+
+
+app.factory('UserSearch', function($resource) {
+    return $resource('/user/search/:val', {'val':'@val'} ,{
+        'query': {method: 'GET',isArray: true}
+        
+
         
     });
 });
@@ -35,6 +46,16 @@ app.factory('User', function($resource) {
 app.factory('Proyectos', function($resource) {
     return $resource('/proyectos' , {
     	'query': { method: 'GET', isArray: true}
+        
+    });
+});
+
+app.factory('Proyecto', function($resource) {
+    return $resource('/proyecto/:id', {'id': '@id'} , {
+        'save': {method: 'POST'},
+        'query': {method: 'GET'},
+        'update': {method: 'PUT'},
+        'delete': {method: 'DELETE'}
         
     });
 });
