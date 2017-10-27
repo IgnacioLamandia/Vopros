@@ -66,6 +66,18 @@ console.log("funco");
         templateUrl:"partials/nuevoIssue.html",
         controller: "NuevoIssueCtrl as ctrl"
     })
+    
+    .state('main.borrarIssue',{
+        url:"/issue/borrar",
+        templateUrl:"partials/borrarIssue.html",
+        controller: "NuevoIssueCtrl as ctrl"
+    })
+    
+    .state('main.borrarTask',{
+        url:"/task/borrar",
+        templateUrl:"partials/borrarTask.html",
+        controller: "NuevoTaskCtrl as ctrl"
+    })
 
 
 
