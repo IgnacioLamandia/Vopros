@@ -1,0 +1,24 @@
+<div class="col-md-6">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Descripcion</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="task in ctrl.tasks">
+				<td ng-bind="task.nombre"></td>
+				<td ng-bind="task.descripcion"></td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<select [(ngModel)]="selectedTask">
+  		<option *ngFor="let task of ctrl.tasks" [ngValue]="task">{{task.nombre}}</option>
+	</select>
+	<br>
+	<a ng-click="ctrl.borrarTask()" class="btn btn-primary">Borrar</a>
+	<br>
+    <a ng-click="ctrl.cancel()" class="btn btn-primary">Cancelar</a>
+</div>
