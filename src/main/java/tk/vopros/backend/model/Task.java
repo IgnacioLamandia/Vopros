@@ -23,7 +23,7 @@ public class Task {
 	@Enumerated(EnumType.ORDINAL)
 	public TipoPrioridad prioridad;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	public User asignado;
 	
 	

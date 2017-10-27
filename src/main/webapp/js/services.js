@@ -7,7 +7,7 @@ app.factory('Issues', function($resource) {
 });
 
 app.factory('Issue', function($resource){
-    return $resource('/issue:id', {'id': '@id'}, {
+    return $resource('/issue/:id', {'id': '@id'}, {
         'query': {method: 'GET'},
         'save': {method: 'POST'},
         'update': {method: 'PUT'},
@@ -25,7 +25,7 @@ app.factory('Users', function($resource) {
 });
 
 app.factory('User', function($resource) {
-    return $resource('/user:id', {'id': '@id'}, {
+    return $resource('/user/:id', {'id': '@id'}, {
     	'save': {method: 'POST'}
 
 
@@ -69,7 +69,7 @@ app.factory('Tasks', function($resource) {
 
 
 app.factory('Task', function($resource) {
-    return $resource('/task:id', {'id': '@id'}, {
+    return $resource('/task/:id', {'id': '@id'}, {
         'save': {method: 'POST'},
         'query': {method: 'GET'},
         'update': {method: 'PUT'},

@@ -14,7 +14,7 @@ public class Issue {
 
 
 
-	@Id @GeneratedValue private Long id;
+	@Id @GeneratedValue public Long id;
 	
 	public String titulo;
 	

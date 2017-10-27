@@ -1,9 +1,10 @@
-app.controller('TasksCtrl', function($resource,$state,$stateParams,Tasks) {
+app.controller('TasksCtrl', function($resource,$timeout,$state,$stateParams,Tasks,Task) {
 	'use strict';
 
     var self = this;
 
     self.tasks = [];
+    self.task = {};
 
     function errorHandler(error) {
         self.notificarError(error.data);
@@ -14,6 +15,21 @@ app.controller('TasksCtrl', function($resource,$state,$stateParams,Tasks) {
             self.tasks = data;
         },errorHandler);
 	};
+
+
+	this.seleccionar= function(tarea){
+		console.log(tarea);
+		this.task = tarea;
+	}
+
+	this.delete= function(){
+		Task.delete({id:this.task.id},function(){
+			self.notificarMensaje("Task borrado");
+			self.getTasks();
+
+		},errorHandler);
+	}
+
 
 	this.getTasks();
 
