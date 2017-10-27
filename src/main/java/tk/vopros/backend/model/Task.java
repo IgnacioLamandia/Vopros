@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
 import tk.vopros.backend.model.issue.TipoPrioridad;
 
 @Entity
@@ -15,6 +16,9 @@ public class Task {
 	@Id @GeneratedValue public Long id;
 	public String nombre;
 	public String descripcion;
+	
+	@Enumerated(EnumType.ORDINAL)
+	public NivelDificultad dificultad;
 	
 	@Enumerated(EnumType.ORDINAL)
 	public TipoPrioridad prioridad;
@@ -27,15 +31,17 @@ public class Task {
 		
 	}
 	
-	public Task(String nombre, String descripcion, TipoPrioridad prioridad) {
+	public Task(String nombre, String descripcion, NivelDificultad dificultad, TipoPrioridad prioridad) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
+		this.dificultad = dificultad;
 		this.prioridad = prioridad;
 	}
 	
-	public Task(String nombre, String descripcion, TipoPrioridad prioridad, User asignado) {
+	public Task(String nombre, String descripcion, NivelDificultad dificultad, TipoPrioridad prioridad, User asignado) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
+		this.dificultad = dificultad;
 		this.prioridad = prioridad;
 		this.asignado = asignado;
 	}
@@ -68,6 +74,14 @@ public class Task {
 
 	public void setPrioridad(TipoPrioridad prioridad) {
 		this.prioridad = prioridad;
+	}
+
+	public NivelDificultad getDificultad() {
+		return dificultad;
+	}
+
+	public void setDificultad(NivelDificultad dificultad) {
+		this.dificultad = dificultad;
 	}
 	
 	
