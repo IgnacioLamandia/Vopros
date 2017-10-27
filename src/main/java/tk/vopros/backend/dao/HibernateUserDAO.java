@@ -45,7 +45,7 @@ public class HibernateUserDAO extends GenericDAO<User>{
 		try {
 			session.beginTransaction();
 			String hql = "from " + "User" + 
-						" u " + "where u.nombre like '%'+:unNombre+'%'";
+						" u " + "where u.nombre like :unNombre";
 			Query<User> query = session.createQuery(hql, User.class);
 			query.setParameter("unNombre", nombreBuscado);
 			return query.list();

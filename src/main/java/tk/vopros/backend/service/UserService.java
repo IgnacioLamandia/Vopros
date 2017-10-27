@@ -35,4 +35,9 @@ public class UserService {
 	public Boolean validate(User user){
 		return userDAO.validate(user);
 	}
+	
+	@Transactional
+	public List<User> search(String nombre){
+		return userDAO.searchUsers(nombre);
+	}
 }
