@@ -11,4 +11,5 @@ public class HibernateProyectoDAO extends GenericDAO<Proyecto>{
 		super(Proyecto.class);
 	}
 
+	
 }

@@ -3,6 +3,9 @@ package tk.vopros.backend.dao;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
 import org.hibernate.HibernateException;
 
 
@@ -35,6 +38,25 @@ public class HibernateUserDAO extends GenericDAO<User>{
 		}
 	
 	}
+	
+	@SuppressWarnings("deprecation")
+	public List<User> searchUsers(String nombreBuscado){
+		Session session = sessionFactory.openSession();
+		try {
+			session.beginTransaction();
+			String hql = "from " + "User" + 
+						" u " + "where u.nombre like '%'+:unNombre+'%'";
+			Query<User> query = session.createQuery(hql, User.class);
+			query.setParameter("unNombre", nombreBuscado);
+			return query.list();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			throw new RuntimeException(e);
+		} finally {
+			session.close();
+		}
+	}
+
 
 
 }

@@ -28,5 +28,15 @@ public class ProyectoService {
 		proyectoDAO.save(proyectoNuevo);
 	}
 
+	public void updateProyecto(Proyecto proyect) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Proyecto getById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

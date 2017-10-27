@@ -49,5 +49,35 @@ public class ProjectController {
 			return new ResponseEntity<Void>(HttpStatus.OK);
 		}
 }
+	
+	
+	@RequestMapping(value = "/proyecto/{id}", method = RequestMethod.PUT, consumes = "application/json")	
+	public ResponseEntity<Void> actualizarProyecto(@PathVariable("id") long id,@RequestBody Proyecto proyecto){
+		Proyecto proyect = proyectService.getById(id);
+		if(proyect == null) {
+			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		}else {
+			proyect.nombre = proyecto.nombre;
+			proyect.issues = proyecto.issues;
+			proyect.miembros = proyecto.miembros;
+			this.proyectService.updateProyecto(proyect);
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		}
+
+	}
+	
+	
+	@RequestMapping(value = "/proyecto/{id}", method = RequestMethod.GET, produces = "application/json")	
+	public ResponseEntity<Proyecto> getProyecto(@PathVariable("id") long id){
+		Proyecto proyect=this.proyectService.getById(id);
+		if(proyect == null) {
+			return new ResponseEntity<Proyecto>(HttpStatus.NOT_FOUND);
+
+		}
+		else {
+			return new ResponseEntity<Proyecto>(proyect,HttpStatus.OK);
+
+		}
+	}
 
 }
