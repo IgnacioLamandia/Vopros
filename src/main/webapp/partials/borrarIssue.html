@@ -1,0 +1,29 @@
+<div class="col-md-6">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Titulo</th>
+				<th>Tipo</th>
+				<th>Gravedad</th>
+				<th>Prioridad</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="issue in ctrl.issues">
+				<td ng-bind="issue.titulo"></td>
+				<td ng-bind="issue.tipo"></td>
+				<td ng-bind="issue.gravedad"></td>
+				<td ng-bind="issue.prioridad"></td>
+
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<select [(ngModel)]="selectedIssue">
+  		<option *ngFor="let issue of ctrl.issues" [ngValue]="issue">{{issue.titulo}}</option>
+	</select>
+	<br>
+	<a ng-click="ctrl.borrarIssue()" class="btn btn-primary">Borrar</a>
+	<br>
+    <a ng-click="ctrl.cancel()" class="btn btn-primary">Cancelar</a>
+</div>
