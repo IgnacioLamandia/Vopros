@@ -52,6 +52,16 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
         $state.go('main.nuevoIssue');
         this.closeSideBar();
     }
+    
+    this.borrarIssue = function(){
+        $state.go('main.borrarIssue');
+        this.closeSideBar();
+    }
+    
+    this.borrarTask = function(){
+        $state.go('main.borrarTask');
+        this.closeSideBar();
+    }
 
     this.verProyectos = function(){
         $state.go('main.proyectos');
