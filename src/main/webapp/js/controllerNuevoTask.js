@@ -1,11 +1,30 @@
-app.controller('NuevoTaskCtrl', function($resource,$state,$stateParams,Task) {
+app.controller('NuevoTaskCtrl', function($resource,$timeout,$state,$stateParams,Task,Users) {
 	'use strict';
 
     var self = this;
 
-    self.task= {"nombre":"","descripcion":""};
+    self.task= {"nombre":"","descripcion":"","dificultad":"","prioridad":"","asignado":""};
+    self.dificultad=[   'XXS',
+    'XS',
+    'S',
+    'M',
+    'L',
+    'XL',
+    'XXL'];
 
 
+    self.prioridad = ['BAJA',
+    'MEDIA',
+    'ALTA'];
+
+
+    this.getUsers= function(){
+        Users.query(function(data) {
+            self.users = data;
+        },errorHandler);
+    };
+
+    this.getUsers();
 
 
 

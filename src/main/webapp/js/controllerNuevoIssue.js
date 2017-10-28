@@ -1,9 +1,9 @@
-app.controller('NuevoIssueCtrl', function($resource,$state,$stateParams,Issue,$timeout) {
+app.controller('NuevoIssueCtrl', function($resource,$state,$stateParams,Issue,$timeout,Users) {
 	'use strict';
 
     var self = this;
 
-    self.issue= {"titulo":"","tipo":"","gravedad":"","prioridad":""};
+    self.issue= {"titulo":"","tipo":"","gravedad":"","prioridad":"", "asignado":""};
 
     self.tipo=[ 'BUG',
     'PREGUNTA',
@@ -18,6 +18,15 @@ app.controller('NuevoIssueCtrl', function($resource,$state,$stateParams,Issue,$t
     'MEDIA',
     'ALTA'];
 
+    self.users = [];
+
+    this.getUsers= function(){
+        Users.query(function(data) {
+            self.users = data;
+        },errorHandler);
+    };
+
+    this.getUsers();
 
 
     function errorHandler(error) {

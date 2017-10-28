@@ -53,6 +53,11 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
         this.closeSideBar();
     }
 
+    this.nuevoProyecto = function(){
+        $state.go('main.nuevoProyecto');
+        this.closeSideBar();
+    }
+
     this.verProyectos = function(){
         $state.go('main.proyectos');
         this.closeSideBar();

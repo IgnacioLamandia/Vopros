@@ -1,0 +1,23 @@
+<div>
+	<h2>Nuevo Proyecto</h2>
+	<br>
+    <h4 class="lead"> <strong> Nombre: </strong><input ng-model="ctrl.proyecto.nombre"> </h4>	
+	<br>
+	<h4 class="lead"> <strong> Creador: </strong><select ng-model="ctrl.creador" ng-options="t.nombre for t in ctrl.users"></select></h4>
+	<br>
+	<h4 class="lead"> <strong> Miembros: </strong></h4>
+	<br>
+		<div ng-repeat="miembro in ctrl.proyecto.miembros">{{miembro.nombre}} </div>
+<br>
+<button class="btn-primary" ng-click="ctrl.search()">Buscar</button><input ng-model="ctrl.nombreABuscar">
+<br>
+<ul > 
+	<li ng-repeat="result in ctrl.resultados"><a ng-click="ctrl.addMiembro(result)" >{{result.nombre}}</a></li>
+</ul>
+
+<br>
+<br>
+	<a ng-click="ctrl.guardarProyecto()" class="btn btn-primary">Guardar cambios</a>
+	<br>
+    <a ng-click="ctrl.cancel()" class="btn btn-primary">Cancelar</a>
+</div>

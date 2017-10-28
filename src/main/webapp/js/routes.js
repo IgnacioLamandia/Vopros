@@ -28,7 +28,7 @@ console.log("funco");
     .state('main.issues', {
       url: "/issues",
       templateUrl: "partials/issues.html",
-  	  controller: "AppCtrl as ctrl"
+  	  controller: "IssuesCtrl as ctrl"
     })
 
     .state('main.users', {
@@ -65,6 +65,12 @@ console.log("funco");
         url:"/issue/nuevo",
         templateUrl:"partials/nuevoIssue.html",
         controller: "NuevoIssueCtrl as ctrl"
+    })
+
+    .state('main.nuevoProyecto',{
+        url:"/proyecto/nuevo",
+        templateUrl:"partials/nuevoProyecto.html",
+        controller: "NuevoProyectoCtrl as ctrl"
     })
 
 

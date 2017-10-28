@@ -7,7 +7,7 @@ app.factory('Issues', function($resource) {
 });
 
 app.factory('Issue', function($resource){
-    return $resource('/issue:id', {'id': '@id'}, {
+    return $resource('/issue/:id', {'id': '@id'}, {
         'query': {method: 'GET'},
         'save': {method: 'POST'},
         'update': {method: 'PUT'},
@@ -18,7 +18,26 @@ app.factory('Issue', function($resource){
 app.factory('Users', function($resource) {
     return $resource('/users' , {
     	'query': { method: 'GET', isArray: true},
+
+
+        
+    });
+});
+
+app.factory('User', function($resource) {
+    return $resource('/user/:id', {'id': '@id'}, {
     	'save': {method: 'POST'}
+
+
+        
+    });
+});
+
+
+app.factory('UserSearch', function($resource) {
+    return $resource('/user/search/:val', {'val':'@val'} ,{
+        'query': {method: 'GET',isArray: true}
+        
 
         
     });
@@ -27,6 +46,16 @@ app.factory('Users', function($resource) {
 app.factory('Proyectos', function($resource) {
     return $resource('/proyectos' , {
     	'query': { method: 'GET', isArray: true}
+        
+    });
+});
+
+app.factory('Proyecto', function($resource) {
+    return $resource('/proyecto/:id', {'id': '@id'} , {
+        'save': {method: 'POST'},
+        'query': {method: 'GET'},
+        'update': {method: 'PUT'},
+        'delete': {method: 'DELETE'}
         
     });
 });
@@ -40,7 +69,7 @@ app.factory('Tasks', function($resource) {
 
 
 app.factory('Task', function($resource) {
-    return $resource('/task:id', {'id': '@id'}, {
+    return $resource('/task/:id', {'id': '@id'}, {
         'save': {method: 'POST'},
         'query': {method: 'GET'},
         'update': {method: 'PUT'},
