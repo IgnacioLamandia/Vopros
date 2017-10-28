@@ -25,7 +25,7 @@ public class Proyecto {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private User creador;
 	
-	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
 	public List<User> miembros = new ArrayList<User>();
 	
 	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
