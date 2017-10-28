@@ -19,6 +19,7 @@ public class TestSeleniumLogin {
 	private static WebDriver driver= null;
 	
 	@BeforeClass
+	//Driver gecko https://github.com/mozilla/geckodriver/releases
 	public static void inicializarDirver() {
 //		File file = new File("/usr/bin/google-chrome");
         System.setProperty("webdriver.gecko.driver","/home/gaston/Documentos/geckodriver"); 
@@ -47,7 +48,7 @@ public class TestSeleniumLogin {
 		
 		//Espero 5 seg para que cargue la pag
 		
-		  driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+		  driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 
 		
 		assertEquals(driver.getCurrentUrl(),"http://localhost:8080/#!/main/home");
