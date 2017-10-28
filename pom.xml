@@ -13,6 +13,8 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <springframework.version>4.2.4.RELEASE</springframework.version>
+    <selenium.version>3.6.0</selenium.version>
+    
   </properties>
   
    <parent>
@@ -52,7 +54,21 @@
         <artifactId>spring-boot-starter-test</artifactId>
         <scope>test</scope>
 	</dependency>
-  
+	
+	<dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+    </dependency>  
+  <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-server</artifactId>
+        <version>3.6.0</version>
+    </dependency>  
+  <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>22.0</version>
+    </dependency>
 	
 	<dependency>
 		<groupId>mysql</groupId>

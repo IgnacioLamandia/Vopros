@@ -18,7 +18,7 @@ app.controller('LoginCtrl', function($resource,$timeout,$location,$state,Auth) {
     }
 
         function errorHandler(error) {
-        $('.error').append('<h4>Usuario o contraseña invalido/a</h4>');
+        $('.error').append("<h4 id='errorMsg'>Usuario o contraseña invalido/a</h4>");
         self.notificarError(error.data);
     }
 
