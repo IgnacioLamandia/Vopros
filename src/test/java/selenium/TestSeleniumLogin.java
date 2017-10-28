@@ -2,7 +2,7 @@ package selenium;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -10,13 +10,9 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import junit.framework.Assert;
+
 
 public class TestSeleniumLogin {
 	
@@ -24,10 +20,10 @@ public class TestSeleniumLogin {
 	
 	@BeforeClass
 	public static void inicializarDirver() {
-		File file = new File("/usr/bin/google-chrome");
-		//File file = new File("/home/ignacio/Escritorio/facu/ingenieria/chromedriver");
-		System.setProperty("webdriver.chrome.driver",file.getAbsolutePath());
-		driver = new ChromeDriver();
+//		File file = new File("/usr/bin/google-chrome");
+        System.setProperty("webdriver.gecko.driver","/home/gaston/Documentos/geckodriver"); 
+//		System.setProperty("webdriver.chrome.driver",file.getAbsolutePath());
+		driver = new FirefoxDriver();
 		
 	}
 	
@@ -39,7 +35,7 @@ public class TestSeleniumLogin {
 	@Test
 	public void testLoginCorrecto() {
 		
-		driver.get("http://localhost:9000/");
+		driver.get("http://localhost:8080/");
 		
 		WebElement usuario=driver.findElement(By.id("user"));
 		usuario.sendKeys("Gaston");
@@ -49,12 +45,12 @@ public class TestSeleniumLogin {
 		WebElement btnAccept=driver.findElement(By.id("btn-signup"));
 		btnAccept.click();
 		
-		WebDriverWait wait = new WebDriverWait(driver,5);
+		//Espero 5 seg para que cargue la pag
 		
-		WebElement content = driver.findElement(By.id("wrapper"));
-		wait.until(ExpectedConditions.visibilityOf(content));
+		  driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+
 		
-		assertEquals(driver.getCurrentUrl(),"http://localhost:9000/#!/main/home");
+		assertEquals(driver.getCurrentUrl(),"http://localhost:8080/#!/main/home");
 	}
 
 }
