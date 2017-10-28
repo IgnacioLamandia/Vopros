@@ -25,6 +25,7 @@ Usuario autenticado (debe ser miembro del proyecto específico).
 
 1. El usuario puede cerrar la sesión en cualquier momento.
 2. El usuario puede cancelar la acción en cualquier momento. El sistema no realiza ninguna acción salvo volver al estado inicial.
+3. En el caso de que al usuario le falte completar un campo del formulario, se mostrará una una notificación que le avisa al mismo que debe completar ese campo.
 
 
 ### Tabla resumen
