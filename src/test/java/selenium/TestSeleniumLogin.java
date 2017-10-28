@@ -52,5 +52,26 @@ public class TestSeleniumLogin {
 		
 		assertEquals(driver.getCurrentUrl(),"http://localhost:8080/#!/main/home");
 	}
+	
+	@Test
+	public void testLoginIncorrecto() {
+		
+		driver.get("http://localhost:8080/");
+		
+		WebElement usuario=driver.findElement(By.id("user"));
+		usuario.sendKeys("Usuario random");
+		WebElement contrasenha=driver.findElement(By.id("pass"));
+		contrasenha.sendKeys("123");
+		
+		WebElement btnAccept=driver.findElement(By.id("btn-signup"));
+		btnAccept.click();
+		
+		//Espero 5 seg para que cargue la pag
+		
+		  driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+
+		WebElement error = driver.findElement(By.className("error"));
+		assertEquals(error.findElement(By.id("errorMsg")).getText(),"Usuario o contraseña invalido/a");
+	}
 
 }
