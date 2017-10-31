@@ -60,7 +60,7 @@ El sistema a desarrollar no incluirá:
 | --- | --- | --- |
 | 1 (14/10/17) | Setup de los entornos Java/Xtend, Hibernate y AngularJS/API XTRest. Implementación parcial de las funcionalidades de Proyecto y Usuario. | | 
 | 2 (21/10/17) | Log in simplificado. Implementación de creación y borrado de Issue y Task. Implementación de vista de creación y muestra de Issue y Task. | |
-| 3 (28/10/17) | | |
+| 3 (28/10/17) | Agregar miembros a un proyecto. Agregar prioridad, dificultad y usuario asignado a Issues y Task. | |
 | 4 (04/11/17) | | |
 | 5 (11/11/17) | | |
 | 6 (18/11/17) | | |
