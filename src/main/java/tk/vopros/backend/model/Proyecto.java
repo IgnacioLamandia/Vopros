@@ -19,7 +19,7 @@ import java.util.HashSet;
 @Entity
 public class Proyecto {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	public Long id;
 	public String nombre;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
