@@ -46,7 +46,7 @@ console.log("funco");
     .state('main.proyectos', {
       url: "/proyectos",
       templateUrl: "partials/proyectos.html",
-      controller: "AppCtrl as ctrl"
+      controller: "ProyectosCtrl as ctrl"
     })
 
     .state('main.nuevoUser',{

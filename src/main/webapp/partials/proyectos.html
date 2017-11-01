@@ -1,5 +1,5 @@
 <div class="col-md-6">
-	<table class="table">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>Nombre del proyecto</th>
@@ -8,11 +8,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="proyecto in ctrl.proyectos">
+			<tr href="" ng-click="ctrl.seleccionar(proyecto)" ng-repeat="proyecto in ctrl.proyectos">
 				<td ng-bind="proyecto.nombre"></td>
 				<td ng-bind="(proyecto.creador.nombre + ' ') + (proyecto.creador.apellido)"></td>
 				<td ng-repeat="users in proyecto.miembros">{{users.nombre}}</td>
 			</tr>
 		</tbody>
 	</table>
+	<br>
+	<button class="btn-primary" ng-click="ctrl.delete()">Borrar Seleccionado</button>
 </div>
