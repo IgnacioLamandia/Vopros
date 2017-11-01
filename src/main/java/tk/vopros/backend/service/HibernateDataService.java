@@ -17,14 +17,21 @@ public class HibernateDataService {
 	HibernateProyectoDAO proyectDAO = new HibernateProyectoDAO();
 	
 	public void createDatosIniciales() {
-
-		issueDAO.save(new Issue("Issue 1", TipoIssue.BUG, TipoGravedad.CRITICO, TipoPrioridad.ALTA));
-		issueDAO.save(new Issue("Issue 2", TipoIssue.BUG, TipoGravedad.GRAVE, TipoPrioridad.ALTA));
-		issueDAO.save(new Issue("Issue 3", TipoIssue.MEJORA, TipoGravedad.GRAVE, TipoPrioridad.ALTA));
-		issueDAO.save(new Issue("Issue 4", TipoIssue.MEJORA, TipoGravedad.MENOR, TipoPrioridad.MEDIA));
-		issueDAO.save(new Issue("Issue 5", TipoIssue.BUG, TipoGravedad.REGULAR, TipoPrioridad.MEDIA));
-		issueDAO.save(new Issue("Issue 6", TipoIssue.BUG, TipoGravedad.MENOR, TipoPrioridad.BAJA));
-		issueDAO.save(new Issue("Issue 7", TipoIssue.PREGUNTA, TipoGravedad.CRITICO, TipoPrioridad.ALTA));
+		Issue issue1 = new Issue("Issue 1", TipoIssue.BUG, TipoGravedad.CRITICO, TipoPrioridad.ALTA);
+		Issue issue2 = new Issue("Issue 2", TipoIssue.BUG, TipoGravedad.GRAVE, TipoPrioridad.ALTA);
+		Issue issue3 = new Issue("Issue 3", TipoIssue.MEJORA, TipoGravedad.GRAVE, TipoPrioridad.ALTA);
+		Issue issue4 = new Issue("Issue 4", TipoIssue.MEJORA, TipoGravedad.MENOR, TipoPrioridad.MEDIA);
+		Issue issue5 = new Issue("Issue 5", TipoIssue.BUG, TipoGravedad.REGULAR, TipoPrioridad.MEDIA);
+		Issue issue6 = new Issue("Issue 6", TipoIssue.BUG, TipoGravedad.MENOR, TipoPrioridad.BAJA);
+		Issue issue7 = new Issue("Issue 7", TipoIssue.PREGUNTA, TipoGravedad.CRITICO, TipoPrioridad.ALTA);
+		
+		issueDAO.save(issue1);
+		issueDAO.save(issue2);
+		issueDAO.save(issue3);
+		issueDAO.save(issue4);
+		issueDAO.save(issue5);
+		issueDAO.save(issue6);
+		issueDAO.save(issue7);
 		
 		User nachoL = new User("Nacho", "Lamandia", "nacho.lamandia@gmail.com","123");
 		User gaston = new User("Gaston", "Veliez", "gaston.veliez@gmail.com","123");
@@ -36,6 +43,7 @@ public class HibernateDataService {
 		Proyecto proyecto = new Proyecto("Vopros");
 		nachoL.nuevoProyecto(proyecto);
 		proyecto.miembros.add(gaston);
+		proyecto.issues.addAll(issueDAO.getAll());
 		proyectDAO.save(proyecto);
 	
 	}

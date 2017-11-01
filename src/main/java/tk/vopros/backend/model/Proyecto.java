@@ -22,10 +22,10 @@ public class Proyecto {
 	private Long id;
 	public String nombre;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private User creador;
 	
-	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	public List<User> miembros = new ArrayList<User>();
 	
 	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)

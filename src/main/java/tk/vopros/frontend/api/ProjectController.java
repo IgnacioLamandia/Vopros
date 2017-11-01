@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tk.vopros.backend.model.Proyecto;
 import tk.vopros.backend.model.User;
+import tk.vopros.backend.model.issue.Issue;
 import tk.vopros.backend.service.ProyectoService;
 import tk.vopros.backend.service.UserService;
 
@@ -79,5 +80,19 @@ public class ProjectController {
 
 		}
 	}
+	
+	@RequestMapping(value = "/proyecto/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Proyecto> deleteIssue(@PathVariable("id") long id) {
+        System.out.println("Fetching & Deleting Proyecto with id " + id);
+ 
+        Proyecto proyect = proyectService.getById(id);
+        if (proyect == null) {
+            System.out.println("Unable to delete. Proyecto with id " + id + " not found");
+            return new ResponseEntity<Proyecto>(HttpStatus.NOT_FOUND);
+        }
+ 
+        proyectService.delete(id);
+        return new ResponseEntity<Proyecto>(HttpStatus.NO_CONTENT);
+    }
 
 }
