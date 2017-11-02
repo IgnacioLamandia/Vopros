@@ -3,7 +3,7 @@ app.controller('NuevoIssueCtrl', function($resource,$state,$stateParams,Issue,$t
 
     var self = this;
 
-    self.issue= {"titulo":"","tipo":"","gravedad":"","prioridad":"", "asignado":""};
+    self.issue= {"titulo":"","tipo":"","gravedad":"","prioridad":"", "expiracion":"", "asignado":""};
 
     self.tipo=[ 'BUG',
     'PREGUNTA',
