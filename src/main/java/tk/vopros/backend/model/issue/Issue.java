@@ -1,12 +1,15 @@
 package tk.vopros.backend.model.issue;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Enumerated;
-import javax.persistence.EnumType;
-import javax.persistence.ManyToOne;
+import java.time.LocalDate;
+
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 import tk.vopros.backend.model.User;
 
 @Entity
@@ -26,6 +29,8 @@ public class Issue {
 	
 	@Enumerated(EnumType.ORDINAL)
 	public TipoPrioridad prioridad;
+	
+	public LocalDate expiracion;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	public User asignado;
@@ -48,6 +53,15 @@ public class Issue {
 		this.tipo = tipo;
 		this.gravedad = gravedad;
 		this.prioridad = prioridad;
+		this.asignado = asignado;
+	}
+	
+	public Issue(String titulo, TipoIssue tipo,TipoGravedad gravedad, TipoPrioridad prioridad, LocalDate expiracion, User asignado) {
+		this.titulo = titulo;
+		this.tipo = tipo;
+		this.gravedad = gravedad;
+		this.prioridad = prioridad;
+		this.expiracion = expiracion;
 		this.asignado = asignado;
 	}
 	
@@ -89,6 +103,14 @@ public class Issue {
 
 	public void setAsignado(User asignado) {
 		this.asignado = asignado;
+	}
+
+	public LocalDate getExpiracion() {
+		return expiracion;
+	}
+
+	public void setExpiracion(LocalDate expiracion) {
+		this.expiracion = expiracion;
 	}
 
 }
