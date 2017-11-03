@@ -11,6 +11,10 @@
 	<br>
 	<h4 class="lead"> <strong> Usuario asignado: </strong><select ng-model="ctrl.task.asignado" ng-options="t.nombre for t in ctrl.users"></select></h4>
 	<br>
+	<h4 class="lead"> <strong> Fecha de expiraci&oacute;n: </strong></h4>
+
+	<input type="date" id="fecha" name="first_date" ng-model=ctrl.task.expiracion>
+	<br>
 	<a ng-click="ctrl.guardarTask()" class="btn btn-primary">Guardar cambios</a>
 	<br>
     <a ng-click="ctrl.cancel()" class="btn btn-primary">Cancelar</a>
