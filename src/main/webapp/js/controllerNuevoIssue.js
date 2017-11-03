@@ -64,14 +64,20 @@ app.controller('NuevoIssueCtrl', function($resource,$state,$stateParams,Issue,$t
             console.log('issuecreado');
             self.notificarMensaje('Issue creado!');
         }, errorHandler);
-        this.issue= {"titulo":"","tipo":"","gravedad":"","prioridad":""};
+        this.issue= {"titulo":"","tipo":"","gravedad":"","prioridad":"", "expiracion":"", "asignado":""};
     };
 
     this.cancel= function(){
     }
 
 
-
+    this.inputfecha.onchange=function(){
+    	var date = new Date(self.inputfecha.value);
+    	if(date < new Date()){
+    		console.log("La fecha debe ser mayor o igual a la actual");
+    		self.inputfecha.value= datetime;
+    	}
+    }
 
     this.msgs = [];
     this.notificarMensaje = function(mensaje) {
