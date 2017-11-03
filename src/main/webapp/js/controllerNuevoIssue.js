@@ -63,6 +63,7 @@ app.controller('NuevoIssueCtrl', function($resource,$state,$stateParams,Issue,$t
         Issue.save(this.issue, function() {
             console.log('issuecreado');
             self.notificarMensaje('Issue creado!');
+            document.getElementById("feedback").textContent = "Problema creado con exito";
         }, errorHandler);
         this.issue= {"titulo":"","tipo":"","gravedad":"","prioridad":"", "expiracion":"", "asignado":""};
     };
@@ -74,8 +75,11 @@ app.controller('NuevoIssueCtrl', function($resource,$state,$stateParams,Issue,$t
     this.inputfecha.onchange=function(){
     	var date = new Date(self.inputfecha.value);
     	if(date < new Date()){
-    		console.log("La fecha debe ser mayor o igual a la actual");
-    		self.inputfecha.value= datetime;
+    		document.getElementById("errorFecha").textContent ="La fecha debe ser mayor o igual a la actual";
+    		self.inputfecha.value= self.datetime;
+    	}else{
+    		document.getElementById("errorFecha").textContent ="";
+
     	}
     }
 

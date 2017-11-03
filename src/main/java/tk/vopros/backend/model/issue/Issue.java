@@ -36,7 +36,7 @@ public class Issue {
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	public LocalDate expiracion;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	public User asignado;
 	 
 	public Issue() {}

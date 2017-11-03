@@ -10,7 +10,10 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 
@@ -20,10 +23,11 @@ public class TestSeleniumLogin {
 	
 	@BeforeClass
 	public static void inicializarDirver() {
-//		File file = new File("/usr/bin/google-chrome");
-        System.setProperty("webdriver.gecko.driver","/home/gaston/Documentos/geckodriver"); 
-//		System.setProperty("webdriver.chrome.driver",file.getAbsolutePath());
-		driver = new FirefoxDriver();
+//        System.setProperty("webdriver.gecko.driver","/home/gaston/Documentos/geckodriver"); 
+//		driver = new FirefoxDriver();
+		
+		System.setProperty("webdriver.chrome.driver","/home/gaston/Documentos/chromedriver");
+		driver = new ChromeDriver();
 		
 	}
 	
@@ -47,8 +51,8 @@ public class TestSeleniumLogin {
 		
 		//Espero 5 seg para que cargue la pag
 		
-		  driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
-
+		new WebDriverWait(driver, 10)
+		  .until(ExpectedConditions.urlToBe("http://localhost:8080/#!/main/home"));
 		
 		assertEquals(driver.getCurrentUrl(),"http://localhost:8080/#!/main/home");
 	}
