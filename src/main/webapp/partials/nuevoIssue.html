@@ -11,7 +11,8 @@
 	<br>
 	<h4 class="lead"> <strong> Fecha de expiraci&oacute;n: </strong></h4>
 
-	<div id="fecha"></div>
+	<input type="date" id="fecha" name="first_date" ng-model=ctrl.issue.expiracion>
+
 	<h4 class="lead"> <strong> Usuario asignado: </strong><select ng-model="ctrl.issue.asignado" ng-options="t.nombre for t in ctrl.users"></select></h4>
 	<br>
 	<a ng-click="ctrl.guardarIssue()" class="btn btn-primary">Guardar cambios</a>
