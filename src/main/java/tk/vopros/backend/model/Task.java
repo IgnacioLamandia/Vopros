@@ -10,7 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import tk.vopros.backend.model.issue.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import tk.vopros.backend.model.issue.TipoPrioridad;
 
 @Entity

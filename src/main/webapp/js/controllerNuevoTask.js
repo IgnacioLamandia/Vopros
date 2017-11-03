@@ -41,7 +41,7 @@ app.controller('NuevoTaskCtrl', function($resource,$timeout,$state,$stateParams,
     this.inputFecha();
 
     this.asignarFecha=function() {
-    	this.issue.expiracion= this.inputfecha.value.substring(0,10);
+    	this.task.expiracion= this.inputfecha.value.substring(0,10);
     }
 
     function errorHandler(error) {
@@ -50,10 +50,13 @@ app.controller('NuevoTaskCtrl', function($resource,$timeout,$state,$stateParams,
     
 
     this.guardarTask = function(){
+        this.asignarFecha();
+
         Task.save(this.task, function() {
             self.notificarMensaje('Tarea creada!');
+            document.getElementById("feedback").textContent = "Tarea creada con exito";
         }, errorHandler);
-        this.task= {"nombre":"","descripcion":""};
+        this.task= {"nombre":"","descripcion":"","dificultad":"","prioridad":"","asignado":"", "expiracion":""};
     };
 
     this.cancel= function(){
@@ -63,9 +66,12 @@ app.controller('NuevoTaskCtrl', function($resource,$timeout,$state,$stateParams,
     this.inputfecha.onchange=function(){
     	var date = new Date(self.inputfecha.value);
     	if(date < new Date()){
-    		console.log("La fecha debe ser mayor o igual a la actual");
-    		self.inputfecha.value= datetime;
-    	}
+    		document.getElementById("errorFecha").textContent="La fecha debe ser mayor o igual a la actual";
+    		self.inputfecha.value= self.datetime;
+    	}else{
+            document.getElementById("errorFecha").textContent="";
+
+        }
     }
 
     this.msgs = [];
