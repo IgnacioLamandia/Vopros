@@ -53,6 +53,7 @@ private static WebDriver driver= null;
 	@Test
 	public void testGuardarIssueCreadoConFechaCorrecta() {
 		driver.get("http://localhost:8080/#!/main/issue/nuevo");
+		
 		WebElement titulo= driver.findElement(By.id("tituloIssue"));
 		titulo.sendKeys("Issue test");
 		WebElement tipo= driver.findElement(By.id("tipoIssue"));
@@ -69,8 +70,10 @@ private static WebDriver driver= null;
 		fechaInput.sendKeys("01");
 		WebElement user= driver.findElement(By.id("usuarioAsignado"));
 		user.sendKeys("Gaston");
+		
 		WebElement botonGuardar=driver.findElement(By.id("save"));
 		botonGuardar.click();
+		
 		new WebDriverWait(driver, 10)
 		  .until(new ExpectedCondition<Boolean>() {
 	            public Boolean apply(WebDriver d) {
@@ -79,6 +82,12 @@ private static WebDriver driver= null;
 	        });
 		WebElement errormsg=driver.findElement(By.id("feedback"));
 		assertEquals(errormsg.getText(),"Problema creado con exito");
+		
+		
+		//Chequea que efectivamente el issue esta en la lista de issues
+		driver.get("http://localhost:8080/#!/main/issues");
+		assertTrue(driver.findElement(By.id("Issue test")) != null);
+
 
 	}
 
