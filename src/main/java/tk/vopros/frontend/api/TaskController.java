@@ -46,7 +46,7 @@ public class TaskController {
 	 
 	 @RequestMapping(value = "/task", method = RequestMethod.POST, consumes = "application/json")
 	    public void postTask(@RequestBody Task input) {
-	         Task task = new Task(input.nombre,input.descripcion,input.dificultad,input.prioridad,input.asignado);
+	         Task task = new Task(input.nombre,input.descripcion,input.dificultad,input.prioridad,input.asignado,input.expiracion);
 	         this.taskService.save(task);
 	    }
 	 
@@ -77,6 +77,10 @@ public class TaskController {
 	 
 	        currentTask.setNombre(task.nombre);
 	        currentTask.setDescripcion(task.descripcion);
+	        currentTask.setDificultad(task.dificultad);
+	        currentTask.setPrioridad(task.prioridad);
+	        currentTask.setAsignado(task.asignado);
+	        currentTask.setExpiracion(task.expiracion);
 	         
 	        taskService.update(currentTask);
 	        return new ResponseEntity<Task>(currentTask, HttpStatus.OK);
