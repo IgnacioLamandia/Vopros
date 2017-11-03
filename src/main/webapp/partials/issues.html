@@ -6,6 +6,8 @@
 				<th>Tipo</th>
 				<th>Gravedad</th>
 				<th>Prioridad</th>
+				<th>Asignado a</th>
+				<th>Expiracion</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -14,6 +16,8 @@
 				<td ng-bind="issue.tipo"></td>
 				<td ng-bind="issue.gravedad"></td>
 				<td ng-bind="issue.prioridad"></td>
+				<td ng-bind="issue.asignado.nombre"></td>
+				<td ng-bind="issue.expiracion"></td>
 
 			</tr>
 		</tbody>

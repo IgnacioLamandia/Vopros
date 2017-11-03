@@ -39,7 +39,18 @@
    		<artifactId>jackson-databind</artifactId>
    		<version>2.7.2</version>
   	</dependency>
-  	
+  	<dependency>
+    <groupId>com.fasterxml.jackson.module</groupId>
+    <artifactId>jackson-module-parameter-names</artifactId>
+</dependency>
+<dependency>
+    <groupId>com.fasterxml.jackson.datatype</groupId>
+    <artifactId>jackson-datatype-jdk8</artifactId>
+</dependency>
+<dependency>
+    <groupId>com.fasterxml.jackson.datatype</groupId>
+    <artifactId>jackson-datatype-jsr310</artifactId>
+</dependency>
   	
   	  <!-- Spring ORM -->
   <dependency>
@@ -112,7 +123,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>tk.vopros.frontend.api.VoprosController</mainClass>
+							<mainClass>tk.vopros.App</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
@@ -147,6 +158,17 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-			</plugins>
-			</build>
+			
+    
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.6.1</version>
+          <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+          </configuration>
+        </plugin>
+      </plugins>
+  </build>
 </project>

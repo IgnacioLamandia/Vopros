@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import tk.vopros.backend.model.User;
 
 @Entity
@@ -30,6 +32,8 @@ public class Issue {
 	@Enumerated(EnumType.ORDINAL)
 	public TipoPrioridad prioridad;
 	
+	
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	public LocalDate expiracion;
 	
 	@ManyToOne(cascade = CascadeType.ALL)

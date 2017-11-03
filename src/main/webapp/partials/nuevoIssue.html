@@ -9,9 +9,9 @@
 	<br>
 	<h4 class="lead"> <strong> Prioridad: </strong><select ng-model="ctrl.issue.prioridad" ng-options="t for t in ctrl.prioridad"></select></h4>
 	<br>
-	<h4 class="lead"> <strong> Fecha de expiraci&oacute;n: </strong> D&iacute;a: <select ng-model="ctrl.expiracion.day" ng-options="d for d in ctrl.days"></select>
-																		  Mes: <select ng-model="ctrl.expiracion.month" ng-options="m for m in ctrl.months"></select>
-																		  A&ntilde;o: <select ng-model="ctrl.expiracion.year" ng-options="y for y in ctrl.years"></select></h4>
+	<h4 class="lead"> <strong> Fecha de expiraci&oacute;n: </strong></h4>
+
+	<div id="fecha"></div>
 	<h4 class="lead"> <strong> Usuario asignado: </strong><select ng-model="ctrl.issue.asignado" ng-options="t.nombre for t in ctrl.users"></select></h4>
 	<br>
 	<a ng-click="ctrl.guardarIssue()" class="btn btn-primary">Guardar cambios</a>
