@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tk.vopros.backend.model.Proyecto;
 import tk.vopros.backend.model.User;
-import tk.vopros.backend.model.issue.Issue;
 import tk.vopros.backend.service.ProyectoService;
 import tk.vopros.backend.service.UserService;
 
@@ -60,6 +59,7 @@ public class ProjectController {
 		}else {
 			proyect.nombre = proyecto.nombre;
 			proyect.issues = proyecto.issues;
+			proyect.tasks = proyecto.tasks;
 			proyect.miembros = proyecto.miembros;
 			this.proyectService.updateProyecto(proyect);
 			return new ResponseEntity<Void>(HttpStatus.OK);

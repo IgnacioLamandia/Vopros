@@ -31,6 +31,9 @@ public class Proyecto {
 	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	public Set<Issue> issues = new HashSet<Issue>();
 	
+	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	public Set<Task> tasks = new HashSet<Task>();
+	
 	public Proyecto(){
 		
 	}
@@ -76,7 +79,13 @@ public class Proyecto {
 	public void setIssues(Set<Issue> issues) {
 		this.issues = issues;
 	}
-	
-	
+
+	public Set<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(Set<Task> tasks) {
+		this.tasks = tasks;
+	}
 	
 }
