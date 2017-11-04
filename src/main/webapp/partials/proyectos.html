@@ -9,12 +9,12 @@
 		</thead>
 		<tbody>
 			<tr href="" ng-click="ctrl.seleccionar(proyecto)" ng-repeat="proyecto in ctrl.proyectos">
-				<td ng-bind="proyecto.nombre"></td>
+				<td id="{{proyecto.nombre}}" ng-bind="proyecto.nombre"></td>
 				<td ng-bind="(proyecto.creador.nombre + ' ') + (proyecto.creador.apellido)"></td>
 				<td ng-repeat="users in proyecto.miembros">{{users.nombre}}</td>
 			</tr>
 		</tbody>
 	</table>
 	<br>
-	<button class="btn-primary" ng-click="ctrl.delete()">Borrar Seleccionado</button>
+	<button id="borrar" class="btn-primary" ng-click="ctrl.delete()">Borrar Seleccionado</button>
 </div>
