@@ -11,8 +11,8 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr href="" ng-click="ctrl.seleccionar(task)" ng-repeat="task in ctrl.tasks">
-				<td id="{{task.nombre}}">{{task.nombre}}</td>
+			<tr id="{{task.nombre}}" href="" ng-click="ctrl.seleccionar(task)" ng-repeat="task in ctrl.tasks">
+				<td >{{task.nombre}}</td>
 				<td ng-bind="task.descripcion"></td>
 				<td ng-bind="task.prioridad"></td>
 				<td ng-bind="task.dificultad"></td>

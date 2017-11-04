@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestSeleniumFechaDeExpiracion {
@@ -83,6 +84,10 @@ private static WebDriver driver= null;
 		
 		//Chequea que efectivamente el issue esta en la lista de issues
 		driver.get("http://localhost:8080/#!/main/issues");
+
+		new WebDriverWait(driver, 10)
+		  .until(ExpectedConditions.visibilityOfElementLocated(By.id("Issue test")));
+		
 		assertTrue(driver.findElement(By.id("Issue test")) != null);
 
 
@@ -139,6 +144,8 @@ private static WebDriver driver= null;
 		
 		//Chequea que efectivamente el task esta en la lista de tasks
 		driver.get("http://localhost:8080/#!/main/tasks");
+		new WebDriverWait(driver, 10)
+		  .until(ExpectedConditions.visibilityOfElementLocated(By.id("Task test")));
 		assertTrue(driver.findElement(By.id("Task test")) != null);
 
 

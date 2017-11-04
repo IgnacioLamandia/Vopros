@@ -4,7 +4,7 @@ app.controller('TasksCtrl', function($resource,$timeout,$state,$stateParams,Task
     var self = this;
 
     self.tasks = [];
-    self.task = {};
+    self.task = null;
 
     function errorHandler(error) {
         self.notificarError(error.data);
@@ -18,8 +18,22 @@ app.controller('TasksCtrl', function($resource,$timeout,$state,$stateParams,Task
 
 
 	this.seleccionar= function(tarea){
-		console.log(tarea);
-		this.task = tarea;
+		 var tr =document.getElementById(tarea.nombre);
+        if(tarea == this.task){
+            this.task = null;
+            tr.style.backgroundColor = 'white';
+        }else{
+
+            if(this.task !== null){
+                document.getElementById(this.task.nombre).style.backgroundColor='white';
+            }
+            
+            this.task = tarea;
+            tr.style.backgroundColor = 'red';
+
+        }
+        console.log(tarea);
+
 	}
 
 	this.delete= function(){

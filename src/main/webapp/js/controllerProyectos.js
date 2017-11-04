@@ -4,7 +4,7 @@ app.controller('ProyectosCtrl', function($resource,$timeout,$state,$stateParams,
     var self = this;
 
     self.proyectos = [];
-    self.proyecto = {};
+    self.proyecto = null;
 
     function errorHandler(error) {
         self.notificarError(error.data);
@@ -18,7 +18,22 @@ app.controller('ProyectosCtrl', function($resource,$timeout,$state,$stateParams,
 
 
 	this.seleccionar= function(proyecto){
-		this.proyecto = proyecto;
+        var tr =document.getElementById(proyecto.nombre);
+        if(proyecto == this.proyecto){
+            this.proyecto = null;
+            tr.style.backgroundColor = 'white';
+        }else{
+
+            if(this.proyecto !== null){
+                document.getElementById(this.proyecto.nombre).style.backgroundColor='white';
+            }
+            
+            this.proyecto = proyecto;
+            tr.style.backgroundColor = 'red';
+
+        }
+                console.log(proyecto);
+
 	}
 
 	this.delete= function(){

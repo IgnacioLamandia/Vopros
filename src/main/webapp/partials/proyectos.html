@@ -8,8 +8,8 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr href="" ng-click="ctrl.seleccionar(proyecto)" ng-repeat="proyecto in ctrl.proyectos">
-				<td id="{{proyecto.nombre}}" ng-bind="proyecto.nombre"></td>
+			<tr id="{{proyecto.nombre}}" href="" ng-click="ctrl.seleccionar(proyecto)" ng-repeat="proyecto in ctrl.proyectos">
+				<td ng-bind="proyecto.nombre"></td>
 				<td ng-bind="(proyecto.creador.nombre + ' ') + (proyecto.creador.apellido)"></td>
 				<td ng-repeat="users in proyecto.miembros">{{users.nombre}}</td>
 			</tr>

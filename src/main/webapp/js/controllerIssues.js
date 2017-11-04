@@ -4,7 +4,7 @@ app.controller('IssuesCtrl', function($resource,$timeout,$state,$stateParams,Iss
     var self = this;
 
     self.issues = [];
-    self.issue = {};
+    self.issue = null;
 
 
 
@@ -24,7 +24,22 @@ app.controller('IssuesCtrl', function($resource,$timeout,$state,$stateParams,Iss
 
     this.seleccionar= function(problema){
         console.log(problema);
-        this.issue = problema;
+        var tr =document.getElementById(problema.titulo);
+        if(problema == this.issue){
+        	this.issue = null;
+			tr.style.backgroundColor = 'white';
+        }else{
+
+        	if(this.issue !== null){
+        		document.getElementById(this.issue.titulo).style.backgroundColor='white';
+        	}
+        	
+        	this.issue = problema;
+        	tr.style.backgroundColor = 'red';
+
+        }
+
+
     }
 
     this.delete= function(){
