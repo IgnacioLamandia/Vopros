@@ -19,17 +19,20 @@ import java.util.HashSet;
 @Entity
 public class Proyecto {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	public Long id;
 	public String nombre;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private User creador;
 	
-	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
+	@ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	public List<User> miembros = new ArrayList<User>();
 	
 	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	public Set<Issue> issues = new HashSet<Issue>();
+	
+	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	public Set<Task> tasks = new HashSet<Task>();
 	
 	public Proyecto(){
 		
@@ -76,7 +79,13 @@ public class Proyecto {
 	public void setIssues(Set<Issue> issues) {
 		this.issues = issues;
 	}
-	
-	
+
+	public Set<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(Set<Task> tasks) {
+		this.tasks = tasks;
+	}
 	
 }

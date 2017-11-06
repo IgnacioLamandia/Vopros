@@ -59,6 +59,7 @@ public class ProjectController {
 		}else {
 			proyect.nombre = proyecto.nombre;
 			proyect.issues = proyecto.issues;
+			proyect.tasks = proyecto.tasks;
 			proyect.miembros = proyecto.miembros;
 			this.proyectService.updateProyecto(proyect);
 			return new ResponseEntity<Void>(HttpStatus.OK);
@@ -79,5 +80,19 @@ public class ProjectController {
 
 		}
 	}
+	
+	@RequestMapping(value = "/proyecto/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Proyecto> deleteIssue(@PathVariable("id") long id) {
+        System.out.println("Fetching & Deleting Proyecto with id " + id);
+ 
+        Proyecto proyect = proyectService.getById(id);
+        if (proyect == null) {
+            System.out.println("Unable to delete. Proyecto with id " + id + " not found");
+            return new ResponseEntity<Proyecto>(HttpStatus.NOT_FOUND);
+        }
+ 
+        proyectService.delete(id);
+        return new ResponseEntity<Proyecto>(HttpStatus.NO_CONTENT);
+    }
 
 }

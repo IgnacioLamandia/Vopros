@@ -5,6 +5,16 @@
   <meta charset="utf-8">
   <title>Vopros</title>
 
+<script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+<!-- polyfiller file to detect and load polyfills -->
+<script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
+<script>
+  webshims.setOptions('waitReady', false);
+  webshims.setOptions('forms-ext', {types: 'date'});
+  webshims.polyfill('forms forms-ext');
+</script>
+
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -38,6 +48,7 @@
 <script src="js/controller.js"></script>
 <script src="js/controllerTasks.js"></script>
 <script src="js/controllerIssues.js"></script>
+<script src="js/controllerProyectos.js"></script>
 <script src="js/controllerNuevoUser.js"></script>
 <script src="js/controllerNuevoIssue.js"></script>
 <script src="js/controllerNuevoTask.js"></script>

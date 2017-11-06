@@ -7,15 +7,17 @@
 				<th>Prioridad</th>
 				<th>Dificultad</th>
 				<th>Asignado a</th>
+				<th>Expiracion</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr href="" ng-click="ctrl.seleccionar(task)" ng-repeat="task in ctrl.tasks">
+			<tr id="{{task.nombre}}" href="" ng-click="ctrl.seleccionar(task)" ng-repeat="task in ctrl.tasks">
 				<td >{{task.nombre}}</td>
 				<td ng-bind="task.descripcion"></td>
 				<td ng-bind="task.prioridad"></td>
 				<td ng-bind="task.dificultad"></td>
 				<td ng-bind="task.asignado.nombre"></td>
+				<td ng-bind="task.expiracion"></td>
 			</tr>
 		</tbody>
 	</table>

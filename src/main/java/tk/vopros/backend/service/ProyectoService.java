@@ -34,9 +34,12 @@ public class ProyectoService {
 	}
 
 	public Proyecto getById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return proyectoDAO.getById(id);
 	}
-
+	
+	@Transactional
+	public void delete(Long id) {
+		proyectoDAO.delete(this.getById(id));
+	}
 
 }

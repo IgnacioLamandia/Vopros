@@ -1,5 +1,7 @@
 package tk.vopros.backend.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import tk.vopros.backend.model.issue.TipoPrioridad;
 
@@ -26,6 +30,8 @@ public class Task {
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	public User asignado;
 	
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	public LocalDate expiracion;
 	
 	public Task(){
 		
@@ -44,6 +50,15 @@ public class Task {
 		this.dificultad = dificultad;
 		this.prioridad = prioridad;
 		this.asignado = asignado;
+	}
+	
+	public Task(String nombre, String descripcion, NivelDificultad dificultad, TipoPrioridad prioridad, User asignado, LocalDate expiracion) {
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.dificultad = dificultad;
+		this.prioridad = prioridad;
+		this.asignado = asignado;
+		this.expiracion = expiracion;
 	}
 	
 	public Task(String nombre, String descripcion, User asignado) {
@@ -84,6 +99,20 @@ public class Task {
 		this.dificultad = dificultad;
 	}
 	
+	public User getAsignado(){
+		return asignado;
+	}
 	
+	public void setAsignado(User nuevoAsignado){
+		this.asignado = nuevoAsignado;
+	}
+	
+	public LocalDate getExpiracion() {
+		return expiracion;
+	}
+
+	public void setExpiracion(LocalDate expiracion) {
+		this.expiracion = expiracion;
+	}
 
 }

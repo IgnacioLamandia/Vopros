@@ -2,8 +2,13 @@ app.controller('NuevoTaskCtrl', function($resource,$timeout,$state,$stateParams,
 	'use strict';
 
     var self = this;
+    
+    self.currentdate = new Date(); 
+	self.datetime = this.currentdate.getFullYear()+"-"+(this.currentdate.getMonth()+1)  + "-" 
+				+this.currentdate.getDate() 
+                ;
 
-    self.task= {"nombre":"","descripcion":"","dificultad":"","prioridad":"","asignado":""};
+    self.task= {"nombre":"","descripcion":"","dificultad":"","prioridad":"","asignado":"", "expiracion":""};
     self.dificultad=[   'XXS',
     'XS',
     'S',
@@ -17,6 +22,7 @@ app.controller('NuevoTaskCtrl', function($resource,$timeout,$state,$stateParams,
     'MEDIA',
     'ALTA'];
 
+    self.inputfecha = document.getElementById("fecha");
 
     this.getUsers= function(){
         Users.query(function(data) {
@@ -26,7 +32,17 @@ app.controller('NuevoTaskCtrl', function($resource,$timeout,$state,$stateParams,
 
     this.getUsers();
 
+    this.inputFecha=function() {
+        console.log(this.datetime);
+        this.inputfecha.setAttribute("value", this.datetime);
+        this.inputfecha.value = this.datetime;
+    }
+    
+    this.inputFecha();
 
+    this.asignarFecha=function() {
+    	this.task.expiracion= this.inputfecha.value.substring(0,10);
+    }
 
     function errorHandler(error) {
         self.notificarError(error.data);
@@ -34,17 +50,29 @@ app.controller('NuevoTaskCtrl', function($resource,$timeout,$state,$stateParams,
     
 
     this.guardarTask = function(){
+        this.asignarFecha();
+
         Task.save(this.task, function() {
             self.notificarMensaje('Tarea creada!');
+            document.getElementById("feedback").textContent = "Tarea creada con exito";
         }, errorHandler);
-        this.task= {"nombre":"","descripcion":""};
+        this.task= {"nombre":"","descripcion":"","dificultad":"","prioridad":"","asignado":"", "expiracion":""};
     };
 
     this.cancel= function(){
     }
 
 
+    this.inputfecha.onchange=function(){
+    	var date = new Date(self.inputfecha.value);
+    	if(date < new Date()){
+    		document.getElementById("errorFecha").textContent="La fecha debe ser mayor o igual a la actual";
+    		self.inputfecha.value= self.datetime;
+    	}else{
+            document.getElementById("errorFecha").textContent="";
 
+        }
+    }
 
     this.msgs = [];
     this.notificarMensaje = function(mensaje) {

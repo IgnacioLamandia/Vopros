@@ -46,7 +46,7 @@ public class IssueController {
 	 
 	 @RequestMapping(value = "/issue", method = RequestMethod.POST, consumes = "application/json")
 	    public void postIssue(@RequestBody Issue input) {
-	         Issue issue = new Issue(input.titulo,input.tipo,input.gravedad,input.prioridad,input.asignado);
+	         Issue issue = new Issue(input.titulo,input.tipo,input.gravedad,input.prioridad,input.expiracion,input.asignado);
 	         this.issueService.save(issue);
 	    }
 	 
@@ -79,6 +79,8 @@ public class IssueController {
 	        currentIssue.setTipo(issue.tipo);
 	        currentIssue.setGravedad(issue.gravedad);
 	        currentIssue.setPrioridad(issue.prioridad);
+	        currentIssue.setExpiracion(issue.expiracion);
+	        currentIssue.setAsignado(issue.asignado);
 	         
 	        issueService.update(currentIssue);
 	        return new ResponseEntity<Issue>(currentIssue, HttpStatus.OK);

@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -23,12 +23,12 @@ public class TestSeleniumLogin {
 	@BeforeClass
 	//Driver gecko https://github.com/mozilla/geckodriver/releases
 	public static void inicializarDirver() {
-//		File file = new File("/usr/bin/google-chrome");
-        System.setProperty("webdriver.gecko.driver","/home/gaston/Documentos/geckodriver"); 
-//		System.setProperty("webdriver.chrome.driver",file.getAbsolutePath());
-		driver = new FirefoxDriver();
-		driver.get("http://localhost:8080/");
-
+//        System.setProperty("webdriver.gecko.driver","/home/gaston/Documentos/geckodriver"); 
+//		driver = new FirefoxDriver();
+		
+		System.setProperty("webdriver.chrome.driver","/home/gaston/Documentos/chromedriver");
+		driver = new ChromeDriver();
+		
 	}
 	
 	@AfterClass
@@ -48,8 +48,10 @@ public class TestSeleniumLogin {
 
 		btnAccept.click();
 		
-
-		//Espero 20 seg para que cargue la pag
+		//Espero 5 seg para que cargue la pag
+		
+		new WebDriverWait(driver, 10)
+		  .until(ExpectedConditions.urlToBe("http://localhost:8080/#!/main/home"));
 		
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		
