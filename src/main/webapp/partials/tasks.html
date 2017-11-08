@@ -3,11 +3,12 @@
 		<thead>
 			<tr>
 				<th>Nombre</th>
-				<th>Descripcion</th>
+				<th>Descripci&oacute;n</th>
 				<th>Prioridad</th>
 				<th>Dificultad</th>
-				<th>Asignado a</th>
-				<th>Expiracion</th>
+				<th>Estado</th>
+				<th>Asignado</th>
+				<th>Expiraci&oacute;n</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -16,6 +17,7 @@
 				<td ng-bind="task.descripcion"></td>
 				<td ng-bind="task.prioridad"></td>
 				<td ng-bind="task.dificultad"></td>
+				<td ng-bind="task.estado"></td>
 				<td ng-bind="task.asignado.nombre"></td>
 				<td ng-bind="task.expiracion"></td>
 			</tr>
