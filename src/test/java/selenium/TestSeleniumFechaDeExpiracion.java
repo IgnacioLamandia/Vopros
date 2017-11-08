@@ -120,6 +120,8 @@ private static WebDriver driver= null;
 		dificultad.sendKeys("XXL");
 		WebElement prioridad= driver.findElement(By.id("prioridadTask"));
 		prioridad.sendKeys("BAJA");
+		WebElement estado= driver.findElement(By.id("estadoTask"));
+		estado.sendKeys("CERRADO");
 		WebElement fechaInput = driver.findElement(By.name("first_date"));
 		fechaInput.sendKeys(Keys.TAB);		fechaInput.sendKeys(Keys.TAB);
 		fechaInput.sendKeys("2018");
