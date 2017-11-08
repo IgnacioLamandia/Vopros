@@ -8,7 +8,7 @@ app.controller('NuevoTaskCtrl', function($resource,$timeout,$state,$stateParams,
 				+this.currentdate.getDate() 
                 ;
 
-    self.task= {"nombre":"","descripcion":"","dificultad":"","prioridad":"","estado":'NUEVO',"asignado":"", "expiracion":""};
+    self.task= {"nombre":"","descripcion":"","dificultad":"","prioridad":"","estado":"","asignado":"", "expiracion":""};
     self.dificultad=[   'XXS',
     'XS',
     'S',
