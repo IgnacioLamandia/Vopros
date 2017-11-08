@@ -8,7 +8,7 @@ app.controller('NuevoTaskCtrl', function($resource,$timeout,$state,$stateParams,
 				+this.currentdate.getDate() 
                 ;
 
-    self.task= {"nombre":"","descripcion":"","dificultad":"","prioridad":"","asignado":"", "expiracion":""};
+    self.task= {"nombre":"","descripcion":"","dificultad":"","prioridad":"","estado":'NUEVO',"asignado":"", "expiracion":""};
     self.dificultad=[   'XXS',
     'XS',
     'S',
@@ -21,6 +21,12 @@ app.controller('NuevoTaskCtrl', function($resource,$timeout,$state,$stateParams,
     self.prioridad = ['BAJA',
     'MEDIA',
     'ALTA'];
+
+	self.estado = ['NUEVO',
+	'EN_PROGRESO',
+	'PARA_TESTEAR',
+	'CERRADO',
+	'INVESTIGAR']
 
     self.inputfecha = document.getElementById("fecha");
 
