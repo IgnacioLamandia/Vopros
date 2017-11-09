@@ -61,6 +61,20 @@ public class UserController {
 	
 	
 	
+	@RequestMapping(value = "/user/byUsername/{username}", method = RequestMethod.GET, produces = "application/json")   
+	public ResponseEntity<User> getUserByUsername(@PathVariable("username") String user) {
+
+			User result = this.userService.getByUsername(user);
+			System.out.println(result.proyectos);
+			if(result == null) {return new ResponseEntity<User>(HttpStatus.NOT_FOUND);};
+			return new ResponseEntity<User>(result,HttpStatus.OK);
+
+			
+			
+
+	}
+	
+	
 
 }
 

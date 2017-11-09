@@ -1,17 +1,24 @@
 <div>
 	<h2>Nuevo usuario</h2>
 	<br>
+	<h4 class="lead"> <strong> Usuario: </strong>  <span id="usuario" ng-bind="ctrl.user.usuario"></span> </h4>	
+	<input ng-model="ctrl.user.usuario">
+	<br>
     <h4 class="lead"> <strong> Nombre: </strong>  <span id="nombre" ng-bind="ctrl.user.nombre"></span> </h4>	
 	<input ng-model="ctrl.user.nombre">
 	<br>
-	<h4 class="lead"> <strong> Apellido: </strong>  <span id="nombre" ng-bind="ctrl.user.apellido"></span> </h4>	
+	<h4 class="lead"> <strong> Apellido: </strong>  <span id="apellido" ng-bind="ctrl.user.apellido"></span> </h4>	
 	<input ng-model="ctrl.user.apellido">
 	<br>
-    <h4 class="lead"> <strong> Email: </strong>  <span id="nombre" ng-bind="ctrl.user.email"></span> </h4>	
+    <h4 class="lead"> <strong> Email: </strong>  <span id="mail" ng-bind="ctrl.user.email"></span> </h4>	
 	<input ng-model="ctrl.user.email">
 	<br>
+	<h4 class="lead"> <strong> Contraseña: </strong>  <input type="password" ng-model="ctrl.user.contrasenha">
 	<br>
 	<a ng-click="ctrl.guardarUser()" class="btn btn-primary">Guardar cambios</a>
 	<br>
     <a ng-click="ctrl.cancel()" class="btn btn-primary">Cancelar</a>
+    <br>
+    <a ng-click="ctrl.volver()" class="btn btn-primary">Volver atras</a>
+
 </div>

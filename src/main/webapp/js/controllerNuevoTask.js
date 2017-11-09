@@ -58,7 +58,7 @@ app.controller('NuevoTaskCtrl', function($resource,$timeout,$state,$stateParams,
     this.guardarTask = function(){
         this.asignarFecha();
 
-        Task.save(this.task, function() {
+        Task.save({idProyecto:$stateParams.proyectoId},this.task, function() {
             self.notificarMensaje('Tarea creada!');
             document.getElementById("feedback").textContent = "Tarea creada con exito";
         }, errorHandler);

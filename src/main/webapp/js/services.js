@@ -7,7 +7,7 @@ app.factory('Issues', function($resource) {
 });
 
 app.factory('Issue', function($resource){
-    return $resource('/issue/:id', {'id': '@id'}, {
+    return $resource('/issue/:id/:idProyecto', {'id': '@id','idProyecto':'@idProyecto'}, {
         'query': {method: 'GET'},
         'save': {method: 'POST'},
         'update': {method: 'PUT'},
@@ -18,6 +18,15 @@ app.factory('Issue', function($resource){
 app.factory('Users', function($resource) {
     return $resource('/users' , {
     	'query': { method: 'GET', isArray: true},
+
+
+        
+    });
+});
+
+app.factory('UserByUsername', function($resource) {
+    return $resource('/user/byUsername/:username',{'username':'@username'} , {
+        'query': { method: 'GET'}
 
 
         
@@ -69,7 +78,7 @@ app.factory('Tasks', function($resource) {
 
 
 app.factory('Task', function($resource) {
-    return $resource('/task/:id', {'id': '@id'}, {
+    return $resource('/task/:id/:idProyecto', {'id': '@id','idProyecto':'@idProyecto'}, {
         'save': {method: 'POST'},
         'query': {method: 'GET'},
         'update': {method: 'PUT'},

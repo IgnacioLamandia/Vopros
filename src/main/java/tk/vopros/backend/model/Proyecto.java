@@ -18,7 +18,7 @@ import java.util.HashSet;
 
 @Entity
 public class Proyecto {
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Long id;
 	public String nombre;
 	
@@ -31,7 +31,7 @@ public class Proyecto {
 	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	public Set<Issue> issues = new HashSet<Issue>();
 	
-	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
 	public Set<Task> tasks = new HashSet<Task>();
 	
 	public Proyecto(){

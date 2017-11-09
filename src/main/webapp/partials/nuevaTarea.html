@@ -15,7 +15,7 @@
 	<input type="date" id="fecha" name="first_date" ng-model=ctrl.task.expiracion>
 	<p id="errorFecha"></p>
 	<br>
-	<h4 class="lead"> <strong> Usuario asignado: </strong><select id="usuarioAsignado" ng-model="ctrl.task.asignado" ng-options="t.nombre for t in ctrl.users"></select></h4>
+	<h4 class="lead"> <strong> Usuario asignado: </strong><select id="usuarioAsignado" ng-model="ctrl.task.asignado" ng-options="t.usuario for t in ctrl.users"></select></h4>
 	<br>
 	
 	<a id="save" ng-click="ctrl.guardarTask()" class="btn btn-primary">Guardar cambios</a>

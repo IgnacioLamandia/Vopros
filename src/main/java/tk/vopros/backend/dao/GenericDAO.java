@@ -1,5 +1,6 @@
 package tk.vopros.backend.dao;
 
+import java.math.BigInteger;
 import java.util.List;
 
 
@@ -27,18 +28,22 @@ public class GenericDAO<T> {
 		this.entityType = entityType;
 	}
 
-	public void save(T object) {
+	public long save(T object) {
 		Session session = sessionFactory.openSession();
+		Long lastId = null;
 		try {
 			session.beginTransaction();
-			session.save(object);
+			lastId =(Long)session.save(object);
 			session.getTransaction().commit();
+			System.out.println(lastId +"ACA ESTA LA IDDDDDD");
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			throw new RuntimeException(e);
 		} finally {
 			session.close();
 		}
+		return lastId;
+
 	}
 
 	public void update(T object) {

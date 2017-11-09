@@ -2,7 +2,7 @@ app.controller('LoginCtrl', function($resource,$timeout,$location,$state,Auth) {
 	'use strict';
 	var self = this;
 
-    self.credentials = {nombre:'', contrasenha:''};
+    self.credentials = {usuario:'', contrasenha:''};
 
     this.login = function(){
     	$('.error').html("");
@@ -14,7 +14,11 @@ app.controller('LoginCtrl', function($resource,$timeout,$location,$state,Auth) {
     }
 
     this.ingresar = function(){
-    	$state.go('main.home');
+    	$state.go('proyectos',{username:this.credentials.usuario});
+    }
+
+    this.registro = function(){
+        $state.go('nuevoUser');
     }
 
         function errorHandler(error) {

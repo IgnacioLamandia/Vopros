@@ -11,11 +11,19 @@ console.log("funco");
       templateUrl: "partials/paginaLogeo.html",
       controller: "LoginCtrl as ctrl"
     })
+
+    .state('proyectos',{
+      url: "/proyectos",
+      templateUrl:"partials/proyectosUser.html",
+      controller: "ProyectosUserCtrl as ctrl",
+      params:{username:null}
+    })
   
     .state('main', {
       url: "/main",
       templateUrl: "partials/main.html",
-      controller: "AppCtrl as ctrl"
+      controller: "AppCtrl as ctrl",
+      params:{proyectoId:null,username:null}
     })
   
   .state('main.home', {
@@ -49,7 +57,7 @@ console.log("funco");
       controller: "ProyectosCtrl as ctrl"
     })
 
-    .state('main.nuevoUser',{
+    .state('nuevoUser',{
         url:"/users/nuevo",
         templateUrl:"partials/nuevoUser.html",
         controller: "NuevoUserCtrl as ctrl"
@@ -67,10 +75,11 @@ console.log("funco");
         controller: "NuevoIssueCtrl as ctrl"
     })
 
-    .state('main.nuevoProyecto',{
+    .state('nuevoProyecto',{
         url:"/proyecto/nuevo",
         templateUrl:"partials/nuevoProyecto.html",
-        controller: "NuevoProyectoCtrl as ctrl"
+        controller: "NuevoProyectoCtrl as ctrl",
+        params:{username:null}
     })
 
 

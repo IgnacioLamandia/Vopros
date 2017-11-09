@@ -24,10 +24,10 @@ public class HibernateUserDAO extends GenericDAO<User>{
 		try {
 			session.beginTransaction();
 			String hql = "from " + "User" + 
-						" u " + "where u.nombre = :unNombre " 
+						" u " + "where u.usuario = :unNombre " 
 							  +   "and u.contrasenha = :unaContrasenha";
 			Query<User> query = session.createQuery(hql, User.class);
-			query.setParameter("unNombre", user.nombre);
+			query.setParameter("unNombre", user.usuario);
 			query.setParameter("unaContrasenha", user.contrasenha);
 			return !query.list().isEmpty();
 		} catch (HibernateException e) {
@@ -45,10 +45,28 @@ public class HibernateUserDAO extends GenericDAO<User>{
 		try {
 			session.beginTransaction();
 			String hql = "from " + "User" + 
-						" u " + "where u.nombre like :unNombre";
+						" u " + "where u.usuario like :unNombre";
 			Query<User> query = session.createQuery(hql, User.class);
-			query.setParameter("unNombre", nombreBuscado);
+			query.setParameter("unNombre", "%"+nombreBuscado+"%");
 			return query.list();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			throw new RuntimeException(e);
+		} finally {
+			session.close();
+		}
+	}
+
+	@SuppressWarnings("deprecation")
+	public User getByUsername(String username) {
+		Session session = sessionFactory.openSession();
+		try {
+			session.beginTransaction();
+			String hql = "from " + "User" + 
+						" u " + "where u.usuario = :unNombre";
+			Query<User> query = session.createQuery(hql, User.class);
+			query.setParameter("unNombre", username);
+			return query.getSingleResult();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			throw new RuntimeException(e);

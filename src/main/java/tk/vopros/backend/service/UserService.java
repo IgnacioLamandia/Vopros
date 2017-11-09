@@ -31,6 +31,18 @@ public class UserService {
 	public User getById(Long id) {
 		return userDAO.getById(id);
 	}
+	
+	@Transactional
+	public User getByUsername(String username) {
+		return userDAO.getByUsername(username);
+	}
+	
+	
+	@Transactional
+	public void updateUser(User user) {
+		userDAO.update(user);
+	}
+	
 	@Transactional
 	public Boolean validate(User user){
 		return userDAO.validate(user);

@@ -1,10 +1,9 @@
-app.controller('NuevoProyectoCtrl', function($resource,$scope,$state,$stateParams,$timeout,UserSearch,Proyecto,Users) {
+app.controller('NuevoProyectoCtrl', function($resource,$scope,$state,$stateParams,$timeout,UserSearch,Proyecto,Users,UserByUsername) {
 	'use strict';
 
     var self = this;
 
     self.proyecto= {"nombre":"","miembros":[]};
-    self.users = [];
     self.creador={};
     self.nombreABuscar = "";
     self.resultados = [];
@@ -15,9 +14,18 @@ app.controller('NuevoProyectoCtrl', function($resource,$scope,$state,$stateParam
 
 
 
+
     function errorHandler(error) {
         self.notificarError(error.data);
     }
+
+        this.getUsuario= function(){
+        console.log($stateParams.username);
+        UserByUsername.query({username:$stateParams.username},function(data){
+            self.notificarMensaje("usuario encontrado");
+            self.creador= data;
+        },errorHandler);
+    };
     
 
     this.guardarProyecto = function(){
@@ -41,21 +49,23 @@ app.controller('NuevoProyectoCtrl', function($resource,$scope,$state,$stateParam
 
 
     }
+    this.proyectos=function(){
+        $state.go('proyectos',{username:this.creador.usuario});
+    }
 
     this.addMiembro = function(usuario){
         this.proyecto.miembros.push(usuario);
     }
 
-    this.getUsers= function(){
-        Users.query(function(data){
-            console.log(data);
-            self.users = data;
-        },errorHandler);
-    }
 
-    this.getUsers();
+
+    this.getUsuario();
 
     this.cancel= function(){
+        this.proyecto = {"nombre":"","miembros":[]};
+        this.resultados = [];
+        this.nombreABuscar = "";
+        
     }
 
 
