@@ -68,17 +68,19 @@ public class TaskController {
 		         
 		         proyecto.tasks.add(task);
 		         this.proyectoService.updateProyecto(proyecto);
+		         try {
+			         notificarIntegrantes(proyecto,"Nueva tarea agregada a "+proyecto.nombre,"La tarea " +task.nombre+ " ha sido agregada a su proyecto.");
+
+		         }
+		         catch(Exception e) {
+		        	 e.printStackTrace();
+		         }
 		         return new ResponseEntity<Void>(HttpStatus.OK);
 
 		 	}
 
 	         
-//	         MimeMessage msg = sender.createMimeMessage();
-//	         MimeMessageHelper msgHelper = new MimeMessageHelper(msg,true);
-//	         msgHelper.setTo("gastonveliez95@gmail.com");
-//	         msgHelper.setText("Test task completa");
-//	         msgHelper.setSubject("test spring boot mail");
-//	         sender.send(msg);
+
 
 	    }
 	 
@@ -101,6 +103,13 @@ public class TaskController {
     		proyecto.tasks.remove(reference);
 
 	        proyectoService.updateProyecto(proyecto);
+	         try {
+				notificarIntegrantes(proyecto,"Tarea eliminada en proyecto  "+proyecto.nombre,"La tarea " +task.nombre+ " ha sido borrada de su proyecto.");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 	        
 	        //	        taskService.delete(id);
 	        return new ResponseEntity<Task>(HttpStatus.OK);
@@ -129,5 +138,18 @@ public class TaskController {
 	        return new ResponseEntity<Task>(currentTask, HttpStatus.OK);
 	    }
 	 
+	    
+	    private void notificarIntegrantes(Proyecto proyecto,String asunto,String contenido)throws Exception {
+	         MimeMessage msg = sender.createMimeMessage();
+	         MimeMessageHelper msgHelper = new MimeMessageHelper(msg,true); 
+	         String[] tos = new String[proyecto.miembros.size()];;
+	         for(int i=0;i<proyecto.miembros.size();i++) {
+	        	 tos[i]=proyecto.miembros.get(i).email;
+	         };
+	         msgHelper.setTo(tos);
+	         msgHelper.setText(contenido);
+	         msgHelper.setSubject(asunto);
+	         sender.send(msg);
+	    }
 
 }

@@ -2,10 +2,14 @@ package tk.vopros.frontend.api;
 
 import java.util.List;
 
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +30,9 @@ public class IssueController {
 	
 	@Autowired
 	ProyectoService proyectoService = new ProyectoService();
+	
+	@Autowired
+	JavaMailSender sender;
 	
 	
 	 @RequestMapping(value = "/issues", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -65,6 +72,13 @@ public class IssueController {
 	        	 System.out.println(i.titulo);
 	         }
 	         this.proyectoService.updateProyecto(proyecto);
+	         try {
+		         notificarIntegrantes(proyecto,"Nuevo problema agregado a "+proyecto.nombre,"El issue " +issue.titulo + " ha sido agregado a su proyecto.");
+
+	         }
+	         catch(Exception e) {
+	        	 e.printStackTrace();
+	         }
 	         return new ResponseEntity<Void>(HttpStatus.OK);
 		 	}
 	    }
@@ -113,6 +127,19 @@ public class IssueController {
 	         
 	        issueService.update(currentIssue);
 	        return new ResponseEntity<Issue>(currentIssue, HttpStatus.OK);
+	    }
+	    
+	    private void notificarIntegrantes(Proyecto proyecto,String asunto,String contenido)throws Exception {
+	         MimeMessage msg = sender.createMimeMessage();
+	         MimeMessageHelper msgHelper = new MimeMessageHelper(msg,true); 
+	         String[] tos = new String[proyecto.miembros.size()];;
+	         for(int i=0;i<proyecto.miembros.size();i++) {
+	        	 tos[i]=proyecto.miembros.get(i).email;
+	         };
+	         msgHelper.setTo(tos);
+	         msgHelper.setText(contenido);
+	         msgHelper.setSubject(asunto);
+	         sender.send(msg);
 	    }
 	 
 

@@ -2,9 +2,13 @@ package tk.vopros.frontend.api;
 
 import java.util.List;
 
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +23,9 @@ public class UserController {
 	
 	@Autowired
 	UserService userService = new UserService();
+	
+	@Autowired
+	JavaMailSender sender;
 
 	public UserController() {
 	}
@@ -33,6 +40,14 @@ public class UserController {
 
 			
 			this.userService.setUser(user);
+			try {			MimeMessage msg = sender.createMimeMessage();
+	         MimeMessageHelper msgHelper = new MimeMessageHelper(msg,true); 	         
+	         msgHelper.setTo(user.email);
+	         msgHelper.setText("Bienvenido/a a Vopros! Empieza ya mismo creando un proyecto");
+	         msgHelper.setSubject("Bienvenido/a!");
+	         sender.send(msg);}
+			catch(Exception e) {e.printStackTrace();}
+
 			return new ResponseEntity<Void>(HttpStatus.OK);
 
 	}

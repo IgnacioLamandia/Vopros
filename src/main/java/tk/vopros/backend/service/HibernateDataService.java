@@ -24,10 +24,10 @@ public class HibernateDataService {
 	
 	public void createDatosIniciales() {
 		
-		User ignacioL = new User("Hammer99","Ignacio", "Lamandia", "ignacio.lamandia@vopros.tk","123");
-		User gaston = new User("Driller99","Gaston", "Veliez", "gaston.veliez@vopros.tk","123");
-		User matias = new User("Aczero","Matias", "Cavallin", "matias.cavallin@vopros.tk","123");
-		User ignacioG = new User("Ioja","Ignacio", "Gioya", "ignacio.gioya@vopros.tk","123");
+		User ignacioL = new User("Hammer99","Ignacio", "Lamandia", "ignaciolamandia@gmail.com","123");
+		User gaston = new User("Driller99","Gaston", "Veliez", "gastonveliez95@gmail.com","123");
+		User matias = new User("Aczero","Matias", "Cavallin", "matiascavallin96@gmail.com","123");
+		User ignacioG = new User("Ioja","Ignacio", "Gioya", "ignacio.gioya@gmail.com","123");
 		userDAO.save(ignacioL);
 		userDAO.save(gaston);
 		userDAO.save(ignacioG);
