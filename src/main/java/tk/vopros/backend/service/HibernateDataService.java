@@ -62,12 +62,15 @@ public class HibernateDataService {
 		Proyecto proyecto = new Proyecto("Vopros");
 		ignacioL.nuevoProyecto(proyecto);
 		proyecto.miembros.add(gaston);
+		proyecto.miembros.add(matias);
 		proyecto.issues.addAll(issueDAO.getAll());
 		proyecto.tasks.addAll(taskDAO.getAll());
 		long idP =proyectDAO.save(proyecto);
 		System.out.println(idP);
 		gaston.proyectos.add(idP);
+		matias.proyectos.add(idP);
 		userDAO.update(gaston);
+		userDAO.update(matias);
 	
 	}
 	
