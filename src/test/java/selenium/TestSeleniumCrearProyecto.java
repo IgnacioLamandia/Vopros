@@ -20,7 +20,8 @@ private static WebDriver driver= null;
 	
 	@BeforeClass
 	public static void inicializarDirver() {
-		System.setProperty("webdriver.chrome.driver","/home/gaston/Documentos/chromedriver");
+		//System.setProperty("webdriver.chrome.driver","/home/gaston/Documentos/chromedriver");
+		System.setProperty("webdriver.chrome.driver","/home/matias/Escritorio/chromedriver");
 		driver = new ChromeDriver();
 	}
 
@@ -34,7 +35,7 @@ private static WebDriver driver= null;
 		driver.get("http://localhost:8080/");
 		
 		WebElement usuario=driver.findElement(By.id("user"));
-		usuario.sendKeys("Driller99");
+		usuario.sendKeys("Aczero");
 		WebElement contrasenha=driver.findElement(By.id("pass"));
 		contrasenha.sendKeys("123");
 		WebElement btnAccept=driver.findElement(By.id("btn-signup"));

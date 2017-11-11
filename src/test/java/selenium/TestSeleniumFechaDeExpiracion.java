@@ -24,7 +24,7 @@ private static WebDriver driver= null;
 	public static void inicializarDirver() {
 //		File file = new File("/usr/bin/google-chrome");
 //        System.setProperty("webdriver.gecko.driver","/home/gaston/Documentos/geckodriver"); 
-		System.setProperty("webdriver.chrome.driver","/home/gaston/Documentos/chromedriver");
+		System.setProperty("webdriver.chrome.driver","/home/matias/Escritorio/chromedriver");
 		driver = new ChromeDriver();
 		
 	}
@@ -33,6 +33,7 @@ private static WebDriver driver= null;
 	public static void exitDriver() {
 		driver.quit();
 	}
+	
 	@Test
 	public void testInputDeFechaIncorrectaNuevoIssue() {
 		driver.get("http://localhost:8080/#!/main/issue/nuevo");
@@ -50,7 +51,28 @@ private static WebDriver driver= null;
 	
 	@Test
 	public void testGuardarIssueCreadoConFechaCorrecta() {
-		driver.get("http://localhost:8080/#!/main/issue/nuevo");
+		
+		//driver.get("http://localhost:8080/#!/main/issue/nuevo");
+		driver.get("http://localhost:8080/");
+		
+
+		
+		WebElement usuario=driver.findElement(By.id("user"));
+		usuario.sendKeys("Aczero");
+		WebElement contrasenha=driver.findElement(By.id("pass"));
+		contrasenha.sendKeys("123");
+		
+		WebElement btnAccept=driver.findElement(By.id("btn-signup"));
+		btnAccept.click();
+		new WebDriverWait(driver, 15).until(ExpectedConditions.presenceOfElementLocated(By.id("Vopros")));
+		
+		WebElement proyecto = driver.findElement(By.id("Vopros"));
+		proyecto.click();
+		
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("crearIssue")));
+		WebElement crearIssue = driver.findElement(By.id("crearIssue"));
+		crearIssue.click();
+		
 		
 		WebElement titulo= driver.findElement(By.id("tituloIssue"));
 		titulo.sendKeys("Issue test");
@@ -110,8 +132,27 @@ private static WebDriver driver= null;
 	
 	@Test
 	public void testGuardarTaskCreadoConFechaCorrecta() {
-		driver.get("http://localhost:8080/#!/main/task/nuevo");
+		//driver.get("http://localhost:8080/#!/main/task/nuevo");
 		
+		driver.get("http://localhost:8080/");
+		
+		WebElement usuario=driver.findElement(By.id("user"));
+		usuario.sendKeys("Aczero");
+		WebElement contrasenha=driver.findElement(By.id("pass"));
+		contrasenha.sendKeys("123");
+		
+		WebElement btnAccept=driver.findElement(By.id("btn-signup"));
+		btnAccept.click();
+		new WebDriverWait(driver, 15).until(ExpectedConditions.presenceOfElementLocated(By.id("Vopros")));
+		
+		WebElement proyecto = driver.findElement(By.id("Vopros"));
+		proyecto.click();
+		
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("crearTask")));
+		WebElement crearTask = driver.findElement(By.id("crearTask"));
+		crearTask.click();
+		
+		new WebDriverWait(driver, 15).until(ExpectedConditions.presenceOfElementLocated(By.id("nombreTask")));
 		WebElement titulo= driver.findElement(By.id("nombreTask"));
 		titulo.sendKeys("Task test");
 		WebElement descripcion= driver.findElement(By.id("descripcionTask"));
