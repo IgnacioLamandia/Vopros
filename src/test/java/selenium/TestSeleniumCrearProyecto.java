@@ -21,7 +21,7 @@ private static WebDriver driver= null;
 	@BeforeClass
 	public static void inicializarDirver() {
 		//System.setProperty("webdriver.chrome.driver","/home/gaston/Documentos/chromedriver");
-		System.setProperty("webdriver.chrome.driver","/home/matias/Escritorio/chromedriver");
+		System.setProperty("webdriver.chrome.driver","/home/ignacio/Descargas/chromedriver");
 		driver = new ChromeDriver();
 	}
 
@@ -50,9 +50,11 @@ private static WebDriver driver= null;
 		nombrePr.sendKeys("Taiga");
 		WebElement botonGuardarPr = driver.findElements(By.className("btn-primary")).get(1);
 		botonGuardarPr.click();
-		new WebDriverWait(driver, 5);
-		WebElement botonVolver = driver.findElements(By.className("btn-primary")).get(3);
-		botonVolver.click();
+		new WebDriverWait(driver, 10);
+//		WebElement botonVolver = driver.findElements(By.className("btn-primary")).get(3);
+//		botonVolver.click();
+		driver.get("http://localhost:8080/#!/proyectos/Aczero");
+
 		//new WebDriverWait(driver, 15).until(ExpectedConditions.urlToBe("http://localhost:8080/#!/proyectos"));
 		new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.id("Taiga")));
 		WebElement idPr = driver.findElement(By.id("Taiga"));

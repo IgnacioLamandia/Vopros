@@ -26,7 +26,7 @@ public class TestSeleniumLogin {
 //        System.setProperty("webdriver.gecko.driver","/home/gaston/Documentos/geckodriver"); 
 //		driver = new FirefoxDriver();
 		
-		System.setProperty("webdriver.chrome.driver","/home/matias/Escritorio/chromedriver");
+		System.setProperty("webdriver.chrome.driver","/home/ignacio/Descargas/chromedriver");
 		driver = new ChromeDriver();
 		
 	}
@@ -52,13 +52,13 @@ public class TestSeleniumLogin {
 		//Espero 5 seg para que cargue la pag
 		
 		new WebDriverWait(driver, 10)
-		  .until(ExpectedConditions.urlToBe("http://localhost:8080/#!/proyectos"));
+		  .until(ExpectedConditions.urlToBe("http://localhost:8080/#!/proyectos/Driller99"));
 		
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		
-		wait.until(ExpectedConditions.or(ExpectedConditions.urlMatches("http://localhost:8080/#!/proyectos"),ExpectedConditions.presenceOfElementLocated(By.id("errorMsg"))));
+		wait.until(ExpectedConditions.or(ExpectedConditions.urlMatches("http://localhost:8080/#!/proyectos/Driller99"),ExpectedConditions.presenceOfElementLocated(By.id("errorMsg"))));
 		
-		assertEquals(driver.getCurrentUrl(),"http://localhost:8080/#!/proyectos");
+		assertEquals(driver.getCurrentUrl(),"http://localhost:8080/#!/proyectos/Driller99");
 	}
 	
 	@Test
