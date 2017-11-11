@@ -13,17 +13,15 @@ console.log("funco");
     })
 
     .state('proyectos',{
-      url: "/proyectos",
+      url: "/proyectos/:username",
       templateUrl:"partials/proyectosUser.html",
-      controller: "ProyectosUserCtrl as ctrl",
-      params:{username:null}
+      controller: "ProyectosUserCtrl as ctrl"
     })
   
     .state('main', {
-      url: "/main",
+      url: "/main/:proyectoId/:username",
       templateUrl: "partials/main.html",
-      controller: "AppCtrl as ctrl",
-      params:{proyectoId:null,username:null}
+      controller: "AppCtrl as ctrl"
     })
   
   .state('main.home', {
@@ -76,10 +74,9 @@ console.log("funco");
     })
 
     .state('nuevoProyecto',{
-        url:"/proyecto/nuevo",
+        url:"/proyecto/nuevo/:username",
         templateUrl:"partials/nuevoProyecto.html",
-        controller: "NuevoProyectoCtrl as ctrl",
-        params:{username:null}
+        controller: "NuevoProyectoCtrl as ctrl"
     })
 
 
