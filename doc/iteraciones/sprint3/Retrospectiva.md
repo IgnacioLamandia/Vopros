@@ -1,6 +1,6 @@
 | Less | Keep | Throw |
 | ---- | ---- | ---- |
-| | Controllers separados en angularjs, Selenium | |
+| | Controllers separados en AngularJS, Selenium | |
 
-El equipo decidio seguir trabajando con la tecnica de hacer controllers mas pqueños y especificos para nagular, y tambien seguir haciendo tests de vista con selenium 
+El equipo decidió seguir trabajando con la técnica de hacer controllers mas pequeños y específicos para AngularJS, y también seguir haciendo tests de vista con Selenium 
 para probar su correcto funcionamiento.
