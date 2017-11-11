@@ -24,7 +24,7 @@ public class JwtUtil {
         String token = Jwts.builder()
             .setSubject(username)
             .setExpiration(new Date(System.currentTimeMillis() + 600000000))
-            .signWith(SignatureAlgorithm.HS512, "P@tit0")
+            .signWith(SignatureAlgorithm.HS512, "I@nAci0")
             .compact();
 
       //agregamos al encabezado y al cuerpo de la respuesta el token 
