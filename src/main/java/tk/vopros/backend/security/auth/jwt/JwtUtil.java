@@ -4,7 +4,6 @@ import static java.util.Collections.emptyList;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Collection;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -53,7 +51,7 @@ public class JwtUtil {
 	                    .getSubject();
 	
 	            return user != null ?
-	                    new UsernamePasswordAuthenticationToken(user, null, (Collection<? extends GrantedAuthority>) emptyList()) :
+	                    new UsernamePasswordAuthenticationToken(user, null,  emptyList()) :
 	                    null;
 	        }
         } catch(ExpiredJwtException exception){
