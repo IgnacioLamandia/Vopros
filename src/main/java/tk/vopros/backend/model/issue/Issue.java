@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import tk.vopros.backend.model.Estado;
 import tk.vopros.backend.model.User;
 
 @Entity
@@ -32,6 +33,8 @@ public class Issue {
 	@Enumerated(EnumType.ORDINAL)
 	public TipoPrioridad prioridad;
 	
+	@Enumerated(EnumType.ORDINAL)
+	public Estado estado;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	public LocalDate expiracion;
@@ -65,10 +68,22 @@ public class Issue {
 		this.tipo = tipo;
 		this.gravedad = gravedad;
 		this.prioridad = prioridad;
+		this.estado = Estado.NUEVO;
 		this.expiracion = expiracion;
 		this.asignado = asignado;
 	}
 	
+	public Issue(String titulo, TipoIssue tipo, TipoGravedad gravedad, TipoPrioridad prioridad, Estado estado,
+			LocalDate expiracion, User asignado) {
+		this.titulo = titulo;
+		this.tipo = tipo;
+		this.gravedad = gravedad;
+		this.prioridad = prioridad;
+		this.estado = estado;
+		this.expiracion = expiracion;
+		this.asignado = asignado;
+	}
+
 	public String getTitulo() {
 		return titulo;
 	}
@@ -117,4 +132,12 @@ public class Issue {
 		this.expiracion = expiracion;
 	}
 
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+	
 }
