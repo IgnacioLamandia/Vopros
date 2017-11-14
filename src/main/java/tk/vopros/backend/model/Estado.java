@@ -1,11 +1,13 @@
 package tk.vopros.backend.model;
 
-public enum EstadoTask {
+public enum Estado {
 	
 	NUEVO,
 	EN_PROGRESO,
 	PARA_TESTEAR,
 	CERRADO,
-	INVESTIGAR
+	INVESTIGAR,
+	RECHAZADO,
+	POSTPUESTO
 
 }
