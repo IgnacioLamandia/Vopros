@@ -28,7 +28,7 @@ public class Task {
 	public TipoPrioridad prioridad;
 	
 	@Enumerated(EnumType.ORDINAL)
-	public EstadoTask estado;
+	public Estado estado;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	public User asignado;
@@ -65,13 +65,13 @@ public class Task {
 		this.descripcion = descripcion;
 		this.dificultad = dificultad;
 		this.prioridad = prioridad;
-		this.estado = EstadoTask.NUEVO;
+		this.estado = Estado.NUEVO;
 		this.asignado = asignado;
 		this.expiracion = expiracion;
 	}
 	
 	public Task(String nombre, String descripcion, NivelDificultad dificultad, TipoPrioridad prioridad,
-			EstadoTask estado, User asignado, LocalDate expiracion) {
+			Estado estado, User asignado, LocalDate expiracion) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.dificultad = dificultad;
@@ -129,11 +129,11 @@ public class Task {
 		this.expiracion = expiracion;
 	}
 
-	public EstadoTask getEstado() {
+	public Estado getEstado() {
 		return estado;
 	}
 
-	public void setEstado(EstadoTask estado) {
+	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
 
