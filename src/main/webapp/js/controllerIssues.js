@@ -1,4 +1,4 @@
-app.controller('IssuesCtrl', function($resource,$timeout,$state,$stateParams,Issues,Issue) {
+app.controller('IssuesCtrl', function($resource,$timeout,$state,$stateParams,Proyecto,Issue) {
 	'use strict';
 
     var self = this;
@@ -7,6 +7,13 @@ app.controller('IssuesCtrl', function($resource,$timeout,$state,$stateParams,Iss
     self.issue = null;
 
 
+    this.getIssues=function(){
+
+        Proyecto.query({id:$stateParams.proyectoId},function(data){
+            self.issues=data.issues;
+            console.log(data.issues);
+        },errorHandler);
+    }
 
 
     function errorHandler(error) {
@@ -14,11 +21,11 @@ app.controller('IssuesCtrl', function($resource,$timeout,$state,$stateParams,Iss
     }
 
     
-	this.getIssues= function(){
-        Issues.query(function(data) {
-            self.issues = data;
-        },errorHandler);
-	};
+	//this.getIssues= function(){
+    //    Issues.query(function(data) {
+    //        self.issues = data;
+    //    },errorHandler);
+	//};
 	
 
 
@@ -43,7 +50,7 @@ app.controller('IssuesCtrl', function($resource,$timeout,$state,$stateParams,Iss
     }
 
     this.delete= function(){
-        Issue.delete({id:this.issue.id},function(){
+        Issue.delete({id:this.issue.id,idProyecto:$stateParams.proyectoId},function(){
             self.notificarMensaje("Issue borrado");
             self.getIssues();
 

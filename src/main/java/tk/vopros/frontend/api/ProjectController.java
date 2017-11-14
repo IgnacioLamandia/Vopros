@@ -2,9 +2,13 @@ package tk.vopros.frontend.api;
 
 import java.util.List;
 
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +28,9 @@ public class ProjectController {
 	
 	@Autowired
 	UserService userService= new UserService();
+	
+	@Autowired
+	JavaMailSender sender;
 	
 	
 	public ProjectController() {
@@ -45,7 +52,19 @@ public class ProjectController {
 		else {
 			proyecto.setCreador(user);
 			proyecto.miembros.add(user);
-			this.proyectService.setProyecto(proyecto);
+			long idP=this.proyectService.setProyecto(proyecto);
+			for(User u:proyecto.miembros) {
+				u.proyectos.add(idP);
+				userService.updateUser(u);
+			}
+			
+			try {
+				notificarIntegrantes(proyecto,"Fuiste agregado a un nuevo proyecto!","Has sido agregado al proyecto "+proyecto.nombre);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 			return new ResponseEntity<Void>(HttpStatus.OK);
 		}
 }
@@ -95,4 +114,18 @@ public class ProjectController {
         return new ResponseEntity<Proyecto>(HttpStatus.NO_CONTENT);
     }
 
+	
+	
+    private void notificarIntegrantes(Proyecto proyecto,String asunto,String contenido)throws Exception {
+        MimeMessage msg = sender.createMimeMessage();
+        MimeMessageHelper msgHelper = new MimeMessageHelper(msg,true); 
+        String[] tos = new String[proyecto.miembros.size()];;
+        for(int i=0;i<proyecto.miembros.size();i++) {
+       	 tos[i]=proyecto.miembros.get(i).email;
+        };
+        msgHelper.setTo(tos);
+        msgHelper.setText(contenido);
+        msgHelper.setSubject(asunto);
+        sender.send(msg);
+   }
 }

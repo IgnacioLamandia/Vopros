@@ -8,7 +8,7 @@ app.controller('NuevoTaskCtrl', function($resource,$timeout,$state,$stateParams,
 				+this.currentdate.getDate() 
                 ;
 
-    self.task= {"nombre":"","descripcion":"","dificultad":"","prioridad":"","asignado":"", "expiracion":""};
+    self.task= {"nombre":"","descripcion":"","dificultad":"","prioridad":"","estado":"","expiracion":"","asignado":""};
     self.dificultad=[   'XXS',
     'XS',
     'S',
@@ -21,6 +21,12 @@ app.controller('NuevoTaskCtrl', function($resource,$timeout,$state,$stateParams,
     self.prioridad = ['BAJA',
     'MEDIA',
     'ALTA'];
+
+	self.estado = ['NUEVO',
+	'EN_PROGRESO',
+	'PARA_TESTEAR',
+	'CERRADO',
+	'INVESTIGAR']
 
     self.inputfecha = document.getElementById("fecha");
 
@@ -52,11 +58,11 @@ app.controller('NuevoTaskCtrl', function($resource,$timeout,$state,$stateParams,
     this.guardarTask = function(){
         this.asignarFecha();
 
-        Task.save(this.task, function() {
+        Task.save({idProyecto:$stateParams.proyectoId},this.task, function() {
             self.notificarMensaje('Tarea creada!');
             document.getElementById("feedback").textContent = "Tarea creada con exito";
         }, errorHandler);
-        this.task= {"nombre":"","descripcion":"","dificultad":"","prioridad":"","asignado":"", "expiracion":""};
+        this.task= {"nombre":"","descripcion":"","dificultad":"","prioridad":"","estado":"","asignado":"","expiracion":""};
     };
 
     this.cancel= function(){

@@ -23,8 +23,8 @@ private static WebDriver driver= null;
 	@BeforeClass
 	public static void inicializarDirver() {
 //		File file = new File("/usr/bin/google-chrome");
-//        System.setProperty("webdriver.gecko.driver","/home/gaston/Documentos/geckodriver"); 
-		System.setProperty("webdriver.chrome.driver","/home/gaston/Documentos/chromedriver");
+        System.setProperty("webdriver.chrome.driver","/home/ignacio/Descargas/chromedriver"); 
+//		System.setProperty("webdriver.chrome.driver","/home/matias/Escritorio/chromedriver");
 		driver = new ChromeDriver();
 		
 	}
@@ -33,9 +33,10 @@ private static WebDriver driver= null;
 	public static void exitDriver() {
 		driver.quit();
 	}
+	
 	@Test
 	public void testInputDeFechaIncorrectaNuevoIssue() {
-		driver.get("http://localhost:8080/#!/main/issue/nuevo");
+		driver.get("http://localhost:8080/#!/main/1/Aczero/issue/nuevo");
 		WebElement fechaInput = driver.findElement(By.name("first_date"));
 		fechaInput.sendKeys(Keys.TAB);		fechaInput.sendKeys(Keys.TAB);
 		fechaInput.sendKeys("2017");
@@ -50,7 +51,9 @@ private static WebDriver driver= null;
 	
 	@Test
 	public void testGuardarIssueCreadoConFechaCorrecta() {
-		driver.get("http://localhost:8080/#!/main/issue/nuevo");
+		
+		driver.get("http://localhost:8080/#!/main/1/Aczero/issue/nuevo");
+
 		
 		WebElement titulo= driver.findElement(By.id("tituloIssue"));
 		titulo.sendKeys("Issue test");
@@ -67,7 +70,7 @@ private static WebDriver driver= null;
 		fechaInput.sendKeys("01");
 		fechaInput.sendKeys("01");
 		WebElement user= driver.findElement(By.id("usuarioAsignado"));
-		user.sendKeys("Gaston");
+		user.sendKeys("Aczero");
 		
 		WebElement botonGuardar=driver.findElement(By.id("save"));
 		botonGuardar.click();
@@ -83,7 +86,7 @@ private static WebDriver driver= null;
 		
 		
 		//Chequea que efectivamente el issue esta en la lista de issues
-		driver.get("http://localhost:8080/#!/main/issues");
+		driver.get("http://localhost:8080/#!/main/1/Aczero/issues");
 
 		new WebDriverWait(driver, 10)
 		  .until(ExpectedConditions.visibilityOfElementLocated(By.id("Issue test")));
@@ -95,7 +98,7 @@ private static WebDriver driver= null;
 	
 	@Test
 	public void testInputDeFechaIncorrectaNuevoTask() {
-		driver.get("http://localhost:8080/#!/main/task/nuevo");
+		driver.get("http://localhost:8080/#!/main/1/Aczero/task/nuevo");
 		WebElement fechaInput = driver.findElement(By.name("first_date"));
 		fechaInput.sendKeys(Keys.TAB);		fechaInput.sendKeys(Keys.TAB);
 		fechaInput.sendKeys("2017");
@@ -110,8 +113,10 @@ private static WebDriver driver= null;
 	
 	@Test
 	public void testGuardarTaskCreadoConFechaCorrecta() {
-		driver.get("http://localhost:8080/#!/main/task/nuevo");
+		driver.get("http://localhost:8080/#!/main/1/Aczero/task/nuevo");
+
 		
+		new WebDriverWait(driver, 15).until(ExpectedConditions.presenceOfElementLocated(By.id("nombreTask")));
 		WebElement titulo= driver.findElement(By.id("nombreTask"));
 		titulo.sendKeys("Task test");
 		WebElement descripcion= driver.findElement(By.id("descripcionTask"));
@@ -120,6 +125,8 @@ private static WebDriver driver= null;
 		dificultad.sendKeys("XXL");
 		WebElement prioridad= driver.findElement(By.id("prioridadTask"));
 		prioridad.sendKeys("BAJA");
+		WebElement estado= driver.findElement(By.id("estadoTask"));
+		estado.sendKeys("CERRADO");
 		WebElement fechaInput = driver.findElement(By.name("first_date"));
 		fechaInput.sendKeys(Keys.TAB);		fechaInput.sendKeys(Keys.TAB);
 		fechaInput.sendKeys("2018");
@@ -127,7 +134,7 @@ private static WebDriver driver= null;
 		fechaInput.sendKeys("01");
 		fechaInput.sendKeys("01");
 		WebElement user= driver.findElement(By.id("usuarioAsignado"));
-		user.sendKeys("Gaston");
+		user.sendKeys("Aczero");
 		
 		WebElement botonGuardar=driver.findElement(By.id("save"));
 		botonGuardar.click();
@@ -143,7 +150,7 @@ private static WebDriver driver= null;
 		
 		
 		//Chequea que efectivamente el task esta en la lista de tasks
-		driver.get("http://localhost:8080/#!/main/tasks");
+		driver.get("http://localhost:8080/#!/main/1/Aczero/tasks");
 		new WebDriverWait(driver, 10)
 		  .until(ExpectedConditions.visibilityOfElementLocated(By.id("Task test")));
 		assertTrue(driver.findElement(By.id("Task test")) != null);

@@ -60,7 +60,7 @@ app.controller('NuevoIssueCtrl', function($resource,$state,$stateParams,Issue,$t
 
     this.guardarIssue = function(){
     	this.asignarFecha();
-        Issue.save(this.issue, function() {
+        Issue.save({idProyecto:$stateParams.proyectoId},this.issue, function() {
             console.log('issuecreado');
             self.notificarMensaje('Issue creado!');
             document.getElementById("feedback").textContent = "Problema creado con exito";

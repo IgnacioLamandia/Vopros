@@ -26,7 +26,7 @@ public class TestSeleniumLogin {
 //        System.setProperty("webdriver.gecko.driver","/home/gaston/Documentos/geckodriver"); 
 //		driver = new FirefoxDriver();
 		
-		System.setProperty("webdriver.chrome.driver","/home/gaston/Documentos/chromedriver");
+		System.setProperty("webdriver.chrome.driver","/home/ignacio/Descargas/chromedriver");
 		driver = new ChromeDriver();
 		
 	}
@@ -39,9 +39,10 @@ public class TestSeleniumLogin {
 	@Test
 	public void testLoginCorrecto() {
 		
+		driver.get("http://localhost:8080/");
 		
 		WebElement usuario=driver.findElement(By.id("user"));
-		usuario.sendKeys("Gaston");
+		usuario.sendKeys("Driller99");
 		WebElement contrasenha=driver.findElement(By.id("pass"));
 		contrasenha.sendKeys("123");
 		WebElement btnAccept=driver.findElement(By.id("btn-signup"));
@@ -51,13 +52,13 @@ public class TestSeleniumLogin {
 		//Espero 5 seg para que cargue la pag
 		
 		new WebDriverWait(driver, 10)
-		  .until(ExpectedConditions.urlToBe("http://localhost:8080/#!/main/home"));
+		  .until(ExpectedConditions.urlToBe("http://localhost:8080/#!/proyectos/Driller99"));
 		
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		
-		wait.until(ExpectedConditions.or(ExpectedConditions.urlMatches("http://localhost:8080/#!/main/home"),ExpectedConditions.presenceOfElementLocated(By.id("errorMsg"))));
+		wait.until(ExpectedConditions.or(ExpectedConditions.urlMatches("http://localhost:8080/#!/proyectos/Driller99"),ExpectedConditions.presenceOfElementLocated(By.id("errorMsg"))));
 		
-		assertEquals(driver.getCurrentUrl(),"http://localhost:8080/#!/main/home");
+		assertEquals(driver.getCurrentUrl(),"http://localhost:8080/#!/proyectos/Driller99");
 	}
 	
 	@Test
@@ -77,8 +78,9 @@ public class TestSeleniumLogin {
 		
 		  driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 
-		WebElement error = driver.findElement(By.className("error"));
-		assertEquals(error.findElement(By.id("errorMsg")).getText(),"Usuario o contraseña invalido/a");
+		//WebElement error = driver.findElement(By.className("error"));
+		  
+		assertEquals(driver.findElement(By.id("errorMsg")).getText(),"Usuario o contraseña invalido/a");
 	}
 
 }

@@ -24,12 +24,13 @@ public class ProyectoService {
 		return proyectoDAO.getAll();
 	}
 	@Transactional
-	public void setProyecto(Proyecto proyectoNuevo){
-		proyectoDAO.save(proyectoNuevo);
+	public long setProyecto(Proyecto proyectoNuevo){
+		return proyectoDAO.save(proyectoNuevo);
 	}
 
+	@Transactional
 	public void updateProyecto(Proyecto proyect) {
-		// TODO Auto-generated method stub
+		proyectoDAO.update(proyect);
 		
 	}
 

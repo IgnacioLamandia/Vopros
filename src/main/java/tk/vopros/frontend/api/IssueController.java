@@ -2,18 +2,25 @@ package tk.vopros.frontend.api;
 
 import java.util.List;
 
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import tk.vopros.backend.model.Proyecto;
+import tk.vopros.backend.model.Task;
 import tk.vopros.backend.model.issue.Issue;
 import tk.vopros.backend.service.IssueService;
+import tk.vopros.backend.service.ProyectoService;
 
 @RestController
 public class IssueController {
@@ -21,6 +28,11 @@ public class IssueController {
 	@Autowired
 	IssueService issueService = new IssueService();
 	
+	@Autowired
+	ProyectoService proyectoService = new ProyectoService();
+	
+	@Autowired
+	JavaMailSender sender;
 	
 	
 	 @RequestMapping(value = "/issues", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -44,24 +56,55 @@ public class IssueController {
 	        return new ResponseEntity<Issue>(issue, HttpStatus.OK);
 	    }
 	 
-	 @RequestMapping(value = "/issue", method = RequestMethod.POST, consumes = "application/json")
-	    public void postIssue(@RequestBody Issue input) {
+	 @RequestMapping(value = "/issue/{idProyecto}", method = RequestMethod.POST, consumes = "application/json")
+	    public ResponseEntity<Void> postIssue(@RequestBody Issue input,@PathVariable("idProyecto") long idProy) {
+		 Proyecto proyecto=this.proyectoService.getById(idProy);
+		 	if(proyecto == null) {
+		 		return new ResponseEntity<Void>(HttpStatus.NOT_ACCEPTABLE);
+		 	}
+		 	else {
 	         Issue issue = new Issue(input.titulo,input.tipo,input.gravedad,input.prioridad,input.expiracion,input.asignado);
 	         this.issueService.save(issue);
+        	 System.out.println(proyecto.issues.contains(issue));
+
+	         proyecto.issues.add(issue);
+	         for(Issue i:proyecto.issues) {
+	        	 System.out.println(i.titulo);
+	         }
+	         this.proyectoService.updateProyecto(proyecto);
+	         try {
+		         notificarIntegrantes(proyecto,"Nuevo problema agregado a "+proyecto.nombre,"El issue " +issue.titulo + " ha sido agregado a su proyecto.");
+
+	         }
+	         catch(Exception e) {
+	        	 e.printStackTrace();
+	         }
+	         return new ResponseEntity<Void>(HttpStatus.OK);
+		 	}
 	    }
 	 
-	    @RequestMapping(value = "/issue/{id}", method = RequestMethod.DELETE)
-	    public ResponseEntity<Issue> deleteIssue(@PathVariable("id") long id) {
+	    @RequestMapping(value = "/issue/{id}/{idProyecto}", method = RequestMethod.DELETE)
+	    public ResponseEntity<Issue> deleteIssue(@PathVariable("id") long id,@PathVariable("idProyecto") long idProy) {
 	        System.out.println("Fetching & Deleting Issue with id " + id);
 	 
 	        Issue user = issueService.getById(id);
-	        if (user == null) {
+	        Proyecto proyecto = proyectoService.getById(idProy);
+	        if (user == null || proyecto == null) {
 	            System.out.println("Unable to delete. Issue with id " + id + " not found");
 	            return new ResponseEntity<Issue>(HttpStatus.NOT_FOUND);
 	        }
-	 
+	        Issue reference=null;
+	        for(Issue t:proyecto.issues) {
+	        	if(t.id == id) {
+	        		reference = t;
+	        	}
+	        };
+    		proyecto.issues.remove(reference);
+
+	        
+	        proyectoService.updateProyecto(proyecto);
 	        issueService.delete(id);
-	        return new ResponseEntity<Issue>(HttpStatus.NO_CONTENT);
+	        return new ResponseEntity<Issue>(HttpStatus.OK);
 	    }
 	    
 	    @RequestMapping(value = "/issue/{id}", method = RequestMethod.PUT)
@@ -84,6 +127,19 @@ public class IssueController {
 	         
 	        issueService.update(currentIssue);
 	        return new ResponseEntity<Issue>(currentIssue, HttpStatus.OK);
+	    }
+	    
+	    private void notificarIntegrantes(Proyecto proyecto,String asunto,String contenido)throws Exception {
+	         MimeMessage msg = sender.createMimeMessage();
+	         MimeMessageHelper msgHelper = new MimeMessageHelper(msg,true); 
+	         String[] tos = new String[proyecto.miembros.size()];;
+	         for(int i=0;i<proyecto.miembros.size();i++) {
+	        	 tos[i]=proyecto.miembros.get(i).email;
+	         };
+	         msgHelper.setTo(tos);
+	         msgHelper.setText(contenido);
+	         msgHelper.setSubject(asunto);
+	         sender.send(msg);
 	    }
 	 
 

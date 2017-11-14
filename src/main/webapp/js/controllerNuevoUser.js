@@ -1,9 +1,9 @@
-app.controller('NuevoUserCtrl', function($resource,$state,$stateParams,User) {
+app.controller('NuevoUserCtrl', function($resource,$state,$stateParams,User,$timeout) {
 	'use strict';
 
     var self = this;
 
-    self.user= {"nombre":"","apellido":"","email":""};
+    self.user= {"usuario":"","nombre":"","apellido":"","email":"","contrasenha":""};
 
 
 
@@ -18,10 +18,19 @@ app.controller('NuevoUserCtrl', function($resource,$state,$stateParams,User) {
         User.save(this.user, function() {
             self.notificarMensaje('Usuario creado!');
         }, errorHandler);
-        this.user= {"nombre":"","apellido":"","email":""};
+        this.user= {"usuario":"","nombre":"","apellido":"","email":""};
+        $state.go('login');
+
     };
 
     this.cancel= function(){
+        this.user= {"usuario":"","nombre":"","apellido":"","email":""};
+
+    }
+
+
+    this.volver=function(){
+        $state.go('login');
     }
 
 

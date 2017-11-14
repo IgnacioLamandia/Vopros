@@ -30,7 +30,7 @@ class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<String> login(@RequestBody User input) {
 		User user = input;
-		System.out.println(input.nombre);
+		System.out.println(input.usuario);
 		System.out.println(input.contrasenha);
 
 		Boolean validationStatus = userService.validate(user);
@@ -43,7 +43,7 @@ class LoginController {
 								   .setSubject("JWT")
 								   .setIssuedAt(new Date(now))
 								   .setExpiration(new Date(now + 900000))
-								   .claim("nombre", user.nombre)
+								   .claim("usuario", user.usuario)
 								   .claim("email", user.email)
 								   .compact();
 //				"{ 'JWT': '"+ jwtTOKEN +"' }",

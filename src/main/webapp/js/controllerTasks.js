@@ -1,4 +1,4 @@
-app.controller('TasksCtrl', function($resource,$timeout,$state,$stateParams,Tasks,Task) {
+app.controller('TasksCtrl', function($resource,$timeout,$state,$stateParams,Tasks,Task,Proyecto) {
 	'use strict';
 
     var self = this;
@@ -11,8 +11,8 @@ app.controller('TasksCtrl', function($resource,$timeout,$state,$stateParams,Task
     }
 
     this.getTasks= function(){
-        Tasks.query(function(data) {
-            self.tasks = data;
+        Proyecto.query({id:$stateParams.proyectoId},function(data){
+            self.tasks = data.tasks;
         },errorHandler);
 	};
 
@@ -37,7 +37,7 @@ app.controller('TasksCtrl', function($resource,$timeout,$state,$stateParams,Task
 	}
 
 	this.delete= function(){
-		Task.delete({id:this.task.id},function(){
+		Task.delete({id:this.task.id,idProyecto:$stateParams.proyectoId},function(){
 			self.notificarMensaje("Task borrado");
 			self.getTasks();
 

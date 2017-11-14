@@ -27,14 +27,22 @@ public class Task {
 	@Enumerated(EnumType.ORDINAL)
 	public TipoPrioridad prioridad;
 	
+	@Enumerated(EnumType.ORDINAL)
+	public EstadoTask estado;
+	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	public User asignado;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	public LocalDate expiracion;
 	
-	public Task(){
-		
+	public Task(){	
+	}
+	
+	public Task(String nombre, String descripcion, User asignado) {
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.asignado = asignado;
 	}
 	
 	public Task(String nombre, String descripcion, NivelDificultad dificultad, TipoPrioridad prioridad) {
@@ -57,16 +65,22 @@ public class Task {
 		this.descripcion = descripcion;
 		this.dificultad = dificultad;
 		this.prioridad = prioridad;
+		this.estado = EstadoTask.NUEVO;
 		this.asignado = asignado;
 		this.expiracion = expiracion;
 	}
 	
-	public Task(String nombre, String descripcion, User asignado) {
+	public Task(String nombre, String descripcion, NivelDificultad dificultad, TipoPrioridad prioridad,
+			EstadoTask estado, User asignado, LocalDate expiracion) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
+		this.dificultad = dificultad;
+		this.prioridad = prioridad;
+		this.estado = estado;
 		this.asignado = asignado;
+		this.expiracion = expiracion;
 	}
-	
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -113,6 +127,14 @@ public class Task {
 
 	public void setExpiracion(LocalDate expiracion) {
 		this.expiracion = expiracion;
+	}
+
+	public EstadoTask getEstado() {
+		return estado;
+	}
+
+	public void setEstado(EstadoTask estado) {
+		this.estado = estado;
 	}
 
 }

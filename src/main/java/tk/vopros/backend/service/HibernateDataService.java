@@ -24,10 +24,10 @@ public class HibernateDataService {
 	
 	public void createDatosIniciales() {
 		
-		User ignacioL = new User("Ignacio", "Lamandia", "ignacio.lamandia@vopros.tk","123");
-		User gaston = new User("Gaston", "Veliez", "gaston.veliez@vopros.tk","123");
-		User matias = new User("Matias", "Cavallin", "matias.cavallin@vopros.tk","123");
-		User ignacioG = new User("Ignacio", "Gioya", "ignacio.gioya@vopros.tk","123");
+		User ignacioL = new User("Hammer99","Ignacio", "Lamandia", "ignaciolamandia@gmail.com","123");
+		User gaston = new User("Driller99","Gaston", "Veliez", "gastonveliez95@gmail.com","123");
+		User matias = new User("Aczero","Matias", "Cavallin", "matiascavallin96@gmail.com","123");
+		User ignacioG = new User("Ioja","Ignacio", "Gioya", "ignacio.gioya@gmail.com","123");
 		userDAO.save(ignacioL);
 		userDAO.save(gaston);
 		userDAO.save(ignacioG);
@@ -62,9 +62,15 @@ public class HibernateDataService {
 		Proyecto proyecto = new Proyecto("Vopros");
 		ignacioL.nuevoProyecto(proyecto);
 		proyecto.miembros.add(gaston);
+		proyecto.miembros.add(matias);
 		proyecto.issues.addAll(issueDAO.getAll());
 		proyecto.tasks.addAll(taskDAO.getAll());
-		proyectDAO.save(proyecto);
+		long idP =proyectDAO.save(proyecto);
+		System.out.println(idP);
+		gaston.proyectos.add(idP);
+		matias.proyectos.add(idP);
+		userDAO.update(gaston);
+		userDAO.update(matias);
 	
 	}
 	

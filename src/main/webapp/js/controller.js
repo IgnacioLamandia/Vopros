@@ -1,14 +1,22 @@
 var app = angular.module('voprosApp',['ngResource','ui.router']);
-app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Proyectos) {
+app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Proyectos,Proyecto) {
 	'use strict';
 
     var self = this;
 
-    self.issues = [];
     self.users = [];
     self.proyectos = [];
     self.overlay = $(".overlay");
+    self.proyecto = {};
 
+    this.getProyecto=function(){
+
+        Proyecto.query({id:$stateParams.proyectoId},function(data){
+            self.proyecto=data;
+            console.log(data);
+            self.users = data.miembros;
+        },errorHandler);
+    }
 
 
 
@@ -37,11 +45,11 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
         this.closeSideBar();
     };
 
-    this.nuevoUser = function(){
-        $state.go('main.nuevoUser');
-        this.closeSideBar();
+    //this.nuevoUser = function(){
+    //    $state.go('main.nuevoUser');
+    //    this.closeSideBar();
 
-    }
+    //}
 
     this.nuevoTask = function(){
         $state.go('main.nuevoTask');
@@ -53,14 +61,10 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
         this.closeSideBar();
     }
 
-    this.nuevoProyecto = function(){
-        $state.go('main.nuevoProyecto');
-        this.closeSideBar();
-    }
+
 
     this.verProyectos = function(){
-        $state.go('main.proyectos');
-        this.closeSideBar();
+        $state.go('proyectos',{username:$stateParams.username});
 
     };
 
@@ -78,22 +82,18 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
 	
 
 
-    this.getUsers = function(){
-        Users.query(function(data) {
-            self.users = data;
-        },errorHandler);
-    };
+ 
 
 
-    this.getProyectos = function(){
-        Proyectos.query(function(data){
-            self.proyectos = data;
-        },errorHandler);
-    };
+    //this.getProyectos = function(){
+    //    Proyectos.query(function(data){
+    //        self.proyectos = data;
+    //    },errorHandler);
+    //};
 	
-    this.getIssues();
-    this.getUsers();
-    this.getProyectos();
+    //this.getIssues();
+    //this.getProyectos();
+    this.getProyecto();
 
     console.log("users",self.users)
     console.log("issues",self.issues)
