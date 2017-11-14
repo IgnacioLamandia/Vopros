@@ -21,7 +21,7 @@ app.controller('LoginCtrl', function($resource,$timeout,$location,$state,$auth) 
     }
 
     this.ingresar = function(){
-    	$state.go('proyectos',{username:this.credentials.usuario});
+    	$state.go('proyectos',{username:this.credentials.email});
     }
 
     this.registro = function(){

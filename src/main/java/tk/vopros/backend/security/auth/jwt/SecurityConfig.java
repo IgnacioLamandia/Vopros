@@ -33,11 +33,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     UsernamePasswordAuthenticationFilter.class);
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    	auth.inMemoryAuthentication()
-	        .withUser("ask") //Este esta en memoria, falta implementar para autenticar con los usuarios de la bd.
-	        .password("123")
-	        .roles("ADMIN");
-    }
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//    	auth.inMemoryAuthentication()
+//	        .withUser("ask") //Este esta en memoria, falta implementar para autenticar con los usuarios de la bd.
+//	        .password("123")
+//	        .roles("ADMIN");
+//    }
 }
