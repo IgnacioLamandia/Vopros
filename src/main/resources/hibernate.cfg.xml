@@ -30,7 +30,7 @@
 
 		<mapping class="tk.vopros.backend.model.Task" />
 		<mapping class="tk.vopros.backend.model.NivelDificultad" />
-		<mapping class="tk.vopros.backend.model.EstadoTask" />
+		<mapping class="tk.vopros.backend.model.Estado" />
 		
 		<mapping class="tk.vopros.backend.model.Proyecto" />
 		

@@ -2,12 +2,13 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>Titulo</th>
+				<th>T&iacute;tulo</th>
 				<th>Tipo</th>
 				<th>Gravedad</th>
 				<th>Prioridad</th>
-				<th>Asignado a</th>
-				<th>Expiracion</th>
+				<th>Estado</th>
+				<th>Asignado</th>
+				<th>Expiraci&oacute;n</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -16,7 +17,8 @@
 				<td ng-bind="issue.tipo"></td>
 				<td ng-bind="issue.gravedad"></td>
 				<td ng-bind="issue.prioridad"></td>
-				<td ng-bind="issue.asignado.nombre"></td>
+				<td ng-bind="issue.estado"></td>
+				<td ng-bind="issue.asignado.usuario"></td>
 				<td ng-bind="issue.expiracion"></td>
 
 			</tr>
@@ -26,3 +28,4 @@
 	<button class="btn-primary" ng-click="ctrl.delete()">Borrar Seleccionado</button>
 
 </div>
+
