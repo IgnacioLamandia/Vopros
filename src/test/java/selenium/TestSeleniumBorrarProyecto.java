@@ -21,7 +21,7 @@ private static WebDriver driver= null;
 //        System.setProperty("webdriver.gecko.driver","/home/gaston/Documentos/geckodriver"); 
 //		driver = new FirefoxDriver();
 		
-		System.setProperty("webdriver.chrome.driver","/home/gaston/Documentos/chromedriver");
+		System.setProperty("webdriver.chrome.driver","/home/ignacio/Descargas/chromedriver");
 		driver = new ChromeDriver();
 		
 	}
