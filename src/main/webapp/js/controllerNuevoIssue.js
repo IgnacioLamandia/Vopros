@@ -8,7 +8,7 @@ app.controller('NuevoIssueCtrl', function($resource,$state,$stateParams,Issue,$t
 				+this.currentdate.getDate() 
                 ;
 
-    self.issue= {"titulo":"","tipo":"","gravedad":"","prioridad":"", "expiracion":"", "asignado":""};
+    self.issue= {"titulo":"","tipo":"","gravedad":"","prioridad":"", "estado":"", "expiracion":"", "asignado":""};
 
     self.tipo=[ 'BUG',
     'PREGUNTA',
@@ -22,6 +22,14 @@ app.controller('NuevoIssueCtrl', function($resource,$state,$stateParams,Issue,$t
     self.prioridad = ['BAJA',
     'MEDIA',
     'ALTA'];
+
+	self.estado = ['NUEVO',
+	'EN_PROGRESO',
+	'PARA_TESTEAR',
+	'CERRADO',
+	'INVESTIGAR',
+	'RECHAZADO',
+	'POSTPUESTO']
 
 
     self.users = [];
@@ -65,7 +73,7 @@ app.controller('NuevoIssueCtrl', function($resource,$state,$stateParams,Issue,$t
             self.notificarMensaje('Issue creado!');
             document.getElementById("feedback").textContent = "Problema creado con exito";
         }, errorHandler);
-        this.issue= {"titulo":"","tipo":"","gravedad":"","prioridad":"", "expiracion":"", "asignado":""};
+        this.issue= {"titulo":"","tipo":"","gravedad":"","prioridad":"", "estado":"", "expiracion":"", "asignado":""};
     };
 
     this.cancel= function(){

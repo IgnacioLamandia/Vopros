@@ -63,84 +63,85 @@ public class IssueController {
 		 		return new ResponseEntity<Void>(HttpStatus.NOT_ACCEPTABLE);
 		 	}
 		 	else {
-	         Issue issue = new Issue(input.titulo,input.tipo,input.gravedad,input.prioridad,input.expiracion,input.asignado);
-	         this.issueService.save(issue);
-        	 System.out.println(proyecto.issues.contains(issue));
+		 		Issue issue = new Issue(input.titulo,input.tipo,input.gravedad,input.prioridad,input.estado,input.expiracion,input.asignado);
+		         this.issueService.save(issue);
+	        	 System.out.println(proyecto.issues.contains(issue));
 
-	         proyecto.issues.add(issue);
-	         for(Issue i:proyecto.issues) {
-	        	 System.out.println(i.titulo);
-	         }
-	         this.proyectoService.updateProyecto(proyecto);
-	         try {
-		         notificarIntegrantes(proyecto,"Nuevo problema agregado a "+proyecto.nombre,"El issue " +issue.titulo + " ha sido agregado a su proyecto.");
+		         proyecto.issues.add(issue);
+		         for(Issue i:proyecto.issues) {
+		        	 System.out.println(i.titulo);
+		         }
+		         this.proyectoService.updateProyecto(proyecto);
+		         try {
+			         notificarIntegrantes(proyecto,"Nuevo problema agregado a "+proyecto.nombre,"El issue " +issue.titulo + " ha sido agregado a su proyecto.");
 
-	         }
-	         catch(Exception e) {
-	        	 e.printStackTrace();
-	         }
-	         return new ResponseEntity<Void>(HttpStatus.OK);
-		 	}
-	    }
-	 
-	    @RequestMapping(value = "/issue/{id}/{idProyecto}", method = RequestMethod.DELETE)
-	    public ResponseEntity<Issue> deleteIssue(@PathVariable("id") long id,@PathVariable("idProyecto") long idProy) {
-	        System.out.println("Fetching & Deleting Issue with id " + id);
-	 
-	        Issue user = issueService.getById(id);
-	        Proyecto proyecto = proyectoService.getById(idProy);
-	        if (user == null || proyecto == null) {
-	            System.out.println("Unable to delete. Issue with id " + id + " not found");
-	            return new ResponseEntity<Issue>(HttpStatus.NOT_FOUND);
-	        }
-	        Issue reference=null;
-	        for(Issue t:proyecto.issues) {
-	        	if(t.id == id) {
-	        		reference = t;
-	        	}
-	        };
-    		proyecto.issues.remove(reference);
+		         }
+		         catch(Exception e) {
+		        	 e.printStackTrace();
+		         }
+		         return new ResponseEntity<Void>(HttpStatus.OK);
+			 	}
+		    }
+		 
+		    @RequestMapping(value = "/issue/{id}/{idProyecto}", method = RequestMethod.DELETE)
+		    public ResponseEntity<Issue> deleteIssue(@PathVariable("id") long id,@PathVariable("idProyecto") long idProy) {
+		        System.out.println("Fetching & Deleting Issue with id " + id);
+		 
+		        Issue user = issueService.getById(id);
+		        Proyecto proyecto = proyectoService.getById(idProy);
+		        if (user == null || proyecto == null) {
+		            System.out.println("Unable to delete. Issue with id " + id + " not found");
+		            return new ResponseEntity<Issue>(HttpStatus.NOT_FOUND);
+		        }
+		        Issue reference=null;
+		        for(Issue t:proyecto.issues) {
+		        	if(t.id == id) {
+		        		reference = t;
+		        	}
+		        };
+	    		proyecto.issues.remove(reference);
 
-	        
-	        proyectoService.updateProyecto(proyecto);
-	        issueService.delete(id);
-	        return new ResponseEntity<Issue>(HttpStatus.OK);
-	    }
-	    
-	    @RequestMapping(value = "/issue/{id}", method = RequestMethod.PUT)
-	    public ResponseEntity<Issue> updateIssue(@PathVariable("id") long id, @RequestBody Issue issue ){
-	        System.out.println("Updating User " + id);
-	         
-	        Issue currentIssue = issueService.getById(id);
-	         
-	        if (currentIssue==null) {
-	            System.out.println("Issue with id " + id + " not found");
-	            return new ResponseEntity<Issue>(HttpStatus.NOT_FOUND);
-	        }
-	 
-	        currentIssue.setTitulo(issue.titulo);
-	        currentIssue.setTipo(issue.tipo);
-	        currentIssue.setGravedad(issue.gravedad);
-	        currentIssue.setPrioridad(issue.prioridad);
-	        currentIssue.setExpiracion(issue.expiracion);
-	        currentIssue.setAsignado(issue.asignado);
-	         
-	        issueService.update(currentIssue);
-	        return new ResponseEntity<Issue>(currentIssue, HttpStatus.OK);
-	    }
-	    
-	    private void notificarIntegrantes(Proyecto proyecto,String asunto,String contenido)throws Exception {
-	         MimeMessage msg = sender.createMimeMessage();
-	         MimeMessageHelper msgHelper = new MimeMessageHelper(msg,true); 
-	         String[] tos = new String[proyecto.miembros.size()];;
-	         for(int i=0;i<proyecto.miembros.size();i++) {
-	        	 tos[i]=proyecto.miembros.get(i).email;
-	         };
-	         msgHelper.setTo(tos);
-	         msgHelper.setText(contenido);
-	         msgHelper.setSubject(asunto);
-	         sender.send(msg);
-	    }
-	 
+		        
+		        proyectoService.updateProyecto(proyecto);
+		        issueService.delete(id);
+		        return new ResponseEntity<Issue>(HttpStatus.OK);
+		    }
+		    
+		    @RequestMapping(value = "/issue/{id}", method = RequestMethod.PUT)
+		    public ResponseEntity<Issue> updateIssue(@PathVariable("id") long id, @RequestBody Issue issue ){
+		        System.out.println("Updating User " + id);
+		         
+		        Issue currentIssue = issueService.getById(id);
+		         
+		        if (currentIssue==null) {
+		            System.out.println("Issue with id " + id + " not found");
+		            return new ResponseEntity<Issue>(HttpStatus.NOT_FOUND);
+		        }
+		 
+		        currentIssue.setTitulo(issue.titulo);
+		        currentIssue.setTipo(issue.tipo);
+		        currentIssue.setGravedad(issue.gravedad);
+		        currentIssue.setPrioridad(issue.prioridad);
+		        currentIssue.setEstado(issue.estado);
+		        currentIssue.setExpiracion(issue.expiracion);
+		        currentIssue.setAsignado(issue.asignado);
+		         
+		        issueService.update(currentIssue);
+		        return new ResponseEntity<Issue>(currentIssue, HttpStatus.OK);
+		    }
+		    
+		    private void notificarIntegrantes(Proyecto proyecto,String asunto,String contenido)throws Exception {
+		         MimeMessage msg = sender.createMimeMessage();
+		         MimeMessageHelper msgHelper = new MimeMessageHelper(msg,true); 
+		         String[] tos = new String[proyecto.miembros.size()];;
+		         for(int i=0;i<proyecto.miembros.size();i++) {
+		        	 tos[i]=proyecto.miembros.get(i).email;
+		         };
+		         msgHelper.setTo(tos);
+		         msgHelper.setText(contenido);
+		         msgHelper.setSubject(asunto);
+		         sender.send(msg);
+		    }
+		 
 
-}
+	}
