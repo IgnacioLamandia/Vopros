@@ -1,5 +1,5 @@
 
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function ($stateProvider, $urlRouterProvider,$authProvider) {
 
 console.log("funco");
   $urlRouterProvider.otherwise("/");
@@ -21,7 +21,20 @@ console.log("funco");
     .state('main', {
       url: "/main/:proyectoId/:username",
       templateUrl: "partials/main.html",
-      controller: "AppCtrl as ctrl"
+      controller: "AppCtrl as ctrl",
+      resolve: {
+          authenticated: function($q, $location, $auth) {
+            var deferred = $q.defer();
+
+            if (!$auth.isAuthenticated()) {
+              $location.path('/login');
+            } else {
+              deferred.resolve();
+            }
+
+            return deferred.promise;
+          }
+        }
     })
   
   .state('main.home', {

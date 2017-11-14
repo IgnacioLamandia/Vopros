@@ -14,7 +14,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
         	.antMatchers("/").permitAll()
-        	.antMatchers("/authhh/login").permitAll() //permitimos el acceso a /login a cualquiera
+        	.antMatchers("/auth/login").permitAll() //permitimos el acceso a /login a cualquiera
             .antMatchers("/favicon.ico").permitAll() 
             .antMatchers("/node_modules/**").permitAll()
             .antMatchers("/angular").permitAll()
@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             //.anyRequest().authenticated() //cualquier otra peticion requiere autenticacion
             .and()
             // Las peticiones /login pasan previamente por este filtro
-            .addFilterBefore(new LoginFilter("/authhh/login", authenticationManager()),
+            .addFilterBefore(new LoginFilter("/auth/login", authenticationManager()),
                     UsernamePasswordAuthenticationFilter.class)
 
             // Las demás peticiones pasan por este filtro para validar el token

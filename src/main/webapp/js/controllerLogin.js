@@ -1,15 +1,22 @@
-app.controller('LoginCtrl', function($resource,$timeout,$location,$state,Auth) {
+app.controller('LoginCtrl', function($resource,$timeout,$location,$state,$auth) {
 	'use strict';
 	var self = this;
 
-    self.credentials = {usuario:'', contrasenha:''};
+    self.credentials = {email:'', password:''};
 
     this.login = function(){
-    	$('.error').html("");
-        Auth.save(this.credentials,function(data){
-        	console.log(data);
-        	self.ingresar();
-        },errorHandler);
+//    	$('.error').html("");
+//        Auth.save(this.credentials,function(data){
+//        	console.log(data);
+ //       	self.ingresar();
+ //       },errorHandler);
+
+        $auth.login(self.credentials).then(function(response){
+      //      $auth.setToken(response);
+            self.ingresar();
+        }).catch(function (response) {
+        console.log("error response", response);
+      });
 
     }
 
