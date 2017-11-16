@@ -13,8 +13,15 @@ app.controller('LoginCtrl', function($resource,$timeout,$location,$state,$auth) 
 
         $auth.login(self.credentials).then(function(response){
       //      $auth.setToken(response);
-            self.ingresar();
+      		if(response.status == 200){
+      			self.ingresar();
+      		}
+      		else{
+      			$('.error').append("<h4 id='errorMsg'>Usuario o contraseña invalido/a</h4>");
+
+      		}
         }).catch(function (response) {
+
         console.log("error response", response);
       });
 
