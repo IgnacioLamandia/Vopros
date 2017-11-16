@@ -85,6 +85,10 @@ console.log("funco");
         controller: "EditarIssueCtrl as ctrl"
     })
 
-
+	.state('main.editarTask',{
+        url:"/task/:taskID",
+        templateUrl:"partials/editarTask.html",
+        controller: "EditarTaskCtrl as ctrl"
+    })
 
 });

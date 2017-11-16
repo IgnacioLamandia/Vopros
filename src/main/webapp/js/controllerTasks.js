@@ -36,6 +36,10 @@ app.controller('TasksCtrl', function($resource,$timeout,$state,$stateParams,Task
 
 	}
 
+	this.editarTask= function(){
+        $state.go("main.editarTask",{taskID:this.task.id})
+    }
+
 	this.delete= function(){
 		Task.delete({id:this.task.id,idProyecto:$stateParams.proyectoId},function(){
 			self.notificarMensaje("Task borrado");
