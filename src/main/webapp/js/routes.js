@@ -80,7 +80,7 @@ console.log("funco");
     })
 
 	.state('main.editarIssue',{
-        url:"/issue/:issueID", //nose si esta bien la ruta asi
+        url:"/issue/:issueID",
         templateUrl:"partials/editarIssue.html",
         controller: "EditarIssueCtrl as ctrl"
     })

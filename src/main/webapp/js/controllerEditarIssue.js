@@ -8,7 +8,7 @@ app.controller('EditarIssueCtrl', function($resource,$state,$stateParams,Issue,$
 				+this.currentdate.getDate() 
                 ;
 
-    self.issue= {}; //aca queiro tener los datos cargados del seleccionado anteriormente (nose si se cargan asi con self.atributo)
+    self.issue= {};
 
     self.tipo=[ 'BUG',
     'PREGUNTA',
@@ -30,7 +30,6 @@ app.controller('EditarIssueCtrl', function($resource,$state,$stateParams,Issue,$
 	'INVESTIGAR',
 	'RECHAZADO',
 	'POSTPUESTO']
-
 
     self.users = [];
 
@@ -63,7 +62,7 @@ app.controller('EditarIssueCtrl', function($resource,$state,$stateParams,Issue,$
 
 	this.inputFecha();
 
-   this.asignarFecha=function() {
+    this.asignarFecha=function() {
     this.issue.expiracion= this.inputfecha.value.substring(0,10);
 }
 
