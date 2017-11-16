@@ -1,8 +1,20 @@
 
-app.config(function ($stateProvider, $urlRouterProvider,$authProvider) {
+app.config(function ($stateProvider, $urlRouterProvider,$authProvider,$httpProvider) {
 
 console.log("funco");
   $urlRouterProvider.otherwise("/");
+
+
+  $httpProvider.interceptors.push(function($rootScope, $location, $q) {
+    return {
+      responseError: function(rejection) {
+        if (rejection.status == 401 || rejection.status == 403) {
+          $location.path('/login');
+        }
+        return rejection;
+      }
+    }
+  });
 
   $stateProvider
 
