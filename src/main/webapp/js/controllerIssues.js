@@ -50,7 +50,6 @@ app.controller('IssuesCtrl', function($resource,$timeout,$state,$stateParams,Pro
     }
 
 	this.editarIssue= function(){
-        //aca quiero q me abra la vista de editar issue y que le pase el issue seleccionado para que esta cargado
         $state.go("main.editarIssue",{issueID:this.issue.id})
     }
 

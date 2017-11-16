@@ -1,0 +1,25 @@
+<div>
+	<h1>Estas editando la tarea: {{ctrl.task.nombre}}</h1>
+	<br>
+    <h4 class="lead"> <strong> Nombre: </strong><input id="nombreTask" ng-model="ctrl.task.nombre"> </h4>	
+	<br>
+	<h4 class="lead"> <strong> Descripci&oacute;n: </strong> <textarea id="descripcionTask" ng-model="ctrl.task.descripcion"></textarea> </h4>	
+	<br>
+	<h4 class="lead"> <strong> Prioridad: </strong><select id="prioridadTask" ng-model="ctrl.task.prioridad" ng-options="t for t in ctrl.prioridad"></select></h4>
+	<br>
+	<h4 class="lead"> <strong> Dificultad: </strong><select id="dificultadTask" ng-model="ctrl.task.dificultad" ng-options="t for t in ctrl.dificultad"></select></h4>
+	<br>
+	<h4 class="lead"> <strong> Estado: </strong><select id="estadoTask" ng-model="ctrl.task.estado" ng-options="t for t in ctrl.estado"></select></h4>
+	<br>
+	<h4 class="lead"> <strong> Fecha de expiraci&oacute;n: </strong></h4>
+	<input type="date" id="fecha" name="first_date" ng-model=ctrl.task.expiracion>
+	<p id="errorFecha"></p>
+	<br>
+	<h4 class="lead"> <strong> Usuario asignado: </strong><span ng-bind="ctrl.issue.asignado.nombre"></span><select id="usuarioAsignado" ng-model="ctrl.task.asignado" ng-options="t.usuario for t in ctrl.users"></select></h4>
+	<br>
+	<p id="feedback"></p>
+	<a id="update" ng-click="ctrl.updateTask()" class="btn btn-primary">Guardar edici&oacute;n</a>
+	<br>
+	<br>
+    <a ng-click="ctrl.cancel()" class="btn btn-primary">Cancelar</a>
+</div>

@@ -1,23 +1,22 @@
-app.controller('EditarIssueCtrl', function($resource,$state,$stateParams,Issue,$timeout,Users) {
+app.controller('EditarTaskCtrl', function($resource,$timeout,$state,$stateParams,Task,Users) {
 	'use strict';
 
     var self = this;
-
+    
     self.currentdate = new Date(); 
 	self.datetime = this.currentdate.getFullYear()+"-"+(this.currentdate.getMonth()+1)  + "-" 
 				+this.currentdate.getDate() 
                 ;
 
-    self.issue= {};
+    self.task= {};
 
-    self.tipo=[ 'BUG',
-    'PREGUNTA',
-    'MEJORA'];
-
-    self.gravedad=[ 'MENOR',
-    'REGULAR',
-    'GRAVE',
-    'CRITICO'];
+    self.dificultad=[   'XXS',
+    'XS',
+    'S',
+    'M',
+    'L',
+    'XL',
+    'XXL'];
 
     self.prioridad = ['BAJA',
     'MEDIA',
@@ -27,21 +26,19 @@ app.controller('EditarIssueCtrl', function($resource,$state,$stateParams,Issue,$
 	'EN_PROGRESO',
 	'PARA_TESTEAR',
 	'CERRADO',
-	'INVESTIGAR',
-	'RECHAZADO',
-	'POSTPUESTO']
+	'INVESTIGAR']
 
-    self.users = [];
+	self.users = [];
 
     self.inputfecha = document.getElementById("fecha");
 
-    this.getIssue= function(){
-        Issue.query({id:$stateParams.issueID},function(data){
-            self.issue = data;
+    this.getTask= function(){
+        Task.query({id:$stateParams.taskID},function(data){
+            self.task = data;
         },errorHandler)
     }
 
-    this.getIssue();
+    this.getTask();
 
     this.getUsers= function(){
         Users.query(function(data) {
@@ -51,33 +48,29 @@ app.controller('EditarIssueCtrl', function($resource,$state,$stateParams,Issue,$
 
     this.getUsers();
 
-
     this.inputFecha=function() {
+        console.log(this.datetime);
+        this.inputfecha.setAttribute("value", this.datetime);
+        this.inputfecha.value = this.datetime;
+    }
     
-
-    console.log(this.datetime);
-    this.inputfecha.setAttribute("value", this.datetime);
-    this.inputfecha.value = this.datetime;
-}
-
-	this.inputFecha();
+    this.inputFecha();
 
     this.asignarFecha=function() {
-    this.issue.expiracion= this.inputfecha.value.substring(0,10);
-}
-
+    	this.task.expiracion= this.inputfecha.value.substring(0,10);
+    }
 
     function errorHandler(error) {
         self.notificarError(error.data);
     }
     
 
-    this.updateIssue = function(){
+    this.updateTask = function(){
     	this.asignarFecha();
-        Issue.update({id:$stateParams.issueID},this.issue, function() {
-            console.log('issuecreado');
-            self.notificarMensaje('Issue creado!');
-            document.getElementById("feedback").textContent = "Problema editado con exito";
+        Task.update({id:$stateParams.taskID},this.task, function() {
+            console.log('taskEditado');
+            self.notificarMensaje('Task editado!');
+            document.getElementById("feedback").textContent = "Tarea editada con exito";
         }, errorHandler);
     };
 
@@ -88,12 +81,12 @@ app.controller('EditarIssueCtrl', function($resource,$state,$stateParams,Issue,$
     this.inputfecha.onchange=function(){
     	var date = new Date(self.inputfecha.value);
     	if(date < new Date()){
-    		document.getElementById("errorFecha").textContent ="La fecha debe ser mayor o igual a la actual";
+    		document.getElementById("errorFecha").textContent="La fecha debe ser mayor o igual a la actual";
     		self.inputfecha.value= self.datetime;
     	}else{
-    		document.getElementById("errorFecha").textContent ="";
+            document.getElementById("errorFecha").textContent="";
 
-    	}
+        }
     }
 
     this.msgs = [];
