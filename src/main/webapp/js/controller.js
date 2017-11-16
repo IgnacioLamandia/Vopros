@@ -1,5 +1,5 @@
 var app = angular.module('voprosApp',['ngResource','ui.router','satellizer']);
-app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Proyectos,Proyecto) {
+app.controller('AppCtrl', function($resource,$state,$stateParams,$auth,$location,Issues,Users,Proyectos,Proyecto) {
 	'use strict';
 
     var self = this;
@@ -79,6 +79,11 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
             self.issues = data;
         },errorHandler);
 	};
+
+    this.logout= function(){
+        $location.path('/login');
+        $auth.logout();
+    };
 	
 
 
