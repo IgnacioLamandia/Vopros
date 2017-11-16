@@ -79,8 +79,8 @@ console.log("funco");
         controller: "NuevoProyectoCtrl as ctrl"
     })
 
-	.state('editarIssue',{
-        url:"/issue/edit", //nose si esta bien la ruta asi
+	.state('main.editarIssue',{
+        url:"/issue/:issueID", //nose si esta bien la ruta asi
         templateUrl:"partials/editarIssue.html",
         controller: "EditarIssueCtrl as ctrl"
     })

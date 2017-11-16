@@ -8,7 +8,7 @@ app.controller('EditarIssueCtrl', function($resource,$state,$stateParams,Issue,$
 				+this.currentdate.getDate() 
                 ;
 
-    self.issue= {"titulo":"self.titulo","tipo":"self.tipo","gravedad":"self.gravedad","prioridad":"self.prioridad", "estado":"self.estado", "expiracion":"self.expiracion", "asignado":"self.asignado"}; //aca queiro tener los datos cargados del seleccionado anteriormente (nose si se cargan asi con self.atributo)
+    self.issue= {}; //aca queiro tener los datos cargados del seleccionado anteriormente (nose si se cargan asi con self.atributo)
 
     self.tipo=[ 'BUG',
     'PREGUNTA',
@@ -36,6 +36,13 @@ app.controller('EditarIssueCtrl', function($resource,$state,$stateParams,Issue,$
 
     self.inputfecha = document.getElementById("fecha");
 
+    this.getIssue= function(){
+        Issue.query({id:$stateParams.issueID},function(data){
+            self.issue = data;
+        },errorHandler)
+    }
+
+    this.getIssue();
 
     this.getUsers= function(){
         Users.query(function(data) {
@@ -68,12 +75,11 @@ app.controller('EditarIssueCtrl', function($resource,$state,$stateParams,Issue,$
 
     this.updateIssue = function(){
     	this.asignarFecha();
-        Issue.update({idProyecto:$stateParams.proyectoId},this.issue, function() {
+        Issue.update({id:$stateParams.issueID},this.issue, function() {
             console.log('issuecreado');
             self.notificarMensaje('Issue creado!');
             document.getElementById("feedback").textContent = "Problema editado con exito";
         }, errorHandler);
-        this.issue= {"titulo":"","tipo":"","gravedad":"","prioridad":"", "estado":"", "expiracion":"", "asignado":""};
     };
 
     this.cancel= function(){
