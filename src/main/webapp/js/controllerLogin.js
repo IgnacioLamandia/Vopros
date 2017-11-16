@@ -7,7 +7,6 @@ app.controller('LoginCtrl', function($resource,$timeout,$location,$state,Auth) {
     this.login = function(){
     	$('.error').html("");
         Auth.save(this.credentials,function(data){
-        	console.log(data);
         	self.ingresar();
         },errorHandler);
 

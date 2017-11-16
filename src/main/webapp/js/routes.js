@@ -1,8 +1,11 @@
 
 app.config(function ($stateProvider, $urlRouterProvider) {
 
+
 console.log("funco");
   $urlRouterProvider.otherwise("/");
+
+
 
   $stateProvider
 
