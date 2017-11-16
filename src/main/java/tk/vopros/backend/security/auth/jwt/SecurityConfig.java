@@ -1,7 +1,6 @@
 package tk.vopros.backend.security.auth.jwt;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -22,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/css/**").permitAll()
             .antMatchers("/partials/**").permitAll()
             .antMatchers("/bower_components/**").permitAll()
-            //.anyRequest().authenticated() //cualquier otra peticion requiere autenticacion
+            .anyRequest().authenticated() //cualquier otra peticion requiere autenticacion
             .and()
             // Las peticiones /login pasan previamente por este filtro
             .addFilterBefore(new LoginFilter("/auth/login", authenticationManager()),
@@ -32,12 +31,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .addFilterBefore(new JwtFilter(),
                     UsernamePasswordAuthenticationFilter.class);
     }
-
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//    	auth.inMemoryAuthentication()
-//	        .withUser("ask") //Este esta en memoria, falta implementar para autenticar con los usuarios de la bd.
-//	        .password("123")
-//	        .roles("ADMIN");
-//    }
 }
