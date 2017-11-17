@@ -1,11 +1,20 @@
 
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function ($stateProvider, $urlRouterProvider,$authProvider,$httpProvider) {
 
 
 console.log("funco");
   $urlRouterProvider.otherwise("/");
 
-
+  $httpProvider.interceptors.push(function($rootScope, $location, $q) {
+    return {
+      responseError: function(rejection) {
+        if (rejection.status == 401 || rejection.status == 403) {
+          $location.path('/login');
+        }
+        return rejection;
+      }
+    }
+  });
 
   $stateProvider
 
@@ -24,7 +33,20 @@ console.log("funco");
     .state('main', {
       url: "/main/:proyectoId/:username",
       templateUrl: "partials/main.html",
-      controller: "AppCtrl as ctrl"
+      controller: "AppCtrl as ctrl",
+      resolve: {
+          authenticated: function($q, $location, $auth) {
+            var deferred = $q.defer();
+
+            if (!$auth.isAuthenticated()) {
+              $location.path('/login');
+            } else {
+              deferred.resolve();
+            }
+
+            return deferred.promise;
+          }
+        }
     })
   
   .state('main.home', {

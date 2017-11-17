@@ -6,15 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import tk.vopros.backend.dao.GenericDAO;
-import tk.vopros.backend.dao.HibernateIssueDAO;
 import tk.vopros.backend.service.*;
-import tk.vopros.frontend.api.IssueController;
 
 @Configuration
 @SpringBootApplication

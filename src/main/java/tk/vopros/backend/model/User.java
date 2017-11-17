@@ -23,7 +23,7 @@ public class User {
 	public String nombre;
 	public String apellido;
 	public String email;
-	public String contrasenha;
+	public String password;
 	@ElementCollection(fetch=FetchType.EAGER,targetClass=Long.class)
 	public Set<Long> proyectos;
 	
@@ -34,7 +34,7 @@ public class User {
 		this.nombre = unNombre;
 		this.apellido = unApellido;
 		this.email = unEmail;
-		this.contrasenha = unaContrasenha;
+		this.password = unaContrasenha;
 		this.proyectos = new HashSet<Long>();
 	}
 	

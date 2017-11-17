@@ -1,19 +1,27 @@
-app.controller('LoginCtrl', function($resource,$timeout,$location,$state,Auth,$document, $anchorScroll) {
+app.controller('LoginCtrl', function($resource,$timeout,$location,$state,$auth,$document,$anchorScroll,Auth) {
 	'use strict';
 	var self = this;
 
-    self.credentials = {usuario:'', contrasenha:''};
+    self.credentials = {email:'', password:''};
 
     this.login = function(){
-    	$('.error').html("");
-        Auth.save(this.credentials,function(data){
-        	self.ingresar();
-        },errorHandler);
+        $auth.login(self.credentials).then(function(response){
+      		if(response.status == 200){
+      			self.ingresar();
+      		}
+      		else{
+      			$('.error').append("<h4 id='errorMsg'>Usuario o contraseña invalido/a</h4>");
+
+      		}
+        }).catch(function (response) {
+
+        console.log("error response", response);
+      });
 
     }
 
     this.ingresar = function(){
-    	$state.go('proyectos',{username:this.credentials.usuario});
+    	$state.go('proyectos',{username:this.credentials.email});
     }
 
     this.about = function(){
