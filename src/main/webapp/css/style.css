@@ -353,8 +353,8 @@ form:after {
   -o-box-shadow: 0 1px 0 #fff inset;
   box-shadow: 0 1px 0 #fff inset;
   border: 1px solid #c4c6ca;
-  margin: 0 auto;
-  padding: 25px 0 0;
+  margin: 10px auto;
+  padding: 25px 0 25px;
   position: relative;
   text-align: center;
   text-shadow: 0 1px 0 #fff;
@@ -392,6 +392,13 @@ form:after {
   background: -ms-linear-gradient(right,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
   background: linear-gradient(right,  rgba(126,126,126,1) 0%,rgba(255,255,255,1) 100%);
     left: 0;
+}
+#content form div[id="feedback"]{
+    color:#ba0805;
+  float:left;
+}
+#content form div[id="feedback"] h4{
+    color:#ba0805;
 }
 #content:after,
 #content:before {
@@ -510,7 +517,6 @@ form:after {
     float: right;
     font-size: 12px;
     margin: 30px 15px 0 0;
-    text-decoration: underline;
 }
 .button {
   background: rgb(247,249,250);

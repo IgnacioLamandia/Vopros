@@ -1,4 +1,4 @@
-var app = angular.module('voprosApp',['ngResource','ui.router']);
+var app = angular.module('voprosApp',['ngResource','ui.router','duScroll']);
 app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Proyectos,Proyecto) {
 	'use strict';
 

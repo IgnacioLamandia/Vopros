@@ -17,25 +17,30 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">
+                    <li class="active"><a href="">
                     <span class="glyphicon glyphicon-home"></span> 
                     Home</a></li>
-                    <li><a href="#">
+                    <li><a href="" du-smooth-scroll="about">
                     <span class="glyphicon glyphicon-king"></span>  
                     About</a></li>
+                    <li><a href="https://twitter.com/VoprosOK">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                    Seguinos</a></li>
  
                 </ul>
 
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-<div class="jumbotron" style="background-image: url(https://www.stremiodownload.com/wp-content/uploads/2016/05/Stremio-Issues.jpg);height: 600px;width: 100%">
+<div class="jumbotron" style="background-image: url(http://www.360wango.com/1/wp-content/uploads/2014/05/Best-Website-Background-Images10.jpg); 
+  background-size: 100%;
+  height: 600px;width: 100%">
 
 
   <div class="container">
   <section id="content">
     <form >
-      <h1>Ingresa para administrar tus proyectos</h1>
+      <h2 style="font-family: verdana bold italic;">Ingresa para administrar tus proyectos</h1>
       <body>
       <div>
         <input type="text" placeholder="Usuario" ng-model="ctrl.credentials.usuario" required="" id="user" />
@@ -45,15 +50,24 @@
       </div>
       <div>
         <input id="btn-signup" type="submit" ng-click="ctrl.login()" value="Ingresar"/>
-        <a href="#">Olvidaste tu contraseña?</a>
-        <a  ng-click="ctrl.registro()">Registrarse</a>
+        <a href="#"><font size="3">Olvidaste tu contraseña?</font></a>
+        <a  ng-click="ctrl.registro()"><font size="3">Registrarse</font></a>
         <br>
-        <div class="error"></div>
+        <br>
+        <br>
 
       </div>
+      <div id="feedback" class="error" align="left"></div>
+
     </form><!-- form -->
   </section><!-- content -->
 </div><!-- container -->
 </div>
-<div><a class="twitter-timeline" href="https://twitter.com/VoprosOK?ref_src=twsrc%5Etfw">Tweets by VoprosOK</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+<br>
+<div id="about" align="center">
+  <h2>Sobre Vopros</h2>
+  <br>
+  <img src="https://image.ibb.co/ionkCm/23660587_2133817256643939_1939352851_o.jpg"></div>
+  <br>
+<div style="width:300px"><a class="twitter-timeline" href="https://twitter.com/VoprosOK?ref_src=twsrc%5Etfw">Tweets by VoprosOK</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
 

@@ -1,4 +1,4 @@
-app.controller('LoginCtrl', function($resource,$timeout,$location,$state,Auth) {
+app.controller('LoginCtrl', function($resource,$timeout,$location,$state,Auth,$document, $anchorScroll) {
 	'use strict';
 	var self = this;
 
@@ -14,6 +14,11 @@ app.controller('LoginCtrl', function($resource,$timeout,$location,$state,Auth) {
 
     this.ingresar = function(){
     	$state.go('proyectos',{username:this.credentials.usuario});
+    }
+
+    this.about = function(){
+        $location.hash("about");
+        $anchorScroll();
     }
 
     this.registro = function(){
