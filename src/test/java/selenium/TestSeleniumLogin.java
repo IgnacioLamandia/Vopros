@@ -26,7 +26,7 @@ public class TestSeleniumLogin {
 //        System.setProperty("webdriver.gecko.driver","/home/gaston/Documentos/geckodriver"); 
 //		driver = new FirefoxDriver();
 		
-		System.setProperty("webdriver.chrome.driver","/home/matias/Escritorio/chromedriver");
+		System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver");
 		driver = new ChromeDriver();
 		
 	}

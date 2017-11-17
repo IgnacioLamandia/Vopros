@@ -24,7 +24,7 @@ private static WebDriver driver= null;
 	public static void inicializarDirver() {
 //		File file = new File("/usr/bin/google-chrome");
         //System.setProperty("webdriver.chrome.driver","/home/ignacio/Descargas/chromedriver"); 
-		System.setProperty("webdriver.chrome.driver","/home/matias/Escritorio/chromedriver");
+		System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver");
 		driver = new ChromeDriver();
 		
 	}

@@ -21,7 +21,7 @@ private static WebDriver driver= null;
 	@BeforeClass
 	public static void inicializarDirver() {
 		//System.setProperty("webdriver.chrome.driver","/home/gaston/Documentos/chromedriver");
-		System.setProperty("webdriver.chrome.driver","/home/matias/Escritorio/chromedriver");
+		System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver");
 		driver = new ChromeDriver();
 	}
 
