@@ -26,7 +26,7 @@ public class TestSeleniumLogin {
 //        System.setProperty("webdriver.gecko.driver","/home/gaston/Documentos/geckodriver"); 
 //		driver = new FirefoxDriver();
 		
-		System.setProperty("webdriver.chrome.driver","/home/ignacio/Descargas/chromedriver");
+		System.setProperty("webdriver.chrome.driver","/home/matias/Escritorio/chromedriver");
 		driver = new ChromeDriver();
 		
 	}
@@ -76,8 +76,8 @@ public class TestSeleniumLogin {
 		
 		//Espero 5 seg para que cargue la pag
 		
-		  driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
-
+		  //driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+		new WebDriverWait(driver, 15).until(ExpectedConditions.presenceOfElementLocated(By.id("errorMsg")));
 		//WebElement error = driver.findElement(By.className("error"));
 		  
 		assertEquals(driver.findElement(By.id("errorMsg")).getText(),"Usuario o contraseña invalido/a");
