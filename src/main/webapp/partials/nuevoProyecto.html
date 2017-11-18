@@ -9,7 +9,9 @@
 	<br>
 		<div ng-repeat="miembro in ctrl.proyecto.miembros">{{miembro.nombre}} </div>
 <br>
-<button class="btn-primary" ng-click="ctrl.search()">Buscar</button><input ng-model="ctrl.nombreABuscar">
+<div id="searchfield">
+<button class="btn-primary" ng-click="ctrl.search()">Buscar</button><input type="search" ng-model="ctrl.nombreABuscar" pattern="[a-zA-Z0-9-]+" id="autocomplete"/><span class="validity"></span>
+</div>
 <br>
 <ul > 
 	<li ng-repeat="result in ctrl.resultados"><a ng-click="ctrl.addMiembro(result)" >{{result.usuario}}</a></li>
