@@ -1,4 +1,5 @@
 <script type="text/ng-template" id="group-template.html">
+
     <div class="panel-heading">
       <h4 class="panel-title" style="color:#fa39c3">
         <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
@@ -12,34 +13,41 @@
       <div class="panel-body" style="text-align: right" ng-transclude></div>
     </div>
   </script>
-<div class="col-md-6">
 
-	<!--<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>Nombre</th>
-				<th>Descripci&oacute;n</th>
-				<th>Prioridad</th>
-				<th>Dificultad</th>
-				<th>Estado</th>
-				<th>Asignado</th>
-				<th>Expiraci&oacute;n</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr id="{{task.nombre}}" href="" ng-click="ctrl.seleccionar(task)" ng-repeat="task in ctrl.tasks">
-				<td >{{task.nombre}}</td>
-				<td ng-bind="task.descripcion"></td>
-				<td ng-bind="task.prioridad"></td>
-				<td ng-bind="task.dificultad"></td>
-				<td ng-bind="task.estado"></td>
-				<td ng-bind="task.asignado.usuario"></td>
-				<td ng-bind="task.expiracion"></td>
-			</tr>
-		</tbody>
-	</table>-->
+
+<div id="control" class="testimonial-group">
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-4 kanban"  >
+		<div style="background:#d0d0d0;height: 50px;border: 1px solid #2455a5" align="center"><h2>Nuevo</h2></div>
+		<div id="NUEVO" style="height: 450px" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+	</div>
+	<div class="col-md-4 kanban" >
+		<div style="background:#d0d0d0;height: 50px;border: 1px solid #2455a5" align="center"><h2>En progreso</h2></div>
+		<div id="EN_PROGRESO" style="height: 450px" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	</div>
+	<div class="col-md-4 kanban">
+		<div style="background:#d0d0d0;height: 50px;border: 1px solid #2455a5" align="center"><h2>Listo para probar</h2></div>
+		<div id="PARA_TESTEAR" style="height: 450px" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	</div>
+	<div class="col-md-4 kanban" >
+		<div style="background:#d0d0d0;height: 50px;border: 1px solid #2455a5" align="center"><h2>Cerrado</h2></div>
+		<div id="CERRADO" style="height: 450px" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	</div>
+	<div  class="col-md-4 kanban" >
+		<div style="background:#d0d0d0;height: 50px;border: 1px solid #2455a5" align="center"><h2>Investigar</h2></div>
+		<div id="INVESTIGAR" style="height: 450px" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	</div>
+	
+	<div class="col-md-1"></div>
+</div>
+</div>
+<div >
+
+
 	<uib-accordion close-others="oneAtATime"> 
-	<div uib-accordion-group class="panel-default" id="{{task.nombre}}"  ng-repeat="task in ctrl.tasks" ng-click="ctrl.seleccionar(this)">
+	<div id="{{task.nombre}}" draggable="true" ondragstart="drag(event)" uib-accordion-group class="panel-default"   ng-repeat="task in ctrl.tasks" ng-click="ctrl.seleccionar(this)">
 	  <uib-accordion-heading>
         <strong>{{task.nombre}} </strong><i align="right" class="fa fa-file-text fa-fw" aria-hidden="true"></i>
         <br>
@@ -57,3 +65,4 @@
 </uib-accordion>
 
 </div>
+{{ctrl.ordenarTasks()}}

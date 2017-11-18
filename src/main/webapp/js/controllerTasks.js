@@ -13,13 +13,26 @@ app.controller('TasksCtrl', function($resource,$timeout,$state,$stateParams,Task
     this.getTasks= function(){
         Proyecto.query({id:$stateParams.proyectoId},function(data){
             self.tasks = data.tasks;
+            //self.ordenarTasks();
         },errorHandler);
 	};
+
+    this.ordenarTasks=function(){
+        for(var i=0;i<this.tasks.length;i++){
+            console.log(this.tasks[i].nombre);
+            var t=document.getElementById(this.tasks[i].nombre);
+            console.log(t);
+            var tr = document.getElementById(this.tasks[i].estado);
+            console.log(tr);
+            tr.appendChild(t);
+            
+        }
+    }
 
 
 	this.seleccionar= function(tarea){
 		 var tr =document.getElementById(tarea.nombre);
-        if(tarea == this.task){
+        if(tarea.task == this.task){
             this.task = null;
  //           tr.style.backgroundColor = 'white';
         }else{
@@ -35,6 +48,44 @@ app.controller('TasksCtrl', function($resource,$timeout,$state,$stateParams,Task
         console.log(tarea.task);
 
 	}
+
+    this.cambiarEstado = function(taskDropped,estadoD){
+        taskDropped.estado=estadoD;
+        Task.update({id:taskDropped.id},taskDropped,function(){
+            console.log("Estado actualizado");
+        },errorHandler)
+    }
+
+
+
+
+
+    window.allowDrop = function(ev) {
+    ev.preventDefault();
+    if (ev.target.getAttribute("draggable") == "true")
+        ev.dataTransfer.dropEffect = "none"; // dropping is not allowed
+    else
+        ev.dataTransfer.dropEffect = "all"; // drop it like it's hot
+};
+
+
+window.drag = function(ev) {
+    ev.dataTransfer.setData("id", ev.target.id);
+};
+
+window.drop = function(ev) {
+    ev.preventDefault();
+    var id = ev.dataTransfer.getData("id");
+
+    var dragged = document.getElementById(id);
+    var task = angular.element(dragged).scope().task;
+    console.log(angular.element(document.getElementById("control")).scope().ctrl);
+    var ctrl = angular.element(document.getElementById("control")).scope().ctrl;
+    ctrl.cambiarEstado(task,ev.target.id);
+    ev.target.appendChild(dragged);
+
+    //dragged.className += " dropped";
+};
 
 	this.editarTask= function(){
         $state.go("main.editarTask",{taskID:this.task.id})

@@ -328,6 +328,14 @@ form:after {
 }
 .container {  margin: 25px auto; position: relative; width:900px; }
 
+.testimonial-group > .row {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.testimonial-group > .row > .col-md-4 {
+  display: inline-table;
+  float: none;
+}
 #metro {
     width: 960px;
     height: 100%;
@@ -338,6 +346,8 @@ form:after {
 .slide{background:#97b5e5;width:250px;height:250px;    margin: 0px 10px 10px 0px;
     border: 3px solid #2455a5;display: inline-block;vertical-align:top;
 }
+
+.kanban{height: 500px;max-height:900px;background:#ffe3e3;margin: 0px 10px 10px 0px;border: 3px solid #2455a5}
 
 #content {
   background: #f9f9f9;
