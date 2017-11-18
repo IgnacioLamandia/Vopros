@@ -333,7 +333,8 @@ form:after {
   white-space: nowrap;
 }
 .testimonial-group > .row > .col-md-4 {
-  display: inline-table;
+  vertical-align:top;
+  display: inline-block;
   float: none;
 }
 #metro {
@@ -347,7 +348,7 @@ form:after {
     border: 3px solid #2455a5;display: inline-block;vertical-align:top;
 }
 
-.kanban{height: 500px;max-height:900px;background:#ffe3e3;margin: 0px 10px 10px 0px;border: 3px solid #2455a5}
+.kanban{height:100%;background:#ffe3e3;margin: 0px 10px 10px 0px;border: 3px solid #2455a5}
 
 #content {
   background: #f9f9f9;

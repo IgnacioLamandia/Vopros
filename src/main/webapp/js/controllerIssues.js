@@ -50,6 +50,54 @@ app.controller('IssuesCtrl', function($resource,$timeout,$state,$stateParams,Pro
 
     }
 
+
+    this.cambiarEstado = function(issueDropped,estadoD){
+        issueDropped.estado=estadoD;
+        Issue.update({id:issueDropped.id},issueDropped,function(){
+            console.log("Estado actualizado");
+        },errorHandler)
+    }
+
+    this.ordenarIssues=function(){
+        for(var i=0;i<this.issues.length;i++){
+            console.log(this.issues[i].titulo);
+            var t=document.getElementById(this.issues[i].titulo);
+            console.log(t);
+            var tr = document.getElementById(this.issues[i].estado);
+            console.log(tr);
+            tr.appendChild(t);
+            
+        }
+    }
+
+      window.allowDrop = function(ev) {
+    ev.preventDefault();
+    if (ev.target.getAttribute("draggable") == "true")
+        ev.dataTransfer.dropEffect = "none"; // dropping is not allowed
+    else
+        ev.dataTransfer.dropEffect = "all"; // drop it like it's hot
+};
+
+
+window.drag = function(ev) {
+    ev.dataTransfer.setData("id", ev.target.id);
+};
+
+window.drop = function(ev) {
+    ev.preventDefault();
+    var id = ev.dataTransfer.getData("id");
+
+    var dragged = document.getElementById(id);
+    var issue = angular.element(dragged).scope().issue;
+    console.log(angular.element(document.getElementById("control")).scope().ctrl);
+    var ctrl = angular.element(document.getElementById("control")).scope().ctrl;
+    ctrl.cambiarEstado(issue,ev.target.id);
+    ev.target.appendChild(dragged);
+
+    //dragged.className += " dropped";
+};
+
+
 	this.editarIssue= function(){
         $state.go("main.editarIssue",{issueID:this.issue.id})
     }

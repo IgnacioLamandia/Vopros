@@ -1,32 +1,58 @@
-<div class="col-md-6">
-	<!--<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>T&iacute;tulo</th>
-				<th>Tipo</th>
-				<th>Gravedad</th>
-				<th>Prioridad</th>
-				<th>Estado</th>
-				<th>Asignado</th>
-				<th>Expiraci&oacute;n</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr id="{{issue.titulo}}" href="" ng-click="ctrl.seleccionar(issue)" ng-repeat="issue in ctrl.issues">
-				<td  ng-bind="issue.titulo"></td>
-				<td ng-bind="issue.tipo"></td>
-				<td ng-bind="issue.gravedad"></td>
-				<td ng-bind="issue.prioridad"></td>
-				<td ng-bind="issue.estado"></td>
-				<td ng-bind="issue.asignado.usuario"></td>
-				<td ng-bind="issue.expiracion"></td>
+<script type="text/ng-template" id="group-template.html">
 
-			</tr>
-		</tbody>
-	</table>
--->
+    <div class="panel-heading">
+      <h4 class="panel-title" style="color:#fa39c3">
+        <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+          <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
+            {{heading}}
+          </span>
+        </a>
+      </h4>
+    </div>
+    <div class="panel-collapse collapse" uib-collapse="!isOpen">
+      <div class="panel-body" style="text-align: right" ng-transclude></div>
+    </div>
+  </script>
+<div id="control" class="testimonial-group">
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-4 kanban"  >
+		<div style="background:#d0d0d0;height: 50px;border: 1px solid #2455a5" align="center"><h2>Nuevo</h2></div>
+		<div id="NUEVO" style="height: 450px;height:100%" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+	</div>
+	<div class="col-md-4 kanban" >
+		<div style="background:#d0d0d0;height: 50px;border: 1px solid #2455a5" align="center"><h2>En progreso</h2></div>
+		<div id="EN_PROGRESO" style="min-height: 450px;height:100%" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	</div>
+	<div class="col-md-4 kanban">
+		<div style="background:#d0d0d0;height: 50px;border: 1px solid #2455a5" align="center"><h2>Listo para probar</h2></div>
+		<div id="PARA_TESTEAR" style="min-height: 450px;height:100%" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	</div>
+	<div class="col-md-4 kanban" >
+		<div style="background:#d0d0d0;height: 50px;border: 1px solid #2455a5" align="center"><h2>Cerrado</h2></div>
+		<div id="CERRADO" style="min-height: 450px;height:100%" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	</div>
+	<div  class="col-md-4 kanban" >
+		<div style="background:#d0d0d0;height: 50px;border: 1px solid #2455a5" align="center"><h2>Investigar</h2></div>
+		<div id="INVESTIGAR" style="min-height: 450px;height:100%" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	</div>
+		<div  class="col-md-4 kanban" >
+		<div style="background:#d0d0d0;height: 50px;border: 1px solid #2455a5" align="center"><h2>Rechazado</h2></div>
+		<div id="RECHAZADO" style="min-height: 450px;height:100%" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	</div>
+		<div  class="col-md-4 kanban" >
+		<div style="background:#d0d0d0;height: 50px;border: 1px solid #2455a5" align="center"><h2>Postpuesto</h2></div>
+		<div id="POSTPUESTO" style="min-height: 450px;height:100%" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	</div>
+	
+	<div class="col-md-1"></div>
+</div>
+</div>
+<div >
+
 		<uib-accordion close-others="oneAtATime"> 
-	<div uib-accordion-group class="panel-default" id="{{issue.titulo}}"  ng-repeat="issue in ctrl.issues" ng-click="ctrl.seleccionar(this)">
+	<div uib-accordion-group class="panel-default" id="{{issue.titulo}}" draggable="true" ondragstart="drag(event)" ng-repeat="issue in ctrl.issues" ng-click="ctrl.seleccionar(this)">
 	  <uib-accordion-heading>
         <strong>{{issue.titulo}} </strong><i align="right" class="fa fa-exclamation-triangle fa-fw" aria-hidden="true"></i>
         <br>
@@ -44,3 +70,4 @@
 </uib-accordion>
 
 </div>
+{{ctrl.ordenarIssues()}}
