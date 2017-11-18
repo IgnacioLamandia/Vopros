@@ -21,18 +21,18 @@ app.controller('TasksCtrl', function($resource,$timeout,$state,$stateParams,Task
 		 var tr =document.getElementById(tarea.nombre);
         if(tarea == this.task){
             this.task = null;
-            tr.style.backgroundColor = 'white';
+ //           tr.style.backgroundColor = 'white';
         }else{
 
-            if(this.task !== null){
-                document.getElementById(this.task.nombre).style.backgroundColor='white';
-            }
+//            if(this.task !== null){
+//                document.getElementById(this.task.nombre).style.backgroundColor='white';
+//            }
             
-            this.task = tarea;
-            tr.style.backgroundColor = 'red';
+            this.task = tarea.task;
+//            tr.style.backgroundColor = 'red';
 
         }
-        console.log(tarea);
+        console.log(tarea.task);
 
 	}
 

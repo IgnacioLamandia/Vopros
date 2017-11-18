@@ -1,5 +1,5 @@
 <div class="col-md-6">
-	<table class="table table-hover">
+	<!--<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>T&iacute;tulo</th>
@@ -24,9 +24,23 @@
 			</tr>
 		</tbody>
 	</table>
-	<br>
-	<button class="btn-primary" ng-click="ctrl.editarIssue()"> Editar Seleccionado</a></button>
-	<br>
-	<button class="btn-primary" ng-click="ctrl.delete()">Borrar Seleccionado</button>
+-->
+		<uib-accordion close-others="oneAtATime"> 
+	<div uib-accordion-group class="panel-default" id="{{issue.titulo}}"  ng-repeat="issue in ctrl.issues" ng-click="ctrl.seleccionar(this)">
+	  <uib-accordion-heading>
+        <strong>{{issue.titulo}} </strong><i align="right" class="fa fa-exclamation-triangle fa-fw" aria-hidden="true"></i>
+        <br>
+        <strong> Estado:{{issue.estado}}</strong>
+
+      </uib-accordion-heading>
+      <p>Tipo: <strong>{{issue.tipo}}</strong></p>
+      <p>Gravedad: <strong>{{issue.gravedad}}</strong></p>
+      <p>Prioridad: <strong>{{issue.prioridad}}</strong></p>
+      <p>Usuario asignado: <strong>{{issue.asignado.usuario}}</strong></p>
+      <p>Fecha de expiracion: <strong>{{issue.expiracion}}</strong></p>
+      <button class="btn btn-info" ng-click="ctrl.editarIssue()"> Editar Seleccionado</a></button>  
+	  <button class="btn btn-danger" ng-click="ctrl.delete()">Borrar Seleccionado</button>
+    </div>
+</uib-accordion>
 
 </div>

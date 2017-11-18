@@ -30,21 +30,22 @@ app.controller('IssuesCtrl', function($resource,$timeout,$state,$stateParams,Pro
 
 
     this.seleccionar= function(problema){
-        console.log(problema);
-        var tr =document.getElementById(problema.titulo);
-        if(problema == this.issue){
+        console.log(problema.issue);
+ //       var tr =document.getElementById(problema.titulo);
+        if(problema.issue == this.issue){
         	this.issue = null;
-			tr.style.backgroundColor = 'white';
+//			tr.style.backgroundColor = 'white';
         }else{
 
-        	if(this.issue !== null){
-        		document.getElementById(this.issue.titulo).style.backgroundColor='white';
-        	}
+ //       	if(this.issue !== null){
+ //       		document.getElementById(this.issue.titulo).style.backgroundColor='white';
+ //       	}
         	
-        	this.issue = problema;
-        	tr.style.backgroundColor = 'red';
+        	this.issue = problema.issue;
+   //     	tr.style.backgroundColor = 'red';
 
         }
+
 
 
     }

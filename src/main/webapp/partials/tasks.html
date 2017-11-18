@@ -1,5 +1,20 @@
+<script type="text/ng-template" id="group-template.html">
+    <div class="panel-heading">
+      <h4 class="panel-title" style="color:#fa39c3">
+        <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+          <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
+            {{heading}}
+          </span>
+        </a>
+      </h4>
+    </div>
+    <div class="panel-collapse collapse" uib-collapse="!isOpen">
+      <div class="panel-body" style="text-align: right" ng-transclude></div>
+    </div>
+  </script>
 <div class="col-md-6">
-	<table class="table table-hover">
+
+	<!--<table class="table table-hover">
 		<thead>
 			<tr>
 				<th>Nombre</th>
@@ -22,8 +37,23 @@
 				<td ng-bind="task.expiracion"></td>
 			</tr>
 		</tbody>
-	</table>
-	<button class="btn-primary" ng-click="ctrl.editarTask()"> Editar Seleccionado</a></button>  
-	<br>
-	<button class="btn-primary" ng-click="ctrl.delete()">Borrar Seleccionado</button>
+	</table>-->
+	<uib-accordion close-others="oneAtATime"> 
+	<div uib-accordion-group class="panel-default" id="{{task.nombre}}"  ng-repeat="task in ctrl.tasks" ng-click="ctrl.seleccionar(this)">
+	  <uib-accordion-heading>
+        <strong>{{task.nombre}} </strong><i align="right" class="fa fa-file-text fa-fw" aria-hidden="true"></i>
+        <br>
+        <strong> Estado:{{task.estado}}</strong>
+
+      </uib-accordion-heading>
+      <p>Descripcion: <strong>{{task.descripcion}}</strong></p>
+      <p>Prioridad: <strong>{{task.prioridad}}</strong></p>
+      <p>Dificultad: <strong>{{task.dificultad}}</strong></p>
+      <p>Usuario asignado: <strong>{{task.asignado.usuario}}</strong></p>
+      <p>Fecha de expiracion: <strong>{{task.expiracion}}</strong></p>
+      <button class="btn btn-info" ng-click="ctrl.editarTask()"> Editar Seleccionado</a></button>  
+	  <button class="btn btn-danger" ng-click="ctrl.delete()">Borrar Seleccionado</button>
+    </div>
+</uib-accordion>
+
 </div>
