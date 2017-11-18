@@ -37,19 +37,19 @@ private static WebDriver driver= null;
 	@Test
 	public void testInputDeFechaIncorrectaNuevoIssue() {
 		
-//		driver.get("http://localhost:8080/");
-//		
-//		WebElement usuario=driver.findElement(By.id("user"));
-//		usuario.sendKeys("Aczero");
-//		WebElement contrasenha=driver.findElement(By.id("pass"));
-//		contrasenha.sendKeys("123");
-//		WebElement btnAccept=driver.findElement(By.id("btn-signup"));
-//		btnAccept.click();
-//		new WebDriverWait(driver, 15).until(ExpectedConditions.presenceOfElementLocated(By.id("Vopros")));
+		driver.get("http://localhost:8080/");
+		
+		WebElement usuario=driver.findElement(By.id("user"));
+		usuario.sendKeys("Aczero");
+		WebElement contrasenha=driver.findElement(By.id("pass"));
+		contrasenha.sendKeys("123");
+		WebElement btnAccept=driver.findElement(By.id("btn-signup"));
+		btnAccept.click();
+		new WebDriverWait(driver, 15).until(ExpectedConditions.presenceOfElementLocated(By.id("Vopros")));
 		
 		driver.get("http://localhost:8080/#!/main/1/Aczero/issue/nuevo");
 		
-		WebElement fechaInput = driver.findElement(By.name("first_date"));
+		WebElement fechaInput = driver.findElement(By.id("fecha"));
 		fechaInput.sendKeys(Keys.TAB);		fechaInput.sendKeys(Keys.TAB);
 		fechaInput.sendKeys("2017");
 		fechaInput.sendKeys(Keys.TAB);

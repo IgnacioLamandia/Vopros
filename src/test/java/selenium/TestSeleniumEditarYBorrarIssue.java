@@ -6,6 +6,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -69,7 +70,7 @@ private static WebDriver driver= null;
 		assertTrue(driver.findElement(By.id("Issue 42")) != null);
 	}
 	
-	@Test
+	@Test(expected=NoSuchElementException.class)
 	public void testBorrarUnIssue() {
 		
 		driver.get("http://localhost:8080/");
@@ -88,8 +89,10 @@ private static WebDriver driver= null;
 		issue.click();
 		WebElement botonElim = driver.findElements(By.className("btn-primary")).get(1);
 		botonElim.click();
+		new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(By.id("Issue 6")));
+
 		
-		assertTrue(driver.findElement(By.id("Issue 6")) == null);
+		driver.findElement(By.id("Issue 6"));
 	}
 
 }
