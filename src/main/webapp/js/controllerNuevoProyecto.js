@@ -7,6 +7,7 @@ app.controller('NuevoProyectoCtrl', function($resource,$scope,$state,$stateParam
     self.creador={};
     self.nombreABuscar = "";
     self.resultados = [];
+    self.miembro="";
 
 
 
@@ -39,13 +40,18 @@ app.controller('NuevoProyectoCtrl', function($resource,$scope,$state,$stateParam
 
     };
 
-    this.search = function(){
+    this.onSelect=function($item){
+        this.proyecto.miembros.push($item);
+    }
+
+    this.search = function(nombre){
         console.log("aca llegue");
-        UserSearch.query({val:this.nombreABuscar},function(data){
+        UserSearch.query({val:nombre},function(data){
             console.log("aca no :v");
             self.notificarMensaje("allahu akbar");
             self.resultados = data;
         },errorHandler);
+        return this.resultados;
 
 
     }

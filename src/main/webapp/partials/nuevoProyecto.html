@@ -1,4 +1,5 @@
-<div class="container">
+
+<div class="container-fluid" align="center">
 	<h2>Nuevo Proyecto</h2>
 	<br>
     <h4 class="lead"> <strong> Nombre: </strong><input ng-model="ctrl.proyecto.nombre"> </h4>	
@@ -7,23 +8,33 @@
 	<br>
 	<h4 class="lead"> <strong> Miembros: </strong></h4>
 	<br>
-		<div ng-repeat="miembro in ctrl.proyecto.miembros">{{miembro.nombre}} </div>
+	<ul>
+		<li ng-repeat="miembro in ctrl.proyecto.miembros">{{miembro.nombre}} </li>
+
+	</ul>
 <br>
+<div>
+    <input type="search" ng-model="ctrl.miembro" placeholder="Busca un usuario para agregarlo al proyecto" uib-typeahead="resultados.usuario for resultados in ctrl.search($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control" typeahead-on-select="ctrl.onSelect($item)">
+    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+    <div ng-show="noResults">
+      <i class="glyphicon glyphicon-remove"></i> No se encontro ningun usuario con ese nombre
+    </div>
+    </div>
+<!--
 <div id="searchfield">
+
 <button class="btn-primary" ng-click="ctrl.search()">Buscar</button><input type="search" ng-model="ctrl.nombreABuscar" pattern="[a-zA-Z0-9-]+" id="autocomplete"/><span class="validity"></span>
 </div>
 <br>
 <ul > 
 	<li ng-repeat="result in ctrl.resultados"><a ng-click="ctrl.addMiembro(result)" >{{result.usuario}}</a></li>
 </ul>
-
+-->
 <br>
 <br>
-	<a ng-click="ctrl.guardarProyecto()" class="btn btn-primary">Guardar cambios</a>
-	<br>
-    <a ng-click="ctrl.cancel()" class="btn btn-primary">Cancelar</a>
-    <br>
-    <a ng-click="ctrl.proyectos()" class="btn btn-primary">Volver a proyectos</a>
+	<button ng-click="ctrl.guardarProyecto()" class="btn btn-primary">Guardar cambios</button>
+    <button ng-click="ctrl.cancel()" class="btn btn-danger">Cancelar</button>
+    <button ng-click="ctrl.proyectos()" class="btn btn-primary">Volver a proyectos</button>
 
 
 </div>
