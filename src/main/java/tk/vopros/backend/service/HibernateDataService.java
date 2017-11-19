@@ -2,11 +2,15 @@ package tk.vopros.backend.service;
 
 import java.time.LocalDate;
 
+import tk.vopros.backend.dao.HibernateConversacionDAO;
 import tk.vopros.backend.dao.HibernateIssueDAO;
+import tk.vopros.backend.dao.HibernateMensajeDAO;
 import tk.vopros.backend.dao.HibernateProyectoDAO;
 import tk.vopros.backend.dao.HibernateTaskDAO;
 import tk.vopros.backend.dao.HibernateUserDAO;
 import tk.vopros.backend.model.issue.Issue;
+import tk.vopros.backend.model.Conversacion;
+import tk.vopros.backend.model.Mensaje;
 import tk.vopros.backend.model.NivelDificultad;
 import tk.vopros.backend.model.Proyecto;
 import tk.vopros.backend.model.Task;
@@ -21,6 +25,8 @@ public class HibernateDataService {
 	HibernateIssueDAO issueDAO = new HibernateIssueDAO();
 	HibernateTaskDAO taskDAO = new HibernateTaskDAO();
 	HibernateProyectoDAO proyectDAO = new HibernateProyectoDAO();
+	HibernateConversacionDAO conversacionDAO = new HibernateConversacionDAO();
+	HibernateMensajeDAO mensajeDAO = new HibernateMensajeDAO();
 	
 	public void createDatosIniciales() {
 		
@@ -74,6 +80,20 @@ public class HibernateDataService {
 		userDAO.update(gaston);
 		userDAO.update(matias);
 		userDAO.update(ignacioG);
+		
+		
+		Mensaje mensaje1 = new Mensaje(gaston,ignacioL,"Nachoo");
+		Mensaje mensaje2 = new Mensaje(ignacioL,gaston,"Que onda prro,todo bien?"); 
+		Mensaje mensaje3 = new Mensaje(gaston,ignacioL,"Todeo bien");
+		Conversacion conver = new Conversacion();
+		conver.addMensaje(mensaje1);
+		conver.addMensaje(mensaje2);
+		conver.addMensaje(mensaje3);
+		
+		mensajeDAO.save(mensaje1);
+		mensajeDAO.save(mensaje2);
+		mensajeDAO.save(mensaje3);
+		conversacionDAO.save(conver);
 	
 	}
 	
