@@ -34,6 +34,9 @@
 		
 		<mapping class="tk.vopros.backend.model.Proyecto" />
 		
+		<mapping class="tk.vopros.backend.model.Mensaje" />
+		<mapping class="tk.vopros.backend.model.Conversacion" />
+		
 		
 	</session-factory>
 </hibernate-configuration>
