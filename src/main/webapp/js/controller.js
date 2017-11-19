@@ -84,9 +84,11 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,$auth,$location
         $location.path('/login');
         $auth.logout();
     };
-	
 
+    this.verChat = function(){
+        $state.go('main.chat');
 
+    };
  
 
 

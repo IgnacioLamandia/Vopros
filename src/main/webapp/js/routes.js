@@ -116,4 +116,10 @@ console.log("funco");
         controller: "EditarTaskCtrl as ctrl"
     })
 
+  .state('main.chat',{
+        url:"/chat",
+        templateUrl:"partials/chat.html",
+        controller: "ChatCtrl as ctrl"
+    })
+
 });
