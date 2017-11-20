@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tk.vopros.backend.model.Conversacion;
 import tk.vopros.backend.model.Mensaje;
+import tk.vopros.backend.model.User;
 import tk.vopros.backend.service.ChatService;
+import tk.vopros.backend.service.UserService;
 
 @RestController
 public class ChatController {
@@ -20,26 +22,23 @@ public class ChatController {
 	@Autowired
 	ChatService chatService = new ChatService();
 	
+	@Autowired
+	UserService userService = new UserService();
+	
 	@RequestMapping(value = "/conversacion/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Conversacion> getTask(@PathVariable("id") Long id) {
-        System.out.println("Fetching Conversacion with id " + id);
-        Conversacion conversacion = this.chatService.getConversacionById(id);
-        if (conversacion == null) {
-            System.out.println("Conversacion with id " + id + " not found");
-            return new ResponseEntity<Conversacion>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<Conversacion>(conversacion, HttpStatus.OK);
+		return null;
     }
 	
-	@RequestMapping(value = "/conversacion/{converId}/mensaje", method = RequestMethod.PUT, consumes = "application/json")	
-	public ResponseEntity<Void> nuevoProyecto(@PathVariable("converId") long converId,@RequestBody Mensaje mensaje){
-		System.out.println("Updating Conversacion with id " + converId);
-		Conversacion conver = chatService.getConversacionById(converId);
-		if(conver == null) {
+	@RequestMapping(value = "/mensaje", method = RequestMethod.POST, consumes = "application/json")	
+	public ResponseEntity<Void> nuevoProyecto(@RequestBody Mensaje mensaje){
+		
+		User emisor	= this.userService.getById(mensaje.getEmisor().id);
+		User receptor = this.userService.getById(mensaje.getReceptor().id);
+		if(emisor == null || receptor == null) {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		} else {
-			conver.addMensaje(mensaje);
-			chatService.addMensaje(converId, mensaje);
+			chatService.setMensaje(mensaje);;
 			return new ResponseEntity<Void>(HttpStatus.OK);
 		}
 	}
