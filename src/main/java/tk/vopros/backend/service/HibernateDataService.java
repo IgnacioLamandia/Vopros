@@ -85,15 +85,10 @@ public class HibernateDataService {
 		Mensaje mensaje1 = new Mensaje(gaston,ignacioL,"Nachoo");
 		Mensaje mensaje2 = new Mensaje(ignacioL,gaston,"Que onda prro,todo bien?"); 
 		Mensaje mensaje3 = new Mensaje(gaston,ignacioL,"Todeo bien");
-		Conversacion conver = new Conversacion();
-		conver.addMensaje(mensaje1);
-		conver.addMensaje(mensaje2);
-		conver.addMensaje(mensaje3);
 		
 		mensajeDAO.save(mensaje1);
 		mensajeDAO.save(mensaje2);
 		mensajeDAO.save(mensaje3);
-		conversacionDAO.save(conver);
 	
 	}
 	
