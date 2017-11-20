@@ -1,5 +1,7 @@
 package tk.vopros.frontend.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,9 +26,17 @@ public class ChatController {
 	@Autowired
 	UserService userService = new UserService();
 	
-	@RequestMapping(value = "/conversacion/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> getTask(@PathVariable("id") Long id) {
-		return null;
+	@RequestMapping(value = "/conversacion/{emisorId}/{receptorId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Mensaje>> getTask(@PathVariable("emisorId") Long emisorId, @PathVariable("receptorId") Long receptorId) {
+		User emisor	= this.userService.getById(emisorId);
+		User receptor = this.userService.getById(receptorId);
+		
+		if(emisor == null || receptor == null) {
+			return new ResponseEntity<List<Mensaje>>(HttpStatus.NOT_FOUND);
+		} else {
+			List<Mensaje> conversacion = chatService.getConversacion(emisorId,receptorId);
+			return new ResponseEntity<List<Mensaje>>(conversacion,HttpStatus.OK);
+		}
     }
 	
 	@RequestMapping(value = "/mensaje", method = RequestMethod.POST, consumes = "application/json")	
