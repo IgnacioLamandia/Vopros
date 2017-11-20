@@ -100,9 +100,11 @@ this.myFunction=function(id) {
         $location.path('/login');
         $auth.logout();
     };
-	
 
+    this.verChat = function(){
+        $state.go('main.chat',{miembros:this.proyecto.miembros});
 
+    };
  
 
 
