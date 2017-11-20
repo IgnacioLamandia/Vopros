@@ -1,10 +1,15 @@
 <div>
-<div id="metro">
-		<div class="slide" id="{{proyecto.nombre}}" href="" ng-click="ctrl.abrirProyecto(proyecto)" ng-repeat="proyecto in ctrl.proyectos">
-		<div><font face = "Times New Roman" size="5">Nombre: {{proyecto.nombre}}</font></div>
+<div id="metro" style="min-height: 550px">
+		<div class="slide card" id="{{proyecto.nombre}}" href="" ng-click="ctrl.abrirProyecto(proyecto)" ng-repeat="proyecto in ctrl.proyectos">
+			<div class="card-body">
+				<div  align="center">
+		<font face = "Times New Roman Bold" size="6" class="card-title">{{proyecto.nombre}}</font>
+	</div>
+
 		<div><font face = "Times New Roman" size="5">Creador: {{proyecto.creador.usuario}}</font></div>
 		<div><font face = "Times New Roman" size="5">Miembros</font></div>
 		<ul><li ng-repeat="users in proyecto.miembros"><font face = "Times New Roman" size="5">{{users.usuario}}</font></li></ul>
+	</div>
 	</div>
 
 </div>

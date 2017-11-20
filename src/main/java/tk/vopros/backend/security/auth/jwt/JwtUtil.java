@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.util.UrlPathHelper;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -40,7 +41,9 @@ public class JwtUtil {
         // obtenemos el token que viene en el encabezado de la peticion
         String token = request.getHeader("Authorization");
 
-        
+
+        String url=request.getRequestURL().toString();
+
         try{
         	// si hay un token presente entonces lo validamos
 	        if (token != null) {
@@ -49,6 +52,11 @@ public class JwtUtil {
 	                    .parseClaimsJws(token.replace("Bearer", "")) //este metodo es el que valida
 	                    .getBody()
 	                    .getSubject();
+	            if(url.contains("user/byUsername")) {
+	            	if(!url.contains(user)) {
+	            		throw new ExpiredJwtException(null, null, user);
+	            	}
+	            }
 	
 	            return user != null ?
 	                    new UsernamePasswordAuthenticationToken(user, null,  emptyList()) :

@@ -18,7 +18,7 @@
 	<h4 class="lead"> <strong> Usuario asignado: </strong><select class="form-control" id="usuarioAsignado" ng-model="ctrl.task.asignado" ng-options="t.usuario for t in ctrl.users"></select></h4>
 	<br>
 	
-	<p id="feedback"></p>
+	<div id="msg"></div>
 	<button id="save" ng-click="ctrl.guardarTask()" class="btn btn-primary">Guardar cambios</button>
 	
     <button ng-click="ctrl.cancel()" class="btn btn-danger">Cancelar</button>
