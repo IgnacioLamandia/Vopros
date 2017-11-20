@@ -29,14 +29,14 @@ public class ChatController {
 	@Autowired
 	UserService userService = new UserService();
 	
-	@RequestMapping(value = "/conversacion/{emisorId}/{receptorId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Mensaje>> getTask(@PathVariable("emisorId") Long emisorId, @PathVariable("receptorId") Long receptorId) {
+	@RequestMapping(value = "/conversacion/{emisorUsername}/{receptorUsername}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Mensaje>> getTask(@PathVariable("emisorUsername") String emisorUsername, @PathVariable("receptorUsername") String receptorUsername) {
 
 		try{
-			User emisor	= this.userService.getById(emisorId);
-			User receptor = this.userService.getById(receptorId);
+			User emisor	= this.userService.getByUsername(emisorUsername);
+			User receptor = this.userService.getByUsername(receptorUsername);
 			
-			List<Mensaje> conversacion = chatService.getConversacion(emisor.id,receptor.id);
+			List<Mensaje> conversacion = chatService.getConversacion(emisor.usuario,receptor.usuario);
 			return new ResponseEntity<List<Mensaje>>(conversacion,HttpStatus.OK);
 			
 		} catch (NoResultException e) {
@@ -53,8 +53,8 @@ public class ChatController {
 	public ResponseEntity<Void> nuevoProyecto(@RequestBody Mensaje mensaje){
 		
 		try {
-			User emisor	= this.userService.getById(mensaje.getEmisor().id);
-			User receptor = this.userService.getById(mensaje.getReceptor().id);
+			User emisor	= this.userService.getByUsername(mensaje.getEmisor().usuario);
+			User receptor = this.userService.getByUsername(mensaje.getReceptor().usuario);
 			
 			chatService.setMensaje(mensaje);;
 			return new ResponseEntity<Void>(HttpStatus.OK);
