@@ -17,16 +17,16 @@ public class HibernateMensajeDAO extends GenericDAO<Mensaje> {
 	}
 	
 	@SuppressWarnings("deprecation")
-	public List<Mensaje> getMensajes(Long emisorId, Long receptorId) {
+	public List<Mensaje> getMensajes(String emisorUsername, String receptorUsername) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
 			String hql = "from " + "Mensaje " + 
-						    "m " + "where (m.emisor.id = :emisorId AND m.receptor.id = :receptorId) "
-								 + "   OR (m.emisor.id = :receptorId AND m.receptor.id = :emisorId)";
+						    "m " + "where (m.emisor.usuario = :emisorUsername AND m.receptor.usuario = :receptorUsername) "
+								 + "   OR (m.emisor.usuario = :receptorUsername AND m.receptor.usuario = :emisorUsername)";
 			Query<Mensaje> query = session.createQuery(hql, Mensaje.class);
-			query.setParameter("emisorId", emisorId);
-			query.setParameter("receptorId", receptorId);
+			query.setParameter("emisorUsername", emisorUsername);
+			query.setParameter("receptorUsername", receptorUsername);
 			return query.list();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
