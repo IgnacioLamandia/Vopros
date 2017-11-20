@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import tk.vopros.backend.model.Conversacion;
 import tk.vopros.backend.model.Mensaje;
 import tk.vopros.backend.model.User;
 import tk.vopros.backend.service.ChatService;
@@ -26,7 +25,7 @@ public class ChatController {
 	UserService userService = new UserService();
 	
 	@RequestMapping(value = "/conversacion/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Conversacion> getTask(@PathVariable("id") Long id) {
+    public ResponseEntity<Void> getTask(@PathVariable("id") Long id) {
 		return null;
     }
 	
