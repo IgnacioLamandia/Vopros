@@ -1,19 +1,22 @@
 package tk.vopros.backend.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
 public class Mensaje {
+	
 	@Id @GeneratedValue 
 	public Long id;
 	
-	@ManyToOne()
+	@ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private User emisor;
 	
-	@ManyToOne()
+	@ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private User receptor;
 	
 	private String texto;
@@ -38,6 +41,14 @@ public class Mensaje {
 
 	public String getTexto() {
 		return texto;
+	}
+	
+	public void setEmisor(User emisor) {
+		this.emisor = emisor;
+	}
+
+	public void setReceptor(User receptor) {
+		this.receptor = receptor;
 	}
 }
 
