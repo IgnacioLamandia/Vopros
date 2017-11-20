@@ -56,7 +56,7 @@ public class ChatController {
 			User emisor	= this.userService.getByUsername(mensaje.getEmisor().usuario);
 			User receptor = this.userService.getByUsername(mensaje.getReceptor().usuario);
 			
-			chatService.setMensaje(mensaje);;
+			chatService.setMensaje(emisor, receptor, mensaje);;
 			return new ResponseEntity<Void>(HttpStatus.OK);
 			
 		}catch (NoResultException e) {
