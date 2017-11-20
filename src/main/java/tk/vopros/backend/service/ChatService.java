@@ -26,8 +26,8 @@ public class ChatService {
 	}
 	
 	@Transactional
-	public List<Mensaje> getConversacion(Long emisorId, Long receptorId) {
-		return mensajeDAO.getMensajes(emisorId,receptorId);		
+	public List<Mensaje> getConversacion(String emisorUsername, String receptorUsername) {
+		return mensajeDAO.getMensajes(emisorUsername,receptorUsername);		
 	}
 
 }
