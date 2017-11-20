@@ -86,7 +86,7 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,$auth,$location
     };
 
     this.verChat = function(){
-        $state.go('main.chat');
+        $state.go('main.chat',{miembros:this.proyecto.miembros});
 
     };
  
