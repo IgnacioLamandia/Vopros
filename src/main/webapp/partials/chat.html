@@ -1,3 +1,5 @@
+  <link href="assets/css/bootstrap-chat.css" rel="stylesheet" />
+
   <div class="container">
 <div class="row " >
     <div class="col-md-8">
@@ -5,58 +7,35 @@
             <div class="panel-heading">
                 Conversación
             </div>
-            <div class="panel-body">
-                <ul class="media-list">
+            <div id="panelChat" class="panel-body" style="max-height:300px; overflow:scroll;overflow-x:hidden">
+                <ul class="media-list" id="Conver">
 
-                    <li class="media">
+                    <li  class="media" ng-repeat="mensaje in ctrl.conversacion">
                         <div class="media-body">
                             <div class="media">
-                                <a class="pull-left" href="#">
-                                    <img class="media-object img-circle " src="assets/img/user.png" />
+                                <a class="pull-left" href="">
+                                    <img class="media-object img-circle " style="max-height:40px;" src="http://download.seaicons.com/icons/icons8/ios7/512/Users-User-Male-2-icon.png" />
                                 </a>
+                                <medium class="text-muted">{{mensaje.emisor.usuario}}</medium>
+                                <br />  
                                 <div class="media-body" >
-                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-              
-              Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim. 
-                                                    Duis vel condimentum massa.
-                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-                                                    <br />
-                                <small class="text-muted">Alex Deo | 23rd June at 5:00pm</small>
-                                                    <hr />
+                                    {{mensaje.texto}}                
+                                    <hr />
                                 </div>
                             </div>
 
                         </div>
                     </li>
 
-                    <li class="media">
-                        <div class="media-body">
-                            <div class="media">
-                                <a class="pull-left" href="#">
-                                    <img class="media-object img-circle " src="assets/img/user.gif" />
-                                </a>
-                                <div class="media-body" >
-                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-              
-              Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim. 
-                                                    Duis vel condimentum massa.
-                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
-                                                    <br />
-                                                   <small class="text-muted">Jhon Rexa | 23rd June at 5:00pm</small>
-                                                    <hr />
-                                </div>
-                            </div>
-
-                        </div>
-                    </li>   
+                      
                 </ul>
             </div>
 
             <div class="panel-footer">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Chatea" />
+                    <input type="text" class="form-control" ng-model="ctrl.texto" placeholder="Chatea" />
                     <span class="input-group-btn">
-                        <button class="btn btn-info" type="button">Enviar</button>
+                        <button class="btn btn-info" type="button" ng-click="ctrl.enviarMensaje()">Enviar</button>
                     </span>
                 </div>
             </div>
@@ -73,7 +52,7 @@
 
                     <li class="media" ng-repeat="usuario in ctrl.usuarios">
                         <div class="media-body">
-                            <div class="media" ng-click="ctrl.verConversacion(usuario.id)" style="cursor: pointer;">
+                            <div class="media" ng-click="ctrl.abrirConver(usuario.usuario)" style="cursor: pointer;">
                                 <a class="pull-left" href="">
                                     <img class="media-object img-circle" style="max-height:40px;" src="http://download.seaicons.com/icons/icons8/ios7/512/Users-User-Male-2-icon.png" />
                                 </a>
