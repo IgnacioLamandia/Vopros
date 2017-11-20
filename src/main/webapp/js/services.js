@@ -95,20 +95,25 @@ app.factory('Auth', function($resource) {
 }); 
 
 
-/*
-app.factory('Auth', function($http) {
+
+app.factory('Conversacion', function($http) {
     return {
-        login: function(credentials){
-            return $http({
-              method: 'POST',
-              url: '/login',
-              data: credentials
-            }).then(function(response) {
-                //Logueado
+        getConversacion: function(emisorUsername, receptorUsername){
+            var url = '/conversacion/'+emisorUsername+'/'+receptorUsername+'';
+            return $http.get(url).then(function(response) {
+                return response;
+            }, function (response) {
+                //No logueado
+            });
+        },
+        sendMensaje: function(mensaje){
+            var url = '/mensaje';
+            return $http.post(url, mensaje).then(function(response) {
+                console.log(response);
             }, function (response) {
                 //No logueado
             });
         }
     }
 }); 
-*/
+
