@@ -2,14 +2,12 @@ package tk.vopros.backend.service;
 
 import java.time.LocalDate;
 
-import tk.vopros.backend.dao.HibernateConversacionDAO;
 import tk.vopros.backend.dao.HibernateIssueDAO;
 import tk.vopros.backend.dao.HibernateMensajeDAO;
 import tk.vopros.backend.dao.HibernateProyectoDAO;
 import tk.vopros.backend.dao.HibernateTaskDAO;
 import tk.vopros.backend.dao.HibernateUserDAO;
 import tk.vopros.backend.model.issue.Issue;
-import tk.vopros.backend.model.Conversacion;
 import tk.vopros.backend.model.Mensaje;
 import tk.vopros.backend.model.NivelDificultad;
 import tk.vopros.backend.model.Proyecto;
@@ -25,7 +23,6 @@ public class HibernateDataService {
 	HibernateIssueDAO issueDAO = new HibernateIssueDAO();
 	HibernateTaskDAO taskDAO = new HibernateTaskDAO();
 	HibernateProyectoDAO proyectDAO = new HibernateProyectoDAO();
-	HibernateConversacionDAO conversacionDAO = new HibernateConversacionDAO();
 	HibernateMensajeDAO mensajeDAO = new HibernateMensajeDAO();
 	
 	public void createDatosIniciales() {
