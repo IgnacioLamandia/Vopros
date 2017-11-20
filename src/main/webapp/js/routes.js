@@ -117,9 +117,10 @@ console.log("funco");
     })
 
   .state('main.chat',{
+        params:{miembros:[]},
         url:"/chat",
         templateUrl:"partials/chat.html",
-        controller: "ChatCtrl as ctrl"
+        controller: "ChatCtrl as ctrl",
     })
 
 });
