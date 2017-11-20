@@ -7,7 +7,7 @@
             <div class="panel-heading">
                 Conversación
             </div>
-            <div id="panelChat" class="panel-body" style="max-height:300px; overflow:scroll;overflow-x:hidden">
+            <div id="panelChat" class="panel-body" style="height:247px; overflow:scroll;overflow-x:hidden">
                 <ul class="media-list" id="Conver">
 
                     <li  class="media" ng-repeat="mensaje in ctrl.conversacion">
@@ -47,12 +47,12 @@
             <div class="panel-heading">
                Usuarios del proyecto
             </div>
-            <div class="panel-body">
+            <div class="panel-body" style="cursor: pointer;height:300px; overflow:scroll;overflow-x:hidden">
                 <ul class="media-list">
 
-                    <li class="media" ng-repeat="usuario in ctrl.usuarios">
+                    <li class="media" ng-repeat="usuario in ctrl.usuarios" >
                         <div class="media-body">
-                            <div class="media" ng-click="ctrl.abrirConver(usuario.usuario)" style="cursor: pointer;">
+                            <div class="media" ng-click="ctrl.abrirConver(usuario.usuario)">
                                 <a class="pull-left" href="">
                                     <img class="media-object img-circle" style="max-height:40px;" src="http://download.seaicons.com/icons/icons8/ios7/512/Users-User-Male-2-icon.png" />
                                 </a>
@@ -60,10 +60,12 @@
                                     <h5>{{usuario.usuario}} </h5>
                                     
                                 </div>
+                        <hr />
                             </div>
 
                         </div>
                     </li>
+
 
                 
                 </ul>
