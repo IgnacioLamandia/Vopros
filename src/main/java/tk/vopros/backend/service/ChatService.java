@@ -7,21 +7,27 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import tk.vopros.backend.dao.HibernateMensajeDAO;
+import tk.vopros.backend.dao.HibernateUserDAO;
 import tk.vopros.backend.model.Mensaje;
+import tk.vopros.backend.model.User;
 
 @Service("chatService")
 public class ChatService {
 	
 	@Autowired
 	private HibernateMensajeDAO mensajeDAO;
+	private HibernateUserDAO userDAO;
 	@Autowired
 	
 	public ChatService(){
 		this.mensajeDAO = new HibernateMensajeDAO();
+		this.userDAO = new HibernateUserDAO();
 	}
 	
 	@Transactional
-	public void setMensaje(Mensaje mensaje){
+	public void setMensaje(User emisor, User receptor, Mensaje mensaje){
+		mensaje.setEmisor(emisor);
+		mensaje.setReceptor(receptor);
 		mensajeDAO.save(mensaje);
 	}
 	
