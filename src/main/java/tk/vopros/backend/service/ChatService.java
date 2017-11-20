@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import tk.vopros.backend.dao.HibernateConversacionDAO;
+import tk.vopros.backend.dao.HibernateMensajeDAO;
 import tk.vopros.backend.model.Conversacion;
 import tk.vopros.backend.model.Mensaje;
 
@@ -12,28 +13,16 @@ import tk.vopros.backend.model.Mensaje;
 public class ChatService {
 	
 	@Autowired
-	private HibernateConversacionDAO conversacionDAO;
+	private HibernateMensajeDAO mensajeDAO;
 	@Autowired
 	
 	public ChatService(){
-		this.conversacionDAO = new HibernateConversacionDAO();
+		this.mensajeDAO = new HibernateMensajeDAO();
 	}
 	
 	@Transactional
-	public Conversacion getConversacionById(long id){
-		return conversacionDAO.getById(id);
-	}
-	
-	@Transactional
-	public void setConversacion(Conversacion conversacion){
-		conversacionDAO.save(conversacion);
-	}
-	
-	@Transactional
-	public void addMensaje(long idConver, Mensaje mensaje){
-		Conversacion conver = conversacionDAO.getById(idConver);
-		conver.addMensaje(mensaje);		
-		conversacionDAO.update(conver);		
+	public void setMensaje(Mensaje mensaje){
+		mensajeDAO.save(mensaje);
 	}
 
 }
