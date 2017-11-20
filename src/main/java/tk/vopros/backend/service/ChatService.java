@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import tk.vopros.backend.dao.HibernateConversacionDAO;
 import tk.vopros.backend.dao.HibernateMensajeDAO;
-import tk.vopros.backend.model.Conversacion;
 import tk.vopros.backend.model.Mensaje;
 
 @Service("chatService")
