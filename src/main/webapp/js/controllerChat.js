@@ -41,9 +41,9 @@ app.controller('ChatCtrl', function($stateParams, Conversacion) {
                                 '<a class="pull-left" href="#">'+
                                     '<img class="media-object img-circle " src="http://download.seaicons.com/icons/icons8/ios7/512/Users-User-Male-2-icon.png" style="max-height:40px;" />'+
                                 '</a>'+
-                                '<medium class="text-muted">'+mensaje.emisor.usuario+'</medium>'+
+                                '<medium class="text-muted">'+mensaje.emisor.usuario+':</medium>'+
                                 '<br />  '+
-                                '<div class="media-body" >'+
+                                '<div class="media-body" ><br/>'+
                                     mensaje.texto +                
                                     '<hr />'+
                                 '</div>'+
