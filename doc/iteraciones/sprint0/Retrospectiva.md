@@ -7,11 +7,9 @@
 * Reunir datos
 
 
- More | Less | Keep | Throw |
-| -- | -- | -- | -- |
- | Documentación | Codigo repetido | Controllers separados | User stories generales |
- | División de tareas | Decisiones apresuradas | Taiga| Slack |
- |Reuniones||Discord| |
+ | More | Less | Keep | Throw |
+ | ---- | ---- | ---- | ---- |
+ | Documentación, División de tareas, Reuniones | Codigo repetido, Decisiones apresuradas | Controllers separados, Taiga, Discord | User stories generales, Slack |
  
  * Generar entendimiento
  
