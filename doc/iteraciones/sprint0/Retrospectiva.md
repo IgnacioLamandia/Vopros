@@ -18,8 +18,8 @@
 
 ### Decidir que hacer
 
-   - Con respecto a la documentacion se decidio comentar las implementaciones de cada metodo
- Se decidio organizarse de acuerdo al tiempo disponible de cada integrante
-    - Se decidio realizar reuniones dia por medio para mantenernos informados
-    - Se decidio usar metodos mas genericos
-    - Se decidio crear user stories mas especificas
+ - Con respecto a la documentación se decidió comentar las implementaciones de cada metodo.
+ - Se decidió organizarse de acuerdo al tiempo disponible de cada integrante.
+ - Se decidió realizar reuniones dia por medio para mantenernos informados.
+ - Se decidió usar metodos mas genéricos.
+ - Se decidió crear user stories mas específicas.
