@@ -11,3 +11,6 @@ Se puede identificar que por mas que los roles de UP son más específicos, se c
 * El stakeholder y analista en UP se podrían equiparar con el Product owner de scrum, ya que son los que representan al cliente.
 * El project manager se podría equiparar con el scrum master, ya que ambos son los indicados de liderar el proyecto y guiar a los otros miembros.
 * Los roles de arquitécto, desarrollador y tester de UP se podrían equiparar con los del equipo de trabajo, en el que no estan divididas las funciones que hace cada uno como en UP pero que se cubren todas las mismas funcionalidades (diseño, desarrollo y testeo).
+
+
+### Analice las prácticas de UP y compare con prácticas ágiles
