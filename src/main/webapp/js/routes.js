@@ -123,4 +123,10 @@ console.log("funco");
         controller: "ChatCtrl as ctrl",
     })
 
+  .state('main.whiteboard',{ 
+        url: "/whiteboard",
+        templateUrl: "partials/whiteboard.html",
+        controller: "CanvasCtrl as ctrl"
+     })
+
 });

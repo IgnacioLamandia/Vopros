@@ -105,6 +105,10 @@ this.myFunction=function(id) {
         $state.go('main.chat',{miembros:this.proyecto.miembros});
 
     };
+
+    this.whiteboard = function(){
+        $state.go('main.whiteboard');
+    }
  
 
 

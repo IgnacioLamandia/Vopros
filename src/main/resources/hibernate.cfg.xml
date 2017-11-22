@@ -27,7 +27,7 @@
 		<mapping class="tk.vopros.backend.model.issue.TipoIssue" />
 		<mapping class="tk.vopros.backend.model.issue.TipoGravedad" />
 		<mapping class="tk.vopros.backend.model.issue.TipoPrioridad" />
-
+		<mapping class="tk.vopros.backend.model.Dibujo" />
 		<mapping class="tk.vopros.backend.model.Task" />
 		<mapping class="tk.vopros.backend.model.NivelDificultad" />
 		<mapping class="tk.vopros.backend.model.Estado" />

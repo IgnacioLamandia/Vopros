@@ -3,7 +3,7 @@ app.controller('NuevoProyectoCtrl', function($resource,$scope,$state,$stateParam
 
     var self = this;
 
-    self.proyecto= {"nombre":"","miembros":[]};
+    self.proyecto= {"nombre":"","miembros":[],"dibujos":[]};
     self.creador={};
     self.nombreABuscar = "";
     self.resultados = [];
@@ -33,7 +33,7 @@ app.controller('NuevoProyectoCtrl', function($resource,$scope,$state,$stateParam
         Proyecto.save({id:this.creador.id},this.proyecto, function() {
             self.notificarMensaje('Proyecto creado!');
         }, errorHandler);
-        this.proyecto = {"nombre":"","miembros":[]};
+        this.proyecto = {"nombre":"","miembros":[],"dibujos":[]};
         this.resultados = [];
         this.nombreABuscar = "";
         
