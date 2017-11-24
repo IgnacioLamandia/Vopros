@@ -17,7 +17,6 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
     });
 
     self.abrirConver = function(yourUsername){
-        //self.limpiarCovner();
         self.yourUsername = yourUsername;
         Conversacion.getConversacion(myUsername, yourUsername).then(function(response){
             self.mostrarMensajes(response.data);
@@ -52,10 +51,6 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
           self.appendMensaje(mensaje);
         });
     }
-
-    //self.limpiarCovner = function(){
-    //    $('#Conver').empty();
-    //}
     
     self.appendMensaje = function(mensaje){
         var newMensaje =
