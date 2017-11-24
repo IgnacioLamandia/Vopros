@@ -5,7 +5,7 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
     var myUsername = $stateParams.username;
     self.yourUsername = '';
 
-    self.usuarios = proyectData.miembros;
+    self.usuarios = proyectData.miembros || $stateParams.miembros;
     console.log("self.usuarios: ",self.usuarios)
 
     self.texto = '';
