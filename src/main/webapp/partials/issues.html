@@ -92,8 +92,8 @@
       <p>Prioridad: <strong>{{issue.prioridad}}</strong></p>
       <p>Usuario asignado: <strong>{{issue.asignado.usuario}}</strong></p>
       <p>Fecha de expiracion: <strong>{{issue.expiracion}}</strong></p>
-      <button class="btn btn-info" ng-click="ctrl.editarIssue()"> Editar Seleccionado</a></button>  
-	  <button class="btn btn-danger" ng-click="ctrl.delete()">Borrar Seleccionado</button>
+      <button class="btn btn-info" ng-click="ctrl.editarIssue()" data-dismiss="modal"> Editar Seleccionado</a></button>  
+	  <button class="btn btn-danger" ng-click="ctrl.delete()" data-dismiss="modal">Borrar Seleccionado</button>
         </div>
         
         <div class="modal-footer">
