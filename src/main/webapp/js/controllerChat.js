@@ -17,7 +17,7 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
     });
 
     self.abrirConver = function(yourUsername){
-        self.limpiarCovner();
+        //self.limpiarCovner();
         self.yourUsername = yourUsername;
         Conversacion.getConversacion(myUsername, yourUsername).then(function(response){
             self.mostrarMensajes(response.data);
@@ -47,14 +47,15 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
     }
 
     self.mostrarMensajes = function(mensajes){
-       angular.forEach(mensajes, function(mensaje) {
+        $('#panelChat').html('<ul class="media-list" id="'+ self.yourUsername +'Conver"></ul>');
+        angular.forEach(mensajes, function(mensaje) {
           self.appendMensaje(mensaje);
         });
     }
 
-    self.limpiarCovner = function(){
-        $('#Conver').empty();
-    }
+    //self.limpiarCovner = function(){
+    //    $('#Conver').empty();
+    //}
     
     self.appendMensaje = function(mensaje){
         var newMensaje =
@@ -76,6 +77,6 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
                     '</li>';
 
 
-        $('#Conver').append(newMensaje);
+        $('#'+self.yourUsername + 'Conver').append(newMensaje);
     }
 });
