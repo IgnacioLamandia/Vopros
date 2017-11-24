@@ -1,4 +1,4 @@
-app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
+app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData,$location) {
 	'use strict';
 
     var self = this;
@@ -11,7 +11,8 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
     self.texto = '';
 
     //  SOCKETS
-    var socket = io.connect('http://localhost:3000');
+    console.log('$location.host()' +$location.host());
+    var socket = io.connect('http://'+ $location.host() +':3000');
     socket.emit('conectame', myUsername);
 
     self.enviarMensajeSocket = function(yourUsername){
