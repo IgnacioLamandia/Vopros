@@ -25,6 +25,7 @@ app.controller('TasksCtrl', function($resource,$timeout,$state,$stateParams,Task
             var tr = document.getElementById(this.tasks[i].estado);
             console.log(tr);
             tr.appendChild(t);
+
             
         }
     }
