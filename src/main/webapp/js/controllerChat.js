@@ -70,10 +70,10 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
         });
     }
     
-    let i = 0;
+    let id = 0;
     self.appendMensaje = function(mensaje){
         var newMensaje =
-        '<div id="li'+i+'" style="padding:10px;"><li class="media" ng-repeat="mensaje in ctrl.conversacion">'+
+        '<div id="li'+id+'" style="padding:10px;"><li class="media" ng-repeat="mensaje in ctrl.conversacion">'+
                         '<div class="media-body">'+
                             '<div class="media">'+
                                 '<a class="pull-left" href="#">'+
@@ -92,7 +92,7 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
 
         $('#'+self.yourUsername + 'Conver').prepend(newMensaje);
 
-        var $el = $('#li'+i),
+        var $el = $('#li'+id),
             x = 300,
             originalOpacity = $el.css("opacity");
 
@@ -101,6 +101,6 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
         setTimeout(function(){
           $el.css("opacity", originalOpacity);
         }, x);
-        i = i+1;
+        id = id+1;
     }
 });
