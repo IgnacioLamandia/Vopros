@@ -24,7 +24,6 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
         var newMensaje = {emisor:{usuario:mensaje.emisor},receptor:{usuario:myUsername},texto:mensaje.texto};
         self.appendMensaje(newMensaje);
     });
-
     //  SOCKETS
 
     $("#texto").on('keyup', function (e) {
@@ -71,9 +70,10 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
         });
     }
     
+    let i = 0;
     self.appendMensaje = function(mensaje){
         var newMensaje =
-        '<li  class="media" ng-repeat="mensaje in ctrl.conversacion">'+
+        '<div id="li'+i+'" style="padding:10px;"><li class="media" ng-repeat="mensaje in ctrl.conversacion">'+
                         '<div class="media-body">'+
                             '<div class="media">'+
                                 '<a class="pull-left" href="#">'+
@@ -83,14 +83,24 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
                                 '<br />  '+
                                 '<div class="media-body" ><br/>'+
                                     mensaje.texto +                
-                                    '<hr />'+
                                 '</div>'+
                             '</div>'+
+                            '<div class="line-separator"></div>'+
 
                         '</div>'+
                     '</li>';
 
+        $('#'+self.yourUsername + 'Conver').prepend(newMensaje);
 
-        $('#'+self.yourUsername + 'Conver').append(newMensaje);
+        var $el = $('#li'+i),
+            x = 300,
+            originalOpacity = $el.css("opacity");
+
+        //$el.fadeTo( "slow", 0.33 );
+        $el.css("opacity", 0.3);
+        setTimeout(function(){
+          $el.css("opacity", originalOpacity);
+        }, x);
+        i = i+1;
     }
 });
