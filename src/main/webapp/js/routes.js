@@ -121,6 +121,11 @@ console.log("funco");
         url:"/chat",
         templateUrl:"partials/chat.html",
         controller: "ChatCtrl as ctrl",
+        resolve: {
+          proyectData: function($stateParams,Proyecto){
+            return Proyecto.query({id:$stateParams.proyectoId});
+          }
+        }
     })
 
   .state('main.whiteboard',{ 
