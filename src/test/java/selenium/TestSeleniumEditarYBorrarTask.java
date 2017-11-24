@@ -2,6 +2,8 @@ package selenium;
 
 import static org.junit.Assert.*;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -21,7 +23,8 @@ public class TestSeleniumEditarYBorrarTask {
 	
 	@BeforeClass
 	public static void inicializarDirver() {
-		System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver");
+		//System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver");
+		System.setProperty("webdriver.chrome.driver","/home/matias/Escritorio/chromedriver");
 		driver = new ChromeDriver();
 	}
 
@@ -43,11 +46,13 @@ public class TestSeleniumEditarYBorrarTask {
 		btnAccept.click();
 		new WebDriverWait(driver, 15).until(ExpectedConditions.presenceOfElementLocated(By.id("Vopros")));
 		
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get("http://localhost:8080/#!/main/1/Aczero/tasks");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("Task 4")));
 		WebElement task = driver.findElement(By.id("Task 4"));
 		task.click();
-		WebElement botonEditar = driver.findElements(By.className("btn-primary")).get(0);
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.className("btn-info")));
+		WebElement botonEditar = driver.findElement(By.className("btn-info"));
 		botonEditar.click();
 		
 		new WebDriverWait(driver, 15).until(ExpectedConditions.presenceOfElementLocated(By.id("nombreTask")));
@@ -84,12 +89,16 @@ public class TestSeleniumEditarYBorrarTask {
 		btnAccept.click();
 		new WebDriverWait(driver, 15).until(ExpectedConditions.presenceOfElementLocated(By.id("Vopros")));
 		
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get("http://localhost:8080/#!/main/1/Aczero/tasks");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("Task 1")));
 		WebElement task = driver.findElement(By.id("Task 1"));
 		task.click();
-		WebElement botonElim = driver.findElements(By.className("btn-primary")).get(1);
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.className("btn-danger")));
+		WebElement botonElim = driver.findElement(By.className("btn-danger"));
 		botonElim.click();
+		
+		driver.get("http://localhost:8080/#!/main/1/Aczero/tasks");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(By.id("Task 1")));
 
 		driver.findElement(By.id("Task 1"));
