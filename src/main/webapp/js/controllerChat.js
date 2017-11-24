@@ -1,11 +1,12 @@
-app.controller('ChatCtrl', function($stateParams,Conversacion) {
+app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
 	'use strict';
 
     var self = this;
     var myUsername = $stateParams.username;
     self.yourUsername = '';
 
-    self.usuarios = $stateParams.miembros;
+    self.usuarios = proyectData.miembros;
+    console.log("self.usuarios: ",self.usuarios)
 
     self.texto = '';
 
