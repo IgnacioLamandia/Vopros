@@ -54,6 +54,14 @@ public class IssueTestCase {
 	}
 	
 	@Test
+	public void testGetYSetGravedad() {
+		assertEquals(issue.getGravedad(), TipoGravedad.GRAVE);
+		
+		issue.setGravedad(TipoGravedad.MENOR);
+		assertEquals(issue.getGravedad(), TipoGravedad.MENOR);
+	}
+	
+	@Test
 	public void testGetYSetEstado() {
 		assertEquals(issue.getEstado(), Estado.EN_PROGRESO);
 		
