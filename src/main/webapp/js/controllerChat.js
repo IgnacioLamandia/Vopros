@@ -6,11 +6,26 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
     var myUsername = $stateParams.username;
     self.yourUsername = '';
 
-    let socket = io.connect('http://localhost:3000');
-
     self.usuarios = proyectData.miembros || $stateParams.miembros;
 
     self.texto = '';
+
+    //  SOCKETS
+    var socket = io.connect('http://localhost:3000');
+    socket.emit('conectame', myUsername);
+
+    self.enviarMensajeSocket = function(yourUsername){
+        var mensaje = {emisor:myUsername,receptor:yourUsername ,texto:self.texto};
+        socket.emit('mensajePara',mensaje);
+    }
+
+    socket.on('nuevoMensaje', function(mensaje){
+        console.log("NEWWWW MESSAGE: ",mensaje);
+        var newMensaje = {emisor:{usuario:mensaje.emisor},receptor:{usuario:myUsername},texto:mensaje.texto};
+        self.appendMensaje(newMensaje);
+    });
+
+    //  SOCKETS
 
     $("#texto").on('keyup', function (e) {
         if (e.keyCode == 13) {
@@ -33,6 +48,7 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
         mensaje.texto = self.texto;
         
         if(self.texto){
+            self.enviarMensajeSocket(self.yourUsername);
             Conversacion.sendMensaje(mensaje).then(function(response){
                 self.appendMensaje(mensaje);
                 self.limpiarInput();
