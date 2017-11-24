@@ -2,11 +2,13 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
 	'use strict';
 
     var self = this;
+    
     var myUsername = $stateParams.username;
     self.yourUsername = '';
 
+    let socket = io.connect('http://localhost:3000');
+
     self.usuarios = proyectData.miembros || $stateParams.miembros;
-    console.log("self.usuarios: ",self.usuarios)
 
     self.texto = '';
 
@@ -24,6 +26,7 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData) {
     }
 
     self.enviarMensaje = function(){
+        
         let mensaje = {};
         mensaje.emisor = {usuario:myUsername};
         mensaje.receptor = {usuario:self.yourUsername};
