@@ -24,7 +24,7 @@ public class HibernateMensajeDAO extends GenericDAO<Mensaje> {
 			String hql = "from " + "Mensaje " + 
 						    "m " + "where (m.emisor.usuario = :emisorUsername AND m.receptor.usuario = :receptorUsername) "
 								 + "   OR (m.emisor.usuario = :receptorUsername AND m.receptor.usuario = :emisorUsername) "
-								 + "ORDER BY m.fechaCreacion DESC";
+								 + "ORDER BY m.id ASC";
 			Query<Mensaje> query = session.createQuery(hql, Mensaje.class);
 			query.setParameter("emisorUsername", emisorUsername);
 			query.setParameter("receptorUsername", receptorUsername);
