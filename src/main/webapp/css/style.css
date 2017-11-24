@@ -489,3 +489,10 @@ input:valid ~ span:after {
   background-position: 0 -135px;
   color: #00aeef;
 }
+
+.line-separator{
+    height:1px;
+    background:#000;
+    margin: 10px;
+    opacity: 0.1;
+}
