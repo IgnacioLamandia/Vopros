@@ -1,5 +1,7 @@
 package tk.vopros.backend.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,6 +23,8 @@ public class Mensaje {
 	
 	private String texto;
 	
+	private LocalDateTime fechaCreacion;
+	
 	public Mensaje(){
 		
 	}
@@ -29,6 +33,7 @@ public class Mensaje {
 		this.emisor = emisor;
 		this.receptor = receptor;
 		this.texto = texto;
+		this.fechaCreacion = LocalDateTime.now();
 	}
 
 	public User getEmisor() {
