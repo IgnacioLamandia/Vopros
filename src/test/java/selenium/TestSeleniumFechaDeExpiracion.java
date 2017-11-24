@@ -24,7 +24,8 @@ private static WebDriver driver= null;
 	public static void inicializarDirver() {
 //		File file = new File("/usr/bin/google-chrome");
         //System.setProperty("webdriver.chrome.driver","/home/ignacio/Descargas/chromedriver"); 
-		System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver");
+		//System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver");
+		System.setProperty("webdriver.chrome.driver","/home/matias/Escritorio/chromedriver");
 		driver = new ChromeDriver();
 		
 	}
@@ -102,7 +103,7 @@ private static WebDriver driver= null;
 		new WebDriverWait(driver, 10)
 		  .until(new ExpectedCondition<Boolean>() {
 	            public Boolean apply(WebDriver d) {
-	                return driver.findElement(By.id("feedback")).getText().length() != 0;
+	                return driver.findElement(By.id("msg")).getText().length() != 0;
 	            }
 	        });
 		WebElement errormsg=driver.findElement(By.id("feedback"));
@@ -188,10 +189,10 @@ private static WebDriver driver= null;
 		new WebDriverWait(driver, 10)
 		  .until(new ExpectedCondition<Boolean>() {
 	            public Boolean apply(WebDriver d) {
-	                return driver.findElement(By.id("feedback")).getText().length() != 0;
+	                return driver.findElement(By.id("msg")).getText().length() != 0;
 	            }
 	        });
-		WebElement errormsg=driver.findElement(By.id("feedback"));
+		WebElement errormsg=driver.findElement(By.id("msg"));
 		assertEquals(errormsg.getText(),"Tarea creada con exito");
 		
 		
