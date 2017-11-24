@@ -21,7 +21,8 @@ private static WebDriver driver= null;
 	@BeforeClass
 	public static void inicializarDirver() {
 		//System.setProperty("webdriver.chrome.driver","/home/gaston/Documentos/chromedriver");
-		System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver");
+		//System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver");
+		System.setProperty("webdriver.chrome.driver","/home/matias/Escritorio/chromedriver");
 		driver = new ChromeDriver();
 	}
 
@@ -48,7 +49,7 @@ private static WebDriver driver= null;
 		
 		WebElement nombrePr = driver.findElement(By.className("ng-valid"));
 		nombrePr.sendKeys("Taiga");
-		WebElement botonGuardarPr = driver.findElements(By.className("btn-primary")).get(1);
+		WebElement botonGuardarPr = driver.findElements(By.className("btn-primary")).get(0);
 		botonGuardarPr.click();
 		new WebDriverWait(driver, 10);
 //		WebElement botonVolver = driver.findElements(By.className("btn-primary")).get(3);
