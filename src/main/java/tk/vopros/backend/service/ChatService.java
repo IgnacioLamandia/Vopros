@@ -26,9 +26,8 @@ public class ChatService {
 	
 	@Transactional
 	public void setMensaje(User emisor, User receptor, Mensaje mensaje){
-		mensaje.setEmisor(emisor);
-		mensaje.setReceptor(receptor);
-		mensajeDAO.save(mensaje);
+		Mensaje newMensaje = new Mensaje(emisor,receptor,mensaje.getTexto());//Creo uno nuevo porque spring no me inicializa la fecha en el constructor
+		mensajeDAO.save(newMensaje);
 	}
 	
 	@Transactional
