@@ -1,4 +1,4 @@
-app.controller('ChatCtrl', function($stateParams, Conversacion) {
+app.controller('ChatCtrl', function($stateParams,Conversacion) {
 	'use strict';
 
     var self = this;
@@ -7,14 +7,19 @@ app.controller('ChatCtrl', function($stateParams, Conversacion) {
 
     self.usuarios = $stateParams.miembros;
 
-    self.conversacion = [];
     self.texto = '';
 
+    $("#texto").on('keyup', function (e) {
+        if (e.keyCode == 13) {
+            self.enviarMensaje();
+        }
+    });
+
     self.abrirConver = function(yourUsername){
-        self.conversacion = [];
+        self.limpiarCovner();
         self.yourUsername = yourUsername;
         Conversacion.getConversacion(myUsername, yourUsername).then(function(response){
-            self.conversacion = response.data;
+            self.mostrarMensajes(response.data);
         },function(error){});
     }
 
@@ -27,12 +32,29 @@ app.controller('ChatCtrl', function($stateParams, Conversacion) {
         if(self.texto){
             Conversacion.sendMensaje(mensaje).then(function(response){
                 self.appendMensaje(mensaje);
+                self.limpiarInput();
             },function(error){});
         } else {
             console.log("ESCRIBI ALGO");
         }
     }
 
+
+    self.limpiarInput = function(){
+        $('#texto').val('');
+        self.texto = '';
+    }
+
+    self.mostrarMensajes = function(mensajes){
+       angular.forEach(mensajes, function(mensaje) {
+          self.appendMensaje(mensaje);
+        });
+    }
+
+    self.limpiarCovner = function(){
+        $('#Conver').empty();
+    }
+    
     self.appendMensaje = function(mensaje){
         var newMensaje =
         '<li  class="media" ng-repeat="mensaje in ctrl.conversacion">'+
