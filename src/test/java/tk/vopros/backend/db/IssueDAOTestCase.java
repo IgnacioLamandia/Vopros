@@ -49,7 +49,9 @@ public class IssueDAOTestCase {
 		assertEquals(this.issue1.getEstado(), (Estado.NUEVO));
 		issue1.setEstado(Estado.CERRADO);
 		this.dao.update(issue1);
-		assertEquals(this.issue1.getEstado(), (Estado.CERRADO));
+		Long id = issue1.id;
+		Issue recuperado = this.dao.getById(id);
+		assertEquals(recuperado.getEstado(), (Estado.CERRADO));
 		
 		this.dao.delete(issue1);
 	}

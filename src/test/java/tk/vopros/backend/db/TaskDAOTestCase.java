@@ -42,7 +42,10 @@ public class TaskDAOTestCase {
 		assertEquals(this.task1.getPrioridad(), (TipoPrioridad.ALTA));
 		task1.setPrioridad(TipoPrioridad.BAJA);
 		this.dao.update(task1);
-		assertEquals(this.task1.getPrioridad(), (TipoPrioridad.BAJA));
+		
+		Long id = task1.id;
+		Task recuperado = this.dao.getById(id);
+		assertEquals(recuperado.getPrioridad(), (TipoPrioridad.BAJA));
 		
 		this.dao.delete(task1);
 	}

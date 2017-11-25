@@ -24,7 +24,7 @@ public class ProyectoDAOTestCase {
 	}
 
 	@Test
-	public void testGuardarYRecuperarUnIssue() {
+	public void testGuardarYRecuperarUnProyecto() {
 		this.dao.save(this.proyecto1);
 		Long id = proyecto1.id;
 		Proyecto recuperado = this.dao.getById(id);
@@ -34,12 +34,15 @@ public class ProyectoDAOTestCase {
 	}
 
 	@Test
-	public void testActualizarUnIssue() {
+	public void testActualizarUnProyecto() {
 		this.dao.save(this.proyecto1);
 		assertEquals(this.proyecto1.getNombre(), "Proyecto 1 db");
 		proyecto1.setNombre("Proyecto update");
 		this.dao.update(proyecto1);
-		assertEquals(this.proyecto1.getNombre(), "Proyecto update");
+		
+		Long id = proyecto1.id;
+		Proyecto recuperado = this.dao.getById(id);
+		assertEquals(recuperado.getNombre(), "Proyecto update");
 		
 		this.dao.delete(proyecto1);
 	}
