@@ -4,7 +4,8 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData,$locat
     var self = this;
     
     var myUsername = $stateParams.username;
-    self.yourUsername = '';
+    self.yourUsername = null;
+    self.tituloConversacion = 'Conversando con: Nadie';
 
     self.usuarios = proyectData.miembros || $stateParams.miembros;
 
@@ -35,6 +36,7 @@ app.controller('ChatCtrl', function($stateParams,Conversacion,proyectData,$locat
 
     self.abrirConver = function(yourUsername){
         self.yourUsername = yourUsername;
+        self.tituloConversacion = 'Conversando con: ' + yourUsername;
         Conversacion.getConversacion(myUsername, yourUsername).then(function(response){
             self.mostrarMensajes(response.data);
         },function(error){});
