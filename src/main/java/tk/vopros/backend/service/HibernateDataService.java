@@ -74,6 +74,7 @@ public class HibernateDataService {
 		gaston.proyectos.add(idP);
 		matias.proyectos.add(idP);
 		ignacioG.proyectos.add(idP);
+		ignacioL.proyectos.add(idP);
 		userDAO.update(gaston);
 		userDAO.update(matias);
 		userDAO.update(ignacioG);
