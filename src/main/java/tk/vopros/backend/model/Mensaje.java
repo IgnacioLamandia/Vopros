@@ -23,7 +23,10 @@ public class Mensaje {
 	
 	private String texto;
 	
-	private LocalDateTime fechaCreacion;
+	private long orderCreacion;
+	
+	private static long intOrder = 0;
+	
 	
 	public Mensaje(){
 		
@@ -33,7 +36,8 @@ public class Mensaje {
 		this.emisor = emisor;
 		this.receptor = receptor;
 		this.texto = texto;
-		this.fechaCreacion = LocalDateTime.now();
+		this.orderCreacion = intOrder;
+		intOrder++;
 	}
 
 	public User getEmisor() {
