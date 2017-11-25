@@ -3,10 +3,11 @@ app.controller('NuevoProyectoCtrl', function($resource,$scope,$state,$stateParam
 
     var self = this;
 
-    self.proyecto= {"nombre":"","miembros":[]};
+    self.proyecto= {"nombre":"","miembros":[],"dibujos":[]};
     self.creador={};
     self.nombreABuscar = "";
     self.resultados = [];
+    self.miembro="";
 
 
 
@@ -32,20 +33,25 @@ app.controller('NuevoProyectoCtrl', function($resource,$scope,$state,$stateParam
         Proyecto.save({id:this.creador.id},this.proyecto, function() {
             self.notificarMensaje('Proyecto creado!');
         }, errorHandler);
-        this.proyecto = {"nombre":"","miembros":[]};
+        this.proyecto = {"nombre":"","miembros":[],"dibujos":[]};
         this.resultados = [];
         this.nombreABuscar = "";
         
 
     };
 
-    this.search = function(){
+    this.onSelect=function($item){
+        this.proyecto.miembros.push($item);
+    }
+
+    this.search = function(nombre){
         console.log("aca llegue");
-        UserSearch.query({val:this.nombreABuscar},function(data){
+        UserSearch.query({val:nombre},function(data){
             console.log("aca no :v");
             self.notificarMensaje("allahu akbar");
             self.resultados = data;
         },errorHandler);
+        return this.resultados;
 
 
     }

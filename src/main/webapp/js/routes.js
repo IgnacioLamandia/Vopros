@@ -1,8 +1,20 @@
 
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function ($stateProvider, $urlRouterProvider,$authProvider,$httpProvider) {
+
 
 console.log("funco");
   $urlRouterProvider.otherwise("/");
+
+  $httpProvider.interceptors.push(function($rootScope, $location, $q) {
+    return {
+      responseError: function(rejection) {
+        if (rejection.status == 401 || rejection.status == 403) {
+          $location.path('/login');
+        }
+        return rejection;
+      }
+    }
+  });
 
   $stateProvider
 
@@ -21,7 +33,20 @@ console.log("funco");
     .state('main', {
       url: "/main/:proyectoId/:username",
       templateUrl: "partials/main.html",
-      controller: "AppCtrl as ctrl"
+      controller: "AppCtrl as ctrl",
+      resolve: {
+          authenticated: function($q, $location, $auth) {
+            var deferred = $q.defer();
+
+            if (!$auth.isAuthenticated()) {
+              $location.path('/login');
+            } else {
+              deferred.resolve();
+            }
+
+            return deferred.promise;
+          }
+        }
     })
   
   .state('main.home', {
@@ -79,6 +104,34 @@ console.log("funco");
         controller: "NuevoProyectoCtrl as ctrl"
     })
 
+	.state('main.editarIssue',{
+        url:"/issue/:issueID",
+        templateUrl:"partials/editarIssue.html",
+        controller: "EditarIssueCtrl as ctrl"
+    })
 
+	.state('main.editarTask',{
+        url:"/task/:taskID",
+        templateUrl:"partials/editarTask.html",
+        controller: "EditarTaskCtrl as ctrl"
+    })
+
+  .state('main.chat',{
+        params:{miembros:[]},
+        url:"/chat",
+        templateUrl:"partials/chat.html",
+        controller: "ChatCtrl as ctrl",
+        resolve: {
+          proyectData: function($stateParams,Proyecto){
+            return Proyecto.query({id:$stateParams.proyectoId});
+          }
+        }
+    })
+
+  .state('main.whiteboard',{ 
+        url: "/whiteboard",
+        templateUrl: "partials/whiteboard.html",
+        controller: "CanvasCtrl as ctrl"
+     })
 
 });

@@ -21,7 +21,7 @@ private static WebDriver driver= null;
 //        System.setProperty("webdriver.gecko.driver","/home/gaston/Documentos/geckodriver"); 
 //		driver = new FirefoxDriver();
 		
-		System.setProperty("webdriver.chrome.driver","/home/ignacio/Descargas/chromedriver");
+		System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver");
 		driver = new ChromeDriver();
 		
 	}
@@ -34,7 +34,16 @@ private static WebDriver driver= null;
 	//Se elimino temporalmente la posibilidad de borrar proyectos
 	@Test(expected=NoSuchElementException.class)
 	public void testBorrarProyecto() {
-//		driver.get("http://localhost:8080/#!/main/proyectos");
+//		driver.get("http://localhost:8080/");
+//		
+//		WebElement usuario=driver.findElement(By.id("user"));
+//		usuario.sendKeys("Aczero");
+//		WebElement contrasenha=driver.findElement(By.id("pass"));
+//		contrasenha.sendKeys("123");
+//		WebElement btnAccept=driver.findElement(By.id("btn-signup"));
+//		btnAccept.click();
+//		
+//		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("Vopros")));
 //		WebElement proyecto= driver.findElement(By.id("Vopros"));
 //		proyecto.click();
 //		WebElement boton = driver.findElement(By.id("borrar"));

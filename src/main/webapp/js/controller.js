@@ -1,13 +1,22 @@
-var app = angular.module('voprosApp',['ngResource','ui.router']);
-app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Proyectos,Proyecto) {
+var app = angular.module('voprosApp',['ngResource','ui.router','satellizer','duScroll','ui.bootstrap']);
+app.controller('AppCtrl', function($resource,$state,$stateParams,$auth,$location,Issues,Users,Proyectos,Proyecto,UserByUsername) {
 	'use strict';
 
     var self = this;
 
+    self.user={};
     self.users = [];
     self.proyectos = [];
     self.overlay = $(".overlay");
     self.proyecto = {};
+
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+this.myFunction=function(id) {
+    document.getElementById(id).classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
 
     this.getProyecto=function(){
 
@@ -17,6 +26,14 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
             self.users = data.miembros;
         },errorHandler);
     }
+
+    this.getUsuario= function(){
+        console.log($stateParams.username);
+        UserByUsername.query({username:$stateParams.username},function(data){
+            self.notificarMensaje("usuario encontrado");
+            self.user= data;
+        },errorHandler);
+    };
 
 
 
@@ -31,18 +48,18 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
     
     this.verIssues = function(){
     	$state.go('main.issues');
-        this.closeSideBar();
+        this.myFunction("problemas");
     };
 
     this.verUsers = function(){
         $state.go('main.users');
-        this.closeSideBar();
+        this.myFunction("usuarios");
 
     };
     
     this.verTasks = function(){
     	$state.go('main.tasks');
-        this.closeSideBar();
+        this.myFunction("tareas");
     };
 
     //this.nuevoUser = function(){
@@ -53,12 +70,12 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
 
     this.nuevoTask = function(){
         $state.go('main.nuevoTask');
-        this.closeSideBar();
+        this.myFunction("tareas");
     }
     
     this.nuevoIssue = function(){
         $state.go('main.nuevoIssue');
-        this.closeSideBar();
+        this.myFunction("problemas");
     }
 
 
@@ -70,7 +87,6 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
 
 	this.inicio = function(){
 		$state.go('main.home');	
-        this.closeSideBar();
 
 	}
 
@@ -79,9 +95,20 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
             self.issues = data;
         },errorHandler);
 	};
-	
 
+    this.logout= function(){
+        $location.path('/login');
+        $auth.logout();
+    };
 
+    this.verChat = function(){
+        $state.go('main.chat',{miembros:this.proyecto.miembros});
+
+    };
+
+    this.whiteboard = function(){
+        $state.go('main.whiteboard');
+    }
  
 
 
@@ -94,6 +121,7 @@ app.controller('AppCtrl', function($resource,$state,$stateParams,Issues,Users,Pr
     //this.getIssues();
     //this.getProyectos();
     this.getProyecto();
+    this.getUsuario();
 
     console.log("users",self.users)
     console.log("issues",self.issues)

@@ -34,6 +34,9 @@ public class Proyecto {
 	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
 	public Set<Task> tasks = new HashSet<Task>();
 	
+	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	public Set<Dibujo> dibujos = new HashSet<Dibujo>();
+	
 	public Proyecto(){
 		
 	}

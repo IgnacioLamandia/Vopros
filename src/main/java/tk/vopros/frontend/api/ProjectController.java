@@ -80,6 +80,8 @@ public class ProjectController {
 			proyect.issues = proyecto.issues;
 			proyect.tasks = proyecto.tasks;
 			proyect.miembros = proyecto.miembros;
+			proyect.dibujos = proyecto.dibujos;
+
 			this.proyectService.updateProyecto(proyect);
 			return new ResponseEntity<Void>(HttpStatus.OK);
 		}

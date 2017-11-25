@@ -1,28 +1,93 @@
-<div class="col-md-6">
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>Nombre</th>
-				<th>Descripci&oacute;n</th>
-				<th>Prioridad</th>
-				<th>Dificultad</th>
-				<th>Estado</th>
-				<th>Asignado</th>
-				<th>Expiraci&oacute;n</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr id="{{task.nombre}}" href="" ng-click="ctrl.seleccionar(task)" ng-repeat="task in ctrl.tasks">
-				<td >{{task.nombre}}</td>
-				<td ng-bind="task.descripcion"></td>
-				<td ng-bind="task.prioridad"></td>
-				<td ng-bind="task.dificultad"></td>
-				<td ng-bind="task.estado"></td>
-				<td ng-bind="task.asignado.usuario"></td>
-				<td ng-bind="task.expiracion"></td>
-			</tr>
-		</tbody>
-	</table>
-	<br>
-	<button class="btn-primary" ng-click="ctrl.delete()">Borrar Seleccionado</button>
+<div id="control" class="testimonial-group">
+<div class="d-inline-block row">
+	<div class="col-md-1"></div>
+
+	<div class="col-md-4 kanban"  >
+
+		<div style="background:#d0d0d0;height: 50px;border: 1px solid #2455a5" align="center"><h2>Nuevo</h2></div>
+		<div id="NUEVO" style="min-height:450px;height: 100%" ondrop="drop(event)" ondragover="allowDrop(event)">	</div>
+
+	</div>
+	<div class="col-md-4 kanban" >
+		<div style="background:#d0d0d0;height: 50px;border: 1px solid #2455a5" align="center"><h2>En progreso</h2></div>
+		<div id="EN_PROGRESO" style="min-height:450px;height: 100%" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	</div>
+	<div class="col-md-4 kanban">
+		<div style="background:#d0d0d0;height: 50px;border: 1px solid #2455a5" align="center"><h2>Listo para probar</h2></div>
+		<div id="PARA_TESTEAR" style="min-height:450px;height: 100%" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	</div>
+	<div class="col-md-4 kanban" >
+		<div style="background:#d0d0d0;height: 50px;border: 1px solid #2455a5" align="center"><h2>Cerrado</h2></div>
+		<div id="CERRADO" style="min-height:450px;height: 100%" ondrop="drop(event)" ondragover="allowDrop(event)"> </div>
+	</div>
+	<div  class="col-md-4 kanban" >
+		<div style="background:#d0d0d0;height: 50px;border: 1px solid #2455a5" align="center"><h2>Investigar</h2></div>
+		<div id="INVESTIGAR" style="min-height:450px;height: 100%" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		</div>
+	</div>
+	<div class="col-md-1"></div>
 </div>
+</div>
+<div >
+
+<!--
+	<uib-accordion close-others="oneAtATime"> 
+	<div id="{{task.nombre}}" draggable="true" ondragstart="drag(event)" uib-accordion-group class="panel-default"   ng-repeat="task in ctrl.tasks" ng-click="ctrl.seleccionar(this)">
+	  <uib-accordion-heading>
+        <strong>{{task.nombre}} </strong><i align="right" class="fa fa-file-text fa-fw" aria-hidden="true"></i>
+        <br>
+        <strong> Estado:{{task.estado}}</strong>
+
+      </uib-accordion-heading>
+      <p>Descripcion: <strong>{{task.descripcion}}</strong></p>
+      <p>Prioridad: <strong>{{task.prioridad}}</strong></p>
+      <p>Dificultad: <strong>{{task.dificultad}}</strong></p>
+      <p>Usuario asignado: <strong>{{task.asignado.usuario}}</strong></p>
+      <p>Fecha de expiracion: <strong>{{task.expiracion}}</strong></p>
+      <button class="btn btn-info" ng-click="ctrl.editarTask()"> Editar Seleccionado</a></button>  
+	  <button class="btn btn-danger" ng-click="ctrl.delete()">Borrar Seleccionado</button>
+    </div>
+-->
+
+<div id="{{task.nombre}}" draggable="true" ondragstart="drag(event)"  class="panel-default"   ng-repeat="task in ctrl.tasks" ng-click="ctrl.seleccionar(this)">
+
+
+<button type="button" class="btn btn-outline-primary" style="width:300px" data-toggle="modal" data-target="#{{$index}}">
+    <i align="right" class="fa fa-file-text fa-fw" aria-hidden="true"> {{task.nombre}} </i>
+  </button>
+
+  <div class="modal fade" id="{{$index}}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <div class="modal-header">
+          <h4 class="modal-title">Estado: {{task.estado}}</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <div class="modal-body">
+          <p>Descripcion: <strong>{{task.descripcion}}</strong></p>
+      <p>Prioridad: <strong>{{task.prioridad}}</strong></p>
+      <p>Dificultad: <strong>{{task.dificultad}}</strong></p>
+      <p>Usuario asignado: <strong>{{task.asignado.usuario}}</strong></p>
+      <p>Fecha de expiracion: <strong>{{task.expiracion}}</strong></p>
+      <button class="btn btn-info" ng-click="ctrl.editarTask()" data-dismiss="modal"> Editar Seleccionado</a></button>  
+	  <button class="btn btn-danger" ng-click="ctrl.delete()" data-dismiss="modal">Borrar Seleccionado</button>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+</div>
+
+
+{{ctrl.ordenarTasks()}}
+

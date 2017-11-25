@@ -4,7 +4,9 @@ import static org.junit.Assert.*;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -26,10 +28,13 @@ public class TestSeleniumLogin {
 //        System.setProperty("webdriver.gecko.driver","/home/gaston/Documentos/geckodriver"); 
 //		driver = new FirefoxDriver();
 		
-		System.setProperty("webdriver.chrome.driver","/home/ignacio/Descargas/chromedriver");
+		System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver");
 		driver = new ChromeDriver();
 		
 	}
+	
+	
+
 	
 	@AfterClass
 	public static void exitDriver() {
@@ -76,8 +81,8 @@ public class TestSeleniumLogin {
 		
 		//Espero 5 seg para que cargue la pag
 		
-		  driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
-
+		  //driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+		new WebDriverWait(driver, 15).until(ExpectedConditions.presenceOfElementLocated(By.id("errorMsg")));
 		//WebElement error = driver.findElement(By.className("error"));
 		  
 		assertEquals(driver.findElement(By.id("errorMsg")).getText(),"Usuario o contraseña invalido/a");

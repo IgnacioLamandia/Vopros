@@ -71,7 +71,7 @@ app.controller('NuevoIssueCtrl', function($resource,$state,$stateParams,Issue,$t
         Issue.save({idProyecto:$stateParams.proyectoId},this.issue, function() {
             console.log('issuecreado');
             self.notificarMensaje('Issue creado!');
-            document.getElementById("feedback").textContent = "Problema creado con exito";
+            document.getElementById("msg").innerHTML = "<div id='feedback' class='alert alert-success'>Problema creado con exito</div>";
         }, errorHandler);
         this.issue= {"titulo":"","tipo":"","gravedad":"","prioridad":"", "estado":"", "expiracion":"", "asignado":""};
     };

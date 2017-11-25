@@ -1,0 +1,79 @@
+  <link href="../css/bootstrap-chat.css" rel="stylesheet" />
+
+  <div class="container">
+<div class="row " >
+    <div class="col-md-8">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                {{ctrl.tituloConversacion}}
+            </div>
+            <div id="panelChat" class="panel-body" style="height:247px; overflow:scroll;overflow-x:hidden">
+                <!--<ul class="media-list" id="Conver">
+
+                    <li  class="media" ng-repeat="mensaje in conversacion">
+                        <div class="media-body">
+                            <div class="media">
+                                <a class="pull-left" href="">
+                                    <img class="media-object img-circle " style="max-height:40px;" src="http://download.seaicons.com/icons/icons8/ios7/512/Users-User-Male-2-icon.png" />
+                                </a>
+                                <medium class="text-muted">{{mensaje.emisor.usuario}}: </medium>
+                                  
+                                <div class="media-body" >
+                                <br />
+                                    {{mensaje.texto}}                
+                                    <hr />
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+
+                      
+                </ul>-->
+            </div>
+
+            <div class="panel-footer">
+                <div class="input-group">
+                    <input id="texto" type="text" class="form-control" ng-model="ctrl.texto" placeholder="Chatea" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info" type="button" ng-click="ctrl.enviarMensaje()">Enviar</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+               Usuarios del proyecto
+            </div>
+            <div class="panel-body" style="cursor: pointer;height:300px; overflow:scroll;overflow-x:hidden">
+                <ul class="media-list">
+
+                    <li class="media" ng-repeat="usuario in ctrl.usuarios" >
+                        <div class="media-body">
+                            <div class="media" ng-click="ctrl.abrirConver(usuario.usuario)">
+                                <a class="pull-left" href="">
+                                    <img class="media-object img-circle" style="max-height:40px;" src="http://download.seaicons.com/icons/icons8/ios7/512/Users-User-Male-2-icon.png" />
+                                </a>
+                                <div class="media-body" >
+                                    <h5>{{usuario.usuario}} </h5>
+                                    
+                        <hr />
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+
+
+                
+                </ul>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+</div>

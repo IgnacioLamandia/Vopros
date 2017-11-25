@@ -24,11 +24,11 @@ public class HibernateUserDAO extends GenericDAO<User>{
 		try {
 			session.beginTransaction();
 			String hql = "from " + "User" + 
-						" u " + "where u.usuario = :unNombre " 
-							  +   "and u.contrasenha = :unaContrasenha";
+						" u " + "where u.email = :unNombre " 
+							  +   "and u.password = :unaContrasenha";
 			Query<User> query = session.createQuery(hql, User.class);
-			query.setParameter("unNombre", user.usuario);
-			query.setParameter("unaContrasenha", user.contrasenha);
+			query.setParameter("unNombre", user.email);
+			query.setParameter("unaContrasenha", user.password);
 			return !query.list().isEmpty();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();

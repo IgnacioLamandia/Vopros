@@ -1,38 +1,82 @@
-<div class="container">
-      <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-        <div class="panel panel-primary" >
-          <div class="panel-heading">
-            <div class="panel-title">Iniciar sesion</div>
-          </div> 
-          <div style="padding-top:30px" class="panel-body" >
-            <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-            <form id="loginform" class="form-horizontal" role="form">
-              <div class="form-group">
-                <label for="usuario" class="col-md-3 control-label">Usuario</label>
-                <div class="col-md-9">
-                  <input id="user" type="text" class="form-control" ng-model="ctrl.credentials.usuario" placeholder="Usuario">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="contraseña" class="col-md-3 control-label">Contraseña</label>
-                <div class="col-md-9">
-                  <input id="pass" type="password" class="form-control" ng-model="ctrl.credentials.contrasenha"  placeholder="Contraseña">
-                </div>
-              </div>
-              <div style="margin-top:10px" class="form-group">
-               <!-- Button -->
-               <div class="col-md-offset-3 col-md-9">
-                 <button id="btn-signup" type="button" ng-click="ctrl.login()" class="btn btn-primary"><i class="icon-hand-right"></i>Iniciar sesion</button>
-                 <br>
-                 <br>
-                 <button id="btn-register" type="button" ng-click="ctrl.registro()" class="btn btn-primary"><i class="icon-hand-right"></i>Registrarse</button>
-                 <br>
-                 <div class="error"></div>
-               </div>
-              </div>
-            </form> 
-          </div> 
-        </div>  
+<div style="background-color: #00A6FF" data-spy="scroll" data-target=".navbar" data-offset="50">
+<nav class="navbar navbar-expand-sm navbar-toggleable-md bg-dark navbar-dark fixed-top">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href=""><img  src="https://image.ibb.co/kGR0fm/logoGris.png" width=100 heigh=100 alt="logo3" border="0"></a>
+          </li>
+          <li class="nav-item active" style="margin-top: 10px">
+            <a class="nav-link" href="" ui-sref="login">
+            <p><i class="fa fa-home" aria-hidden="true" style="display: inline"> Home</i>
+
+              
+          </p>
+          </a>
+          </li>
+          <li class="nav-item active" style="margin-top: 10px">
+            <a class="nav-link" href="" du-smooth-scroll="about">
+            
+            <i class="fa fa-info-circle" aria-hidden="true" style="display: inline"> Acerca de Vopros</i>
+          </a>
+          </li>
+          <li class="nav-item active" style="margin-top: 10px">
+            <a class="nav-link" href="" du-smooth-scroll="social">
+              
+              <i class="fa fa-users" aria-hidden="true" style="display: inline"> Social</i>
+            </a>
+          </li>
+
+        </ul>
+    </nav>
+<div class="jumbotron" style="background-image: url(http://www.360wango.com/1/wp-content/uploads/2014/05/Best-Website-Background-Images10.jpg); 
+  background-size: 100%;
+  height: 600px;width: 100%">
+
+
+  <div class="container">
+  <section id="content">
+    <form >
+      <h2 style="font-family: verdana bold italic;">Ingresa para administrar tus proyectos</h1>
+      <div>
+        <input type="text" placeholder="Usuario" ng-model="ctrl.credentials.email" required="" id="user" />
       </div>
+      <div>
+        <input type="password" placeholder="Contraseña" ng-model="ctrl.credentials.password"required="" id="pass" />
+      </div>
+      <div>
+        <input id="btn-signup" type="submit" ng-click="ctrl.login()" value="Ingresar"/>
+        <a href="#"><font size="3">Olvidaste tu contraseña?</font></a>
+        <a  ng-click="ctrl.registro()"><font size="3">Registrarse</font></a>
+        <br>
+        <br>
+        <br>
+
+      </div>
+      <div id="feedback" class="error" align="left"></div>
+
+    </form><!-- form -->
+  </section><!-- content -->
+</div><!-- container -->
+</div>
+<br>
+<div id="about" align="center">
+  <h1 style="font-family: Arial Black;">Sobre Vopros</h1>
+  <br>
+  <img src="https://image.ibb.co/ionkCm/23660587_2133817256643939_1939352851_o.jpg"></div>
+  <br>
+  <div style="background-color: #093145">
+  <div class="row" id="social">
+    <div class="col-md-4"><a class="twitter-timeline" href="https://twitter.com/VoprosOK?ref_src=twsrc%5Etfw">Tweets by VoprosOK</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+    <div class="col-md-8" style="padding: 25px 15px 25px">
+      <p style="font-family: Verdana;font-size:4"><font face="arial black" color="#00A6FF" size="6">Proyecto creado y desarrollado por Tools Studios</font></p>
+      <br>
+      <p><a href="https://gitlab.com/unq-tpi-eis-alumnos-2017-s2/grupal--ToolsStudios-1"><i class="fa fa-gitlab fa-lg" aria-hidden="true" style="display: inline"> Segui nuestro proyecto en Git</i></a>
+</p>
+<br>
+<p><a href="https://twitter.com/VoprosOK">
+                    <i class="fa fa-twitter fa-lg" aria-hidden="true" style="display: inline"> Seguinos en Twitter</i>
+                    </a></p>
 
     </div>
+  </div>
+</div>
+</div>

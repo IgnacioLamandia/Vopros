@@ -3,10 +3,12 @@ package tk.vopros.backend.service;
 import java.time.LocalDate;
 
 import tk.vopros.backend.dao.HibernateIssueDAO;
+import tk.vopros.backend.dao.HibernateMensajeDAO;
 import tk.vopros.backend.dao.HibernateProyectoDAO;
 import tk.vopros.backend.dao.HibernateTaskDAO;
 import tk.vopros.backend.dao.HibernateUserDAO;
 import tk.vopros.backend.model.issue.Issue;
+import tk.vopros.backend.model.Mensaje;
 import tk.vopros.backend.model.NivelDificultad;
 import tk.vopros.backend.model.Proyecto;
 import tk.vopros.backend.model.Task;
@@ -21,6 +23,7 @@ public class HibernateDataService {
 	HibernateIssueDAO issueDAO = new HibernateIssueDAO();
 	HibernateTaskDAO taskDAO = new HibernateTaskDAO();
 	HibernateProyectoDAO proyectDAO = new HibernateProyectoDAO();
+	HibernateMensajeDAO mensajeDAO = new HibernateMensajeDAO();
 	
 	public void createDatosIniciales() {
 		
@@ -63,14 +66,27 @@ public class HibernateDataService {
 		ignacioL.nuevoProyecto(proyecto);
 		proyecto.miembros.add(gaston);
 		proyecto.miembros.add(matias);
+		proyecto.miembros.add(ignacioG);
 		proyecto.issues.addAll(issueDAO.getAll());
 		proyecto.tasks.addAll(taskDAO.getAll());
 		long idP =proyectDAO.save(proyecto);
 		System.out.println(idP);
 		gaston.proyectos.add(idP);
 		matias.proyectos.add(idP);
+		ignacioG.proyectos.add(idP);
+		ignacioL.proyectos.add(idP);
 		userDAO.update(gaston);
 		userDAO.update(matias);
+		userDAO.update(ignacioG);
+		userDAO.update(ignacioL);
+		
+		Mensaje mensaje1 = new Mensaje(gaston,ignacioG,"Nachoo");
+		Mensaje mensaje2 = new Mensaje(ignacioG,gaston,"Que onda prro,todo bien?"); 
+		Mensaje mensaje3 = new Mensaje(gaston,ignacioG,"Todeo bien");
+		
+		mensajeDAO.save(mensaje1);
+		mensajeDAO.save(mensaje2);
+		mensajeDAO.save(mensaje3);
 	
 	}
 	

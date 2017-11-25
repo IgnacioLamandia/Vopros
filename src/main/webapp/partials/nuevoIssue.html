@@ -1,26 +1,25 @@
 <div>
 	<h2>Nuevo Issue</h2>
 	<br>
-    <h4 class="lead"> <strong> T&iacute;tulo: </strong><input id="tituloIssue" ng-model="ctrl.issue.titulo"> </h4>	
+    <h4 class="lead"> <strong> T&iacute;tulo: </strong><input class="form-control" id="tituloIssue" ng-model="ctrl.issue.titulo"> </h4>	
 	<br>
-	<h4 class="lead"> <strong> Tipo: </strong><select id="tipoIssue" ng-model="ctrl.issue.tipo" ng-options="t for t in ctrl.tipo"></select></h4>
+	<h4 class="lead"> <strong> Tipo: </strong><select class="form-control" id="tipoIssue" ng-model="ctrl.issue.tipo" ng-options="t for t in ctrl.tipo"></select></h4>
 	<br>
-	<h4 class="lead"> <strong> Gravedad: </strong><select id="gravedadIssue" ng-model="ctrl.issue.gravedad" ng-options="t for t in ctrl.gravedad"></select></h4>
+	<h4 class="lead"> <strong> Gravedad: </strong><select class="form-control" id="gravedadIssue" ng-model="ctrl.issue.gravedad" ng-options="t for t in ctrl.gravedad"></select></h4>
 	<br>
-	<h4 class="lead"> <strong> Prioridad: </strong><select id="prioridadIssue" ng-model="ctrl.issue.prioridad" ng-options="t for t in ctrl.prioridad"></select></h4>
+	<h4 class="lead"> <strong> Prioridad: </strong><select class="form-control" id="prioridadIssue" ng-model="ctrl.issue.prioridad" ng-options="t for t in ctrl.prioridad"></select></h4>
 	<br>
-	<h4 class="lead"> <strong> Estado: </strong><select id="estadoIssue" ng-model="ctrl.issue.estado" ng-options="t for t in ctrl.estado"></select></h4>
+	<h4 class="lead"> <strong> Estado: </strong><select class="form-control" id="estadoIssue" ng-model="ctrl.issue.estado" ng-options="t for t in ctrl.estado"></select></h4>
 	<br>
 	<h4 class="lead"> <strong> Fecha de expiraci&oacute;n: </strong></h4>
 
 	<input type="date" id="fecha" name="first_date" ng-model=ctrl.issue.expiracion>
 	<p id="errorFecha"></p>
 
-	<h4 class="lead"> <strong> Usuario asignado: </strong><select id="usuarioAsignado" ng-model="ctrl.issue.asignado" ng-options="t.usuario for t in ctrl.users"></select></h4>
+	<h4 class="lead"> <strong> Usuario asignado: </strong><select class="form-control" id="usuarioAsignado" ng-model="ctrl.issue.asignado" ng-options="t.usuario for t in ctrl.users"></select></h4>
 	<br>
-	<p id="feedback"></p>
-	<a id="save" ng-click="ctrl.guardarIssue()" class="btn btn-primary">Guardar cambios</a>
-	<br>
-	<br>
-    <a ng-click="ctrl.cancel()" class="btn btn-primary">Cancelar</a>
+	<div id="msg"></div>
+	<button id="save" ng-click="ctrl.guardarIssue()" class="btn btn-primary">Guardar cambios</button>
+
+    <button ng-click="ctrl.cancel()" class="btn btn-danger">Cancelar</button>
 </div>

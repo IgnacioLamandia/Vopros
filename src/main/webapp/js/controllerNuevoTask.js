@@ -60,7 +60,7 @@ app.controller('NuevoTaskCtrl', function($resource,$timeout,$state,$stateParams,
 
         Task.save({idProyecto:$stateParams.proyectoId},this.task, function() {
             self.notificarMensaje('Tarea creada!');
-            document.getElementById("feedback").textContent = "Tarea creada con exito";
+            document.getElementById("msg").textContent = "<div id='feedback' class='alert alert-success'>Tarea creada con exito</div>";
         }, errorHandler);
         this.task= {"nombre":"","descripcion":"","dificultad":"","prioridad":"","estado":"","asignado":"","expiracion":""};
     };

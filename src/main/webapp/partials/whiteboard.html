@@ -1,0 +1,40 @@
+<div class="container" style="background-color: #e2e2e2">
+<div  ng-init="ctrl.init()">
+        <h1 align="center">Whiteboard</h1>
+        <br>
+        <canvas id="canvas" width="600" height="400" style="position:absolute;left:15%;border:2px solid;background-color: #ffffff"></canvas>
+
+        <div style="position:absolute;top:500px">
+        <h4 align="left">Grosor</h4><select class="form-control" style="position:absolute;margin-left: 20px;width:80px" ng-model="ctrl.y" ng-options="t for t in ctrl.grosor"></select></h4>
+        <br>
+        <br>
+        <br>
+        <h3 align="left">Elegir Color</h3>
+        <div class="btn-group" style="margin-left: 20px">
+        <button style="width:20px;height:20px;background:green;" id="green" ng-click="ctrl.color($event)"></button>
+        <button style="width:20px;height:20px;background:blue;" id="blue" ng-click="ctrl.color($event)"></button>
+        <button style="width:20px;height:20px;background:red;" id="red" ng-click="ctrl.color($event)"></button>
+        <button style="width:20px;height:20px;background:yellow;" id="yellow" ng-click="ctrl.color($event)"></button>
+        <button style="width:20px;height:20px;background:orange;" id="orange" ng-click="ctrl.color($event)"></button>
+        <button style="width:20px;height:20px;background:black;" id="black" ng-click="ctrl.color($event)"></button>
+      </div>
+        <h3 align="left">Borrador</h3>
+        <div class="btn-group" style="margin-left: 20px">
+        <button style="margin-left: 20px;width:20px;height:20px;background:white;border:2px solid;" id="white" ng-click="ctrl.color($event)"></button>
+      </div>
+      <br>
+      <br>
+        <img id="canvasimg" style="display:none;">
+        <br>
+
+        <div class="btn-group" style="margin-left: 20px">
+        <button  type="button" class="btn btn-primary" id="btn" size="30" ng-click="ctrl.save()" >Guardar</button>
+        <button type="button" class="btn btn-primary" id="clr" size="23" ng-click="ctrl.erase()" >Borrar todo</button>
+      </div>
+        <br>
+        <h2>Imagenes guardadas</h2>
+        <div class="imagenes" style="min-height: 300px"></div>
+      </div>
+
+</div>
+</div>
