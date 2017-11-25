@@ -11,9 +11,9 @@ io.on('connection', function(socket){
   });
 
   socket.on('conectame', function(username){
-	socket.username = username
-	usuariosConectados[socket.username] = socket.id;    	
-	console.log("Se conecto el socket: ", usuariosConectados);
+  	socket.username = username
+  	usuariosConectados[socket.username] = socket.id;    	
+  	console.log("Se conecto el socket: ", usuariosConectados);
   });
 
   socket.on('mensajePara', function(mensaje){
