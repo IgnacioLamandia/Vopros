@@ -78,7 +78,7 @@ public class HibernateDataService {
 		userDAO.update(gaston);
 		userDAO.update(matias);
 		userDAO.update(ignacioG);
-		
+		userDAO.update(ignacioL);
 		
 		Mensaje mensaje1 = new Mensaje(gaston,ignacioG,"Nachoo");
 		Mensaje mensaje2 = new Mensaje(ignacioG,gaston,"Que onda prro,todo bien?"); 
