@@ -4,7 +4,7 @@ Se decidió que en esta iteración se va a cubrir lo siguiente:
 
 * Drag and drop para cambio de estado de problemas.
 * Drag and drop para cambio de estado de tareas.
-* Agregar un chiteboard.
+* Agregar un whiteboard.
 * Agregar un canal de chat.
 
 Se va a implementar en la parte de frontend un drag and drop para cambiar los estados de tareas y problemas. Tambien se va a agregar las implementaciones completas de de Whiteboar y canal de chat.
